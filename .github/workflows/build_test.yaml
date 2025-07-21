@@ -1,0 +1,61 @@
+name: build test
+on:
+  pull_request:
+    branches:
+      - 'main'
+  push:
+    branches-ignore:
+      - 'main'
+
+jobs:
+  build_test:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '***SKIPBUILD***')"
+    strategy:
+      max-parallel: 1
+      matrix:
+        python-version: [ 3.9 ]
+    steps:
+      - name: Checkout sources with LFS
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Config github user
+        run: |
+          git config --global user.email "idm_bamboo_user@idmod.org"
+          git config --global user.name "BambooUser-IDM"
+      - uses: actions/setup-python@master
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: x64
+      - name: Build and install package
+        uses: ./.github/actions/build-install-package
+        with:
+          pyproject_file: 'pyproject.toml'
+      - name: run unit tests
+        run: python -m unittest discover .
+        working-directory: ./tests
+      - name: run new_frame and available_parameters script
+        run:  |
+          python -m emodpy_workflow.scripts.new_frame --country Zambia --dest baseline
+          python -m emodpy_workflow.scripts.available_parameters -F baseline
+        working-directory: ./examples/zambia
+      - name: run scripts.download 
+        run:  python -m emodpy_workflow.scripts.download -h
+        working-directory: ./examples/zambia
+      - name: run scripts.calibrate
+        run:  python -m emodpy_workflow.scripts.calibrate -h
+        working-directory: ./examples/zambia
+      - name: run scripts.resample
+        run:  python -m emodpy_workflow.scripts.resample -h
+        working-directory: ./examples/zambia
+      - name: scripts.run
+        run: python -m emodpy_workflow.scripts.run -h
+        working-directory: ./examples/zambia
+      - name: scripts.extend_frame
+        run: python -m emodpy_workflow.scripts.extend_frame --source baseline --dest scenario1
+        working-directory: ./examples/zambia
+      
+
+

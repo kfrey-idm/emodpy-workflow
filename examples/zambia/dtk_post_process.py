@@ -1,0 +1,325 @@
+#!/usr/bin/python
+
+from __future__ import print_function
+
+import json
+import math
+import numpy as np
+import os
+import pandas as pd
+import time
+
+
+class UndefinedChannelException(Exception):
+    pass
+
+
+by_age_and_gender_filename = "ReportHIVByAgeAndGender.csv"
+
+AGGREGATED_NODE = 0  # reserved node number for aggregated aka 'National' processing
+
+OUTPUT_DIRECTORY = 'output'
+
+MALE = 0
+FEMALE = 1
+BOTH = 2
+GENDER_MAP = {'Male': MALE, 'Female': FEMALE, 'Both': BOTH}  # str to int
+GENDER_STR = {k: v for v, k in GENDER_MAP.items()}  # int to str
+
+# load file post_channel_config.json which configures which data to process
+try:
+    # attempt to load cluster-style
+    ref_config = json.load(open(os.path.join("..", "Assets", "post_channel_config.json"), 'rb'))
+except FileNotFoundError:
+    try:
+        # attempt to load COMPS-style
+        ref_config = json.load(open(os.path.join("Assets", "post_channel_config.json"), 'rb'))
+    except FileNotFoundError as e:
+        e.args = ("Could not load post-processing configuration file: post_channel_config.json", )
+        raise e
+
+
+def timing(f, message):
+    if message is not None:
+        print('\r' + message, end='')
+    t_start = time.time()
+    result = f()
+    t_end = time.time()
+    if message is not None:
+        print('{0:>10f}'.format(t_end-t_start))
+
+    return result
+
+
+def get_year(channel):
+    return ref_config[channel]['Year']
+
+
+def get_age_bin(channel):
+    """
+    tuple(15, 20) got written to [15, 20] in file post_channel_config.json
+    here we just change [15, 20] back to (15, 20)
+    """
+
+    age_bins = ref_config[channel]['AgeBin']
+    age_bins = [(g[0], g[1]) for g in age_bins]
+    return age_bins
+
+
+def get_gender(channel):
+    genders = ref_config[channel]['Gender']
+    genders = [GENDER_MAP[g] for g in genders]
+    return genders
+
+
+def get_reports(data):
+    # verify channels
+    channels_supported = ['Prevalence', 'Population', 'OnART', 'Incidence', 'ARTCoverage', 'ARTPrevalence']
+    channels_ref = list(ref_config.keys())
+
+    channels_not_supported = list(set(channels_ref) - set(channels_supported))
+    if(len(channels_not_supported)) > 0:
+        raise UndefinedChannelException('No definition for how to post-process channel: %s' % channels_not_supported[0])
+
+    # add details for each channel
+    entries = []
+
+    first_year = int(math.ceil(data.Year.min()))
+    last_prevalence_year = int(data.Year.max())
+    last_incidence_year = last_prevalence_year - 1
+
+    channel = 'Prevalence'
+    if channel in channels_ref:
+        entry = {'Name': channel,
+                 'Type': 'Prevalence',
+                 'Year': set(get_year(channel=channel)),
+                 'AgeBins': get_age_bin(channel=channel),
+                 'Gender': get_gender(channel=channel),
+                 'ByNode': 'Both',
+                 'Map': lambda rows: rows.sum(),
+                 'Reduce': lambda row: float(row.Infected) / float(row.Population) if row.Population > 0 else 0}
+        entries.append(entry)
+
+    channel = 'Population'
+    if channel in channels_ref:
+        entry = {'Name': channel,
+                 'Type': 'Prevalence',
+                 'Year': set(get_year(channel=channel)),
+                 'AgeBins': get_age_bin(channel=channel),
+                 'Gender': get_gender(channel=channel),
+                 'ByNode': 'Both',
+                 'Map': lambda rows: rows.sum(),
+                 'Reduce': lambda row: row.Population}
+        entries.append(entry)
+
+    channel = 'OnART'
+    if channel in channels_ref:
+        entry = {'Name': channel,
+                 'Type': 'Prevalence',
+                 'Year': set(get_year(channel=channel)),
+                 'AgeBins': get_age_bin(channel=channel),
+                 'Gender': get_gender(channel=channel),
+                 'ByNode': 'Both',
+                 'Map': lambda rows: rows.sum(),
+                 'Reduce': lambda row: row.On_ART}
+        entries.append(entry)
+
+    channel = 'Incidence'
+    if channel in channels_ref:
+        entry = {'Name': channel,
+                 'Type': 'Incidence',
+                 # years must be integers for incidence types
+                 'Year': set(get_year(channel=channel)),
+                 'AgeBins': get_age_bin(channel=channel),
+                 'Gender': get_gender(channel=channel),
+                 'ByNode': 'Both',
+                 'Map': lambda rows: rows.sum(),
+                 'Reduce': compute_incidence}
+        entries.append(entry)
+
+    def get_art_coverage_entry(channel):
+        # allowing multiple names for the same actual 'channel'
+        art_coverage_entry = {
+            'Name': channel,
+            'Type': 'Prevalence',
+            'Year': set(get_year(channel=channel)),
+            'AgeBins': get_age_bin(channel=channel),
+            'Gender': get_gender(channel=channel),
+            'ByNode': 'Both',
+            'Map': lambda rows: rows.sum(),
+            'Reduce': lambda row: float(row.On_ART) / float(row.Infected) if row.Infected > 0 else 0
+        }
+        return art_coverage_entry
+
+    channel = 'ARTCoverage'
+    if channel in channels_ref:
+        entries.append(get_art_coverage_entry(channel=channel))
+
+    channel = 'ARTPrevalence'
+    if channel in channels_ref:
+        entries.append(get_art_coverage_entry(channel=channel))
+
+    return entries
+
+
+def compute_incidence(row):
+    newly_infected_annualized = float(row.newly_infected_annualized)
+    if row.Population > 0:
+        incidence = newly_infected_annualized / float(row.Population - row.Infected - row.Newly_Infected)
+    else:
+        incidence = 0
+    print(f'{incidence} = {newly_infected_annualized} / ({row.Population} - {row.Infected} - {row.Newly_Infected})')
+    return incidence
+
+
+def add_year_in(df):
+    """
+    Determine the year a particular date/timeframe occurred in (assumes tail-end dates).
+    For use in 'E'-type sheets.
+    """
+    year_in = np.ceil(df['Year']) - 1
+    return df.assign(year_in=year_in)
+
+
+# TODO: this needs an overhaul to fix the unsafe behavior of not knowing the stratifiers in the report file.
+#   Results can be very wrong if not correct for each setup/project.
+def preprocess_for_incidence(all_data):
+    input_stratifiers = ['Year', 'NodeId', 'Gender', 'Age', 'IsCircumcised']
+    grouping_stratifiers = ['NodeId', 'Gender', 'Age', 'year_in', 'IsCircumcised']
+
+    # add the year each row is in
+    data = add_year_in(all_data)
+    data = data[list(set(input_stratifiers + ['year_in', 'Year', 'Newly_Infected', 'Infected', 'Population']))]
+
+    # yearly incidence count, reported on 0.5 year to line up with the data it will be combined with in a calculation
+    summed = data.drop('Year', axis=1)
+    summed = summed.groupby(grouping_stratifiers).sum().reset_index()[grouping_stratifiers + ['Newly_Infected']]
+    summed = summed.assign(year_in=summed['year_in'] + 0.5)
+    summed = summed.rename(columns={'year_in': 'Year', 'Newly_Infected': 'newly_infected_annualized'})
+
+    # merge into original dataframe
+    summed = summed.set_index(input_stratifiers)
+    data = data.set_index(input_stratifiers)
+    data = data.merge(summed, how='inner', left_index=True, right_index=True).reset_index()
+
+    # convert back to integer year; this is needed to report results on integer years as requested
+    data = data.drop('Year', axis=1)
+    data = data.rename(columns={'year_in': 'Year'})
+
+    # drop circum. column; only because we added it
+    data = data.drop('IsCircumcised', axis=1)
+    # data = data.drop('IP_Key:Risk', axis=1)
+    return data
+
+
+def get_blank_dataframe():
+    output_stratifiers = ['Year', 'Node', 'Gender', 'AgeBin']
+    output = pd.DataFrame(columns=(output_stratifiers + ['Result']))
+    return output
+
+
+def process_nodes(data, output, year, gender, min_age, max_age, report, node_ids):
+    print(f"channel: {report['Name']} year: {year} gender: {gender} age_bin: [{min_age}:{max_age}) "
+          f"node_ids: {node_ids}")
+    for node_id in node_ids:
+        # ensure that the starting and ending ages, min_age and max_age, are in the data to process,
+        # which will guarantee a proper enforcement of age processing: [min_age:max_age)
+        data_ages = data.Age.unique()
+        missing_age_bracket = min_age not in data_ages or max_age not in data_ages
+
+        # determine which data lines need to be included in this calculation
+        conditions = (data.Year == year) & (data.Age >= min_age) & (data.Age < max_age)
+        if gender != BOTH:
+            conditions = conditions & (data.Gender == gender)
+        if node_id != AGGREGATED_NODE:
+            conditions = conditions & (data.NodeId == node_id)
+
+        rows = data[conditions]
+
+        if len(rows) == 0 or missing_age_bracket:
+            raise Exception(f"MAB: {missing_age_bracket} Channel {report['Name']} data is misaligned for year: {year} "
+                            f"gender: {GENDER_STR[gender]} age_bin: [{min_age},{max_age}) .\n\n"
+                            f"Common causes:\n"
+                            f"- simulation is not long enough\n"
+                            f"- age(s) missing from Report_HIV_ByAgeAndGender.csv configuration parmeters\n"
+                            f"- ingest form has a non-integer-year reference datum (must be integers)")
+
+        mapping = timing(lambda: report['Map'](rows), message=None)  # sum data
+        try:
+            result = report['Reduce'](mapping)
+        except AttributeError:
+            print(' -- FAILED!')
+            return output
+        new_row = {
+            'Year': year,
+            'Node': node_id,
+            'Gender': GENDER_STR[gender],
+            'AgeBin': '[%d:%d)' % (min_age, max_age),
+            'Result': result
+        }
+        output.loc[len(output)] = new_row
+    return output
+
+
+def process_report(report, all_data, node_ids):
+    # preprocessing for incidence types
+    if report['Type'] == 'Incidence':
+        data = preprocess_for_incidence(all_data)
+    else:
+        data = all_data
+
+    # determine which type(s) of processing to do
+    process_by_node = True if report['ByNode'] in [True, 'Both'] else False
+    process_aggregated = True if report['ByNode'] in [False, 'Both'] else False
+
+    # Create output data
+    output = get_blank_dataframe()
+    for year in report['Year']:
+        for gender in report['Gender']:
+            for min_age, max_age in report['AgeBins']:
+                if process_by_node:
+                    output = process_nodes(data, output, year, gender, min_age, max_age, report,
+                                           node_ids=node_ids)
+
+                if process_aggregated:
+                    output = process_nodes(data, output, year, gender, min_age, max_age, report,
+                                           node_ids=[AGGREGATED_NODE])
+
+    output.set_index(['Year', 'Node', 'Gender', 'AgeBin'], inplace=True)
+    return output
+
+
+def main(output_dir):
+    print("Hello from Python!")
+    print("Started Python post processing  @ " + time.asctime())
+    print("Current working directory is: " + os.getcwd())
+
+    filename = os.path.join(output_dir, by_age_and_gender_filename)
+    if not os.path.isfile(filename):
+        print("!!!! Can't open " + filename + "!")
+        return
+
+    print('Loading file: %s' % filename)
+    data = timing(lambda: pd.read_csv(filename), message='Load data:    ')
+
+    reports = get_reports(data)
+
+    data.columns = map(lambda s: s.strip().replace(' ', '_').replace('(', '').replace(')', ''), data.columns)
+    node_ids = sorted([int(node_id) for node_id in data.NodeId.unique()])
+
+    post_process_dir = 'post_process'
+    directory = os.path.join(output_dir, post_process_dir)
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+
+    for report in reports:
+        result = timing(lambda: process_report(report, data, node_ids), message=report['Name'])
+        result.to_csv(os.path.join(output_dir, post_process_dir, '%s.csv' % report['Name']))
+
+    print("Finished Python post processing @ " + time.asctime())
+
+
+application = main
+
+if __name__ == '__main__':
+    main(output_dir=OUTPUT_DIRECTORY)
