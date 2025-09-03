@@ -52,9 +52,13 @@ packaging = [
 Repository="https://github.com/EMOD-Hub/emodpy-workflow"
 Issues="https://github.com/EMOD-Hub/emodpy-workflow/issues"
 
-
 [tool.setuptools.packages]
 find = {include = ["emodpy_workflow*"]}
+
+[tool.setuptools.package-data]
+emodpy_workflow = [
+    "scripts/**/*.ini"
+]
 
 [tool.pip]
 extra-index-url = "https://packages.idmod.org/api/pypi/pypi-production/simple"
