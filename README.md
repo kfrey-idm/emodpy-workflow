@@ -33,7 +33,7 @@ emodpy-workflow as it provides standard way of using EMOD-HIV.
 (https://www.python.org/downloads/release/python-3913/) in Windows or Linux and assumes it is custom-installed into 
 C:\Python39 in Windows or /c/Python39 in Linux.  (Downloads:  <a href="https://www.python.org/ftp/python/3.9.13/python-3.9.13-amd64.exe">exe</a>,  <a href="https://www.python.org/ftp/python/3.9.13/Python-3.9.13.tgz">tgz</a>)
 
-- This guide further assumes a Linux-like command terminal is being used for Windows (e.g. git bash in Windows), not the
+- This guide further assumes a Linux-like command terminal is being used for Windows (for example, git bash in Windows), not the
 built-in Windows cmd.
 
 ---
@@ -256,7 +256,7 @@ parameter_sets = {
     'baseline': {
         # Each dict in 'sweeps' list is a set of param: value overrides to be applied. A scenario.
         # Note that the parameter lists are arbitrary. Each scenario can include as many or few parameters
-        # as you wish.
+        # as you want.
         # One experiment will be created per entry in 'sweeps'
         'sweeps': [
             # Optional: A provided 'experiment_name' in a sweep entry will name the corresponding experiment. Default

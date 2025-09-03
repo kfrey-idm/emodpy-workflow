@@ -29,6 +29,6 @@ def build_reports(reporters: Reporters):
     # Add any additional report building here
     # Please note, reports of the ConfigReporter base class only allow for one reporter of each class to be added.
     # Trying to add another ConfigReporter of the same class will result in error.
-    # If you do not wish to use the reports available in the source_frame, you can remove the line above
+    # If you do not want to use the reports available in the source_frame, you can remove the line above
     # and add your own reporters here as needed.
     return reporters

@@ -1,0 +1,145 @@
+site_name: emodpy-workflow
+site_url: https://docs.idmod.org/emodpy-workflow
+repo_name: EMOD-Hub/emodpy-workflow # update to your repo name
+repo_url: https://github.com/EMOD-Hub/emodpy-workflow # update to your repo URL
+theme:
+  name: material
+  custom_dir: docs/customization/overrides
+  font: 
+    text: Roboto
+    code: Roboto Mono
+  logo: images/emod_logo.png
+  favicon: images/favicon.ico
+  features:
+    - navigation.footer # include a footer with links to privacy, terms, etc.
+    - content.code.copy # enable copy buttons for code blocks
+  palette:
+    # Light Mode
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Light mode
+      primary: white
+      accent: light blue
+    # Dark Mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Dark mode
+      primary: white
+      accent: light blue
+
+nav: # Navigation structure for the documentation
+  - Home: index.md # the rest of the nav illustrates a typical doc structure
+  - installation.md # including the topic title is optional
+  - Reference:
+    - reference/reference_overview.md
+    - reference/commands.md
+    - reference/projects.md
+    - reference/frames.md
+    - reference/ingest_form.md
+    - reference/sweeps.md
+    - reference/dtktools_comparison.md
+  - How-to:
+    - how_to/how_to_index.md
+    - how_to/how_to_make_project.md
+    - how_to/how_to_create_frame.md
+    - how_to/how_to_use_elements_in_frame.md
+    - how_to/how_to_list_hyperparameters.md
+    - how_to/how_to_run.md
+    - how_to/how_to_calibrate_frame.md
+    - how_to/how_to_sweep.md
+    - how_to/how_to_download_data.md
+  - Tutorials: # this creates a section in the TOC
+    - tutorials/get_started.md
+    - tutorials/create_project.md
+    - tutorials/run_emod.md
+    - tutorials/modify_reports.md
+    - tutorials/modify_configuration.md
+    - tutorials/modify_demographics.md
+    - tutorials/modify_campaign.md
+    - tutorials/using_parameterized_calls.md
+    - tutorials/sweep_parameter.md
+    - tutorials/run_calibration.md
+    - tutorials/use_calibration.md
+    #- Get Started: tutorials/intro.ipynb # the topic following index.md sometimes requires an explicit title
+  #- Glossary: glossary.md
+  # API Reference will automatically be generated and added to the TOC
+
+# icons, semantic markup, emojis 
+markdown_extensions:
+  - toc:
+      toc_depth: 3
+  - attr_list # enables HTMl and CSS classes to inline elements
+  - md_in_html # enables grids
+  - admonition # warnings, etc.
+  - def_list
+  - pymdownx.emoji: # emojis and icons
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.arithmatex: # Latex processing for math equations
+      generic: true
+  - pymdownx.snippets: # snippet reuse functionality
+  - pymdownx.blocks.details: # allows nesting of collapsible code
+  - pymdownx.highlight: # syntax highlighting for code blocks
+      #linenums: false
+      default_lang: 'python'
+  - pymdownx.inlinehilite # syntax highlighting for inline code
+  - pymdownx.superfences # enables code, diagram fences to be nested in lists, etc.e
+  - pymdownx.details # collapsible elements
+  - pymdownx.tabbed: # tabbed content that can be toggled
+      alternate_style: true
+  - pymdownx.blocks.caption # captions for images, tables, etc.
+
+# javascript customization
+#extra_javascript:
+#  - docs/customization/javascripts/mathjax.js
+#  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+plugins:
+  - search # search functionality
+  - autorefs # automatically create linkable references
+  - include-markdown: # include other files, such as READMEs
+  # - mkdocs-jupyter: # enables Jupyter notebooks to be rendered
+  #     execute: true
+  #     allow_errors: true
+  - section-index # enables nested sections
+  #- mkdocs-autoapi: # API reference generation
+  #    autoapi_ignore: # list of files or folder to ignore for API generation
+  #      - tests/**/*
+  #      - build/**/*
+  #      - docs/*
+  #      - setup.py
+  #    autoapi_add_nav_entry: true # breaks modules into separate pages
+  #- mkdocstrings: # process docstrings to generate API reference
+
+copyright: Copyright &copy; 2025 Gates Foundation. All rights reserved.
+
+extra:
+  generator: false
+  footer_links:
+    - text: "Privacy and Cookies Notice"
+    - href: "https://www.gatesfoundation.org/Privacy-and-Cookies-Notice"
+    - text: "Terms of Use"
+    - href: "https://www.gatesfoundation.org/Terms-of-Use"
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/EMOD-Hub # update to your repo
+  analytics:
+    provider: google
+    property: G-SVDSQH04EM
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/emoticon-happy-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback! If you like, provide additional information by
+            using our <a href="https://app.smartsheet.com/b/form/ec8dbb77809949ecab7286a5ca74a206" target="_blank" rel="noopener">feedback form</a>.
+        - icon: material/emoticon-sad-outline
+          name: This page could be improved
+          data: 0
+          note: >- 
+            Thanks for your feedback! Help us improve this page by
+            using our <a href="https://app.smartsheet.com/b/form/ec8dbb77809949ecab7286a5ca74a206" target="_blank" rel="noopener">feedback form</a>.
