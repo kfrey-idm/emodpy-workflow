@@ -34,6 +34,7 @@ nav: # Navigation structure for the documentation
   - installation.md # including the topic title is optional
   - Reference:
     - reference/reference_overview.md
+    - reference/virtual_environments.md
     - reference/commands.md
     - reference/projects.md
     - reference/frames.md
@@ -52,6 +53,7 @@ nav: # Navigation structure for the documentation
     - how_to/how_to_download_data.md
   - Tutorials: # this creates a section in the TOC
     - tutorials/get_started.md
+    - tutorials/setup.md
     - tutorials/create_project.md
     - tutorials/run_emod.md
     - tutorials/modify_reports.md

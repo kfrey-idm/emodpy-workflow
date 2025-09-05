@@ -86,7 +86,7 @@ For example, creating a Python country model subclass named **ZambiaModified** u
 **add_state_TestingOnChild6w** function for the Zambia model campaign in frame **zambia_modified**. 
 
 1. Use the **new_frame** command to create a fresh Zambia country model starting point
-(see [Make a new frame](how_to_create_frame.md#make-a-new-frame)):
+(see [Create a new frame](how_to_create_frame.md#create-a-frame)):
 
     ```bash
     python -m emodpy_workflow.scripts.new_frame --country Zambia --dest zambia_modified
@@ -150,7 +150,7 @@ instead.
 
 ## Specify an ingest form for a frame
 
-The way to specify the [ingest form](../reference/ingest_forms.md) to use for **all**
+The way to specify the [ingest form](../reference/ingest_form.md) to use for **all**
 [frames](../reference/frames.md) in a project is by editing the **ingest_filename** attribute in its
 **manifest.py** file.
 

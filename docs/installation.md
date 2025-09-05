@@ -2,19 +2,51 @@
 
 ## Software prerequisites
 
-- The following is required:
-    - Windows or Linux
-    - [Python 3.9.X (3.9.13 or higher) (64-bit)](https://www.python.org/downloads/release/python-3913/)
+The following is required:
 
-- Instructions assume Python was installed into C:\Python39 in Windows or /c/Python39 in Linux.
+- Windows or Linux (Mac is loosely supported)
+- [Python 3.9.X (3.9.13 or higher) (64-bit)](https://www.python.org/downloads/release/python-3913/)
 
-If you have Python installed to a different directory, please update the Python interpreter path below to match your 
-installation of Python.
+### Python
+
+To verify you have the correct version, enter the following command:
+
+```
+python --version
+```
+
+You should see something similar to the following and it should start with "3.9":
+
+```doscon
+Python 3.9.19
+```
+
+If you do not get that, you may need to provide the full path to the python executable
+or you may need to install it.  If you need the full path, please use the full path when creating the virtual environment below.
+
+### Docker
+
+If you want to run EMOD locally using the Container Platform, you will also need
+to install Docker.  Installation will require administrative privileges.  Follow the instructions on the Docker website:
+
+- [Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
+    (You might be able to install WSL via the Docker Desktop installer.)
+- [Linux](https://docs.docker.com/desktop/setup/install/linux/)
+- [Mac](https://docs.docker.com/desktop/setup/install/mac-install/)
+
+!!! Warning
+    Installing can require downloading close to one gigabyte of data.  The first time
+    you use EMOD with the Container Platform it will download another half gigabyte.
+
+## Setup virtual environment
+
+The following commands will setup a
+[virtual environment](reference/virtual_environments.md).  You will want to do this for all of your new projects.
 
 1. Create the virtual environment
 
     ```
-    /c/Python39/python -m venv env
+    python -m venv env
     ```
 
 2. Activate the virtual environment:
@@ -24,7 +56,7 @@ installation of Python.
         env\Scripts\activate.bat
         ```
     === "Linux"
-        ```
+        ```bash
         source env/bin/activate
         ```
 
@@ -34,7 +66,10 @@ installation of Python.
     python -m pip install pip --upgrade
     ```
 
-4. Install emodpy-workflow:
-    ```
-    python -m pip install emodpy-workflow --extra-index-url=https://packages.idmod.org/api/pypi/pypi-production/simple
-    ```
+## Install emodpy-workflow:
+
+Use the following command to install emodpy-workflow from IDM's Artifactory:
+
+```
+python -m pip install emodpy-workflow --extra-index-url=https://packages.idmod.org/api/pypi/pypi-production/simple
+```

@@ -58,7 +58,7 @@ directory containing the receipt.
 ## Download multiple files
 
 Downloading more than one file from simulations is a small modification of downloading a single file. For downloading a
-single file, see: [Download a file from all simulations in an experiment](#download-a-file-from-all-simulations-in-an-experiment).
+single file, see: [Download a file from all simulations in an experiment](#from-an-experiment).
 
 To specify more than one file for download, one specifies **all** files together as the value of the `-f flag`, 
 separating them by a **comma with no spaces**.

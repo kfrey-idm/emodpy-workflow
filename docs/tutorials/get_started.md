@@ -6,19 +6,16 @@ The following tutorials assume you are familiar with the following:
 
 - Python
 - Linux or Windows command-line
-- Have a basic understanding of EMOD is
+- Have a basic understanding of what EMOD is
 
 If you have been using EMOD-HIV with DtkTools, this [comparison](../reference/dtktools_comparison.md)
 page will help you to understand what is different from how you have been using EMOD-HIV.
 
-## Installation
+## Setup and Installation
 
-If you are doing the tutorials on your own computer or cluster, go to the
-[installation guide](../installation.md) for creating a virtual environment
-and installing emodpy-workflow in it.
-
-If you are using the **GitHub Codespaces** with the emodpy-workflow repository,
-everything should already be installed.
+You can do the tutorials locally or using GitHub Codespaces.  The
+[Setup and Installation](setup.md) instructions will get you prepared to
+do the following tutorials.
 
 ## Create a project
 
@@ -32,29 +29,29 @@ the model, and plotting data.  It will not only show you how easy it is to run E
 it will teach you how to run EMOD in a way that can help you quickly add new features
 and find issues.
 
-## Change report output
-The ["change reports"](change_reports.md) tutorial will introduce you to the different
+## Modify report output
+The ["change reports"](modify_reports.md) tutorial will introduce you to the different
 data out of EMOD via "reports".  EMOD can provide tons of information about the state
 of the individuals in the simulation and reports are the way to get that information.
 
-## Change the configuration
+## Modify the configuration
 
-The ["change configuration"](change_configuration.md) tutorial will teach you how to
+The ["change configuration"](modify_configuration.md) tutorial will teach you how to
 change parameters in a structured way so you can easily compare the new parameters to
 the baseline.
 
-## Change the demographics
+## Modify the demographics
 
-The ["change demographics"](change_demographics.md) tutorial show you how you can
+The ["change demographics"](modify_demographics.md) tutorial show you how you can
 change the different aspects of the population and their behaviors.  You will learn
 how to change the initial ages of the population, add an individual property, and
 change how often people create commercial relationships.
 
-## Change the campaign
+## Modify the campaign
 
 The campaign is where users make most of their changes.  It is where you determine
 the "when, why, where, to whom, and what" of interventions.
-The ["change campaign"](change_campaign.md) tutorial will teach you how to things
+The ["change campaign"](modify_campaign.md) tutorial will teach you how to things
 like add an intervention or change a state of the cascade of care.
 
 ## Make a parameter calibrate-able or sweep-able - ParameterizedCalls
