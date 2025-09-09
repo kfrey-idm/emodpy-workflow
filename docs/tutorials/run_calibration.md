@@ -8,46 +8,52 @@ this tutorial will focus on the nuts-and-bolts of calibration. Calibrating **wel
 
 ## Start a calibration
 
-The following command will start a calibration of **baseline** frame created in a prior tutorial:
+The following command will start a calibration of a frame named **baseline** created in a prior tutorial:
 
 ```bash
 python -m emodpy_workflow.scripts.calibrate -N BaselineCalibration -F baseline -i 2 -n 8 -o calibration/ -p ContainerPlatform optim_tool -v 0.1
 ```
 
-While we are waiting, we will review some details related to what is actually happening.
+While we are waiting for it to complete, we will review some details related to what is actually happening.
 
 ## Configure a calibration
 
-There are a few basic controls for the **calibrate** command that can be used to adjust how long and how deeply it
-looks for good model parameterizations. We will briefly review the ones we just used. Further controls are documented
-by **calibrate** itself:
+The `calibrate` command is the command for model calibration in emodpy-workflow. There are a few basic controls for 
+the `calibrate` command that can be used to adjust how long and how deeply it looks for good model parameterizations. 
+We will briefly review the ones we just used. Further controls are documented by **calibrate** itself:
 
 ```bash
 python -m emodpy_workflow.scripts.calibrate --help
 ```
 
-**calibrate** command controls
+`calibrate` command controls:
 
--i NUMBER : how many iterations the process will perform, for example,
+-i NUMBER : how many sequential iterations the process will perform, for example,
 
 ```bash
 -i 2
 ```
 
--n NUMBER : how many different parameterizations (simulations) to try per iteration, for examle,
+-n NUMBER : how many different parameterizations (simulations) to try per iteration, for example,
 
 ```bash
 -n 8
 ```
 
+-N NAME : the name of the calibration to perform, various uses, for example,
+
+```bash
+-N BaselineCalibration
+```
+
 Very generally, more iterations and more parameterizations per iteration yield better results but increase computation
 time/cost.
 
-**optim_tool** algorithm command controls
+`optim_tool` algorithm command controls:
 
 optim_tool is the algorithm we selected for scoring parameterizations.
 
--v FRACTION (0.0-1.0) : the fraction of hyperparameter space to explore in an interation. Lower means the algorithm
+-v FRACTION (0.0-1.0) : the fraction of hyperparameter space to explore in an iteration. Lower means the algorithm
 takes small steps from its current best parameterization, higher means to take larger steps, for example,
 
 ```bash
@@ -70,7 +76,7 @@ reference documentation](../reference/ingest_form.md) for more information.
 ## Calibration output
 
 The above calibration command will put information related to calibration status and simulation scoring into the
-directory: calibration/BaselineCalibration . The highest-numbered directory of iteration information (like iter1 in
+directory: `calibration/BaselineCalibration` (calibration name). The highest-numbered directory of iteration information (like iter1 in
 our example) contains pdf plots of information relevant to the progress of calibration and can provide information
 to aid in determining if the current set of hyperparameters being modified are sufficient.
 
@@ -86,6 +92,9 @@ them to a CSV file:
 ```bash
 python -m emodpy_workflow.scripts.resample -d calibration/BaselineCalibration -m best -n 4 -o samples.csv
 ```
+
+!!! Important
+    A resampled csv file **is** a calibration (good, bad, in progress, etc.)
 
 ## Plot the calibration
 

@@ -1,24 +1,14 @@
 # Create Scenarios and Do Sweeps
 
-- a. Explain to sweep a parameter the parameter must be first be “available”.  Tell the user to do the “Using ParameterizedCalls” tutorial first.
-- b. Use the available_parameters command to see the list of parameters that can be swept
-- c. Explain that in the run command that one of the arguments is a sweeps file.
-- d. Tell the user to read the reference on the sweep file.
-- e. Download and open the sweep_formation_rate.py file
-- i. The file should have different experiments for different rates, but each experiment should sweep a handful of Run_Numbers
-- f. Tell the user to read the comments in the file
-- g. Run the sweep
-- h. Use the download command to download the InsetChart of each experiment
-- i. Use plot_inset_chart_mean_compare to plot all three experiments
-
-
+This tutorial utilizes ParameterizedCalls. The tutorial covering them is located [here](using_parameterized_calls.md) 
+and should be completed first.
 
 ## What is a scenario or sweep?
 
-A scenario (sweep) is a set of hyperparameters and values that will be applied to a frame. One can think of them as 
+A scenario (sweep) is a set of hyperparameter values that will be applied to a frame. One can think of them as 
 "what if" scenarios/simulations.
 
-Hyperparameter values in a scenario are _arbitrary_. Every scenario has its own unique set of hyperparameters and values
+Hyperparameter values in a scenario are _arbitrary_. Every scenario has its own unique set of hyperparameter values
 that may or may not have any relation to other scenarios, depending on how a user wants to use them.
 
 The hyperparameter values in a scenario are always applied _last_ to ensure they have final say in configuration.
@@ -90,7 +80,7 @@ The following command utilizes the above sweeps file that varies hyperparameter 
 samples).
 
 Since there are four sweep entries, the command will generate:
-one suite of four experiments of one simulation1, or 1 * 4 * 1 = 4 simulations in total.
+one suite of four experiments of one simulation, or 1 * 4 * 1 = 4 simulations in total.
 
 ```bash
 python -m emodpy_workflow.scripts.run -F baseline -N commercial_sex_scenarios -o output -p ContainerPlatform -S sweeps.py
@@ -98,19 +88,18 @@ python -m emodpy_workflow.scripts.run -F baseline -N commercial_sex_scenarios -o
 
 ## Downloading scenario output file(s)
 
-!!! From Jen
-    This info already seems like it's covered in the how-to. Link to that instead of duplicating it!
-
 Output file(s) from completed simulation(s) can be obtained via the `download` command. The following will download
-the InsetChart.json file from each simulation in each experiment in teh prior `run` execution:
+the InsetChart.json file from each simulation in each experiment in the prior `run` execution:
 
 ```bash
 python -m emodpy_workflow.scripts.download -f output/InsetChart.json -r output/experiment_index.csv -p ContainerPlatform
 ```
 
+Full documentation of the `download` command is located [here](../how_to/how_to_download_data.md).
+
 ## Plotting results
 
-The built-in **plot_inset_chart_mean_compare** command is able to plot several experiments of InsetChart.json data for
+The built-in `plot_inset_chart_mean_compare` command is able to plot several experiments of InsetChart.json data for
 inter-comparison. The following will plot data from the files just downloaded, one colored line per experiment (its 
 average of one simulation each):
 
@@ -118,6 +107,6 @@ average of one simulation each):
 python -m emodpy_hiv.plotting.plot_inset_chart_mean_compare output/coital_act_rate_COMMERCIAL_low--0/InsetChart/ output/coital_act_rate_COMMERCIAL_medium--1/InsetChart/ output/coital_act_rate_COMMERCIAL_high--2/InsetChart/ -o plots
 ```
 
-A generated .png file will be located at: `plots\InsetChart_Compare.png` for inspection. For example,
+A generated .png file will be located at: `plots/InsetChart_Compare.png` for inspection. For example,
 
 ![image](../images/InsetChart_Compare.png)

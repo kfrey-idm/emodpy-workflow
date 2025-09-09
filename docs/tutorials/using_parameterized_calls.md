@@ -1,19 +1,5 @@
 # Using ParameterizedCalls
 
-- a. Explain that before you can sweep or calibrate parameters they need to be “available”.
-- b. Use available_parameters to show the current list of parameters for baseline
-- c. Explain that a parameter becomes available by using ParameterizedCall and putting it in the list of parameters for that EMOD object (config, campaign, demographics)
-- d. Explain that instead of editing the initialize_XXX() methods we want to edit the get_XXX_parameterized_calls() methods to our new parameter is ni the list.
-- e. Use extend_frame to create pc_base_infectivity
-- f. Tell the user to read the reference on ParameterizedCall
-- g. Edit pc_base_infectivity/get_config_parameterized_calls() by adding a new ParameterizedCall for Base_Infectivity that does not change the default
-    - i. Explain you can change the default or only override
-    - ii. Explain that you cannot have different config parameters for different nodes
-- h. Use the available_parameters command and find the new Base_Infectivty parameter in the list
-
-
-
-
 A ParameterizedCall is a mapping of a hyperparameter names (strings) to specific locations in the model input building
 process. These mappings are used to map hyperparameter values to model changes during input build time, for example, during
 model calibration or scenario running.
@@ -21,14 +7,14 @@ model calibration or scenario running.
 A ParameterizedCall is:
 
 - **Parameterized** : It defines hyperparameters users can utilize during model input building.
-- **Call** : It has a function that will be called at model input building time with any provided hyperparameter values
-for matching defined hyperparameters.
+- **Call** : It has a function that will be called at model input building time with any provided values for matching 
+defined hyperparameters.
 
 ## By Example
 
 Here we will explore the features and capabilities of ParameterizedCalls through a series of related examples.
 
-The example will refer to this function to be called at build time, which adds an HIV vaccine intervention to an 
+They will refer to this function to be called at build time, which adds an HIV vaccine intervention to an 
 EMOD-HIV campaign:
 
 ```python linenums="1"
@@ -46,7 +32,7 @@ def add_hiv_vaccine(campaign: api_campaign,
 ```
 ### 1. Starting from scratch
 
-This example shows ParameterizedCall (in name only!), as it defines no hyperparameters. The result of this 
+This example shows a ParameterizedCall (in name only!), as it defines no hyperparameters. The result of this 
 ParameterizedCall at input building time is simply the calling of function `add_hiv_vaccine` with full function 
 defaults.
 
@@ -68,8 +54,8 @@ This example does exactly what the prior example does with one change: `vaccine_
 as a hyperparameter for modification.
 
 !!! Important
-    The exact spelling match of `vaccine_efficacy` in the ParameterizedCall
-    and the `add_hiv_vaccine` function parameter.
+    The spelling of `vaccine_efficacy` in the ParameterizedCall
+    and the `add_hiv_vaccine` function parameter must exactly match.
 
 ### 3. Hyperparameter default values
 
@@ -99,7 +85,7 @@ building time should be **0.8**.
 
 !!! Important
     Giving a hyperparameter definition a **non-None value** overrides the
-    **default** behavior of specified function.
+    **default** behavior of the specified function.
 
 ### 4. Non-hyperparameter overrides
 
@@ -116,13 +102,13 @@ This indicates that `node_ids` is a not a hyperparameter **but** the default val
 building time should be `[1, 2]` instead of its normal behavior.
 
 !!! Important
-    Non-hyperparameters override the **default** behavior of specified function,
-    but **do not** create hyperparameters for use, especially useful for
+    Non-hyperparameters override the **default** behavior of the specified function,
+    but **do not** create hyperparameters for use, which is especially useful for
     **non-calibrateable** overrides.
 
 ### 5. Contextual labels
 
-Sometimes you want to define more than one ParameterizedCall calling the same function. This especially true when
+Sometimes you want to define more than one ParameterizedCall calling the same function. This is especially true when
 non_hyperparameters are needed for context. For example:
 
 ```python linenums="1"
@@ -148,7 +134,7 @@ one for nodes 1 and 2 and the second for nodes 3 and 4.
 
 !!! Important
     However, since they share the same name, `vaccine_efficacy`, the **actual**
-    effect is a single hyperparameter named `vaccine_efficay` that is applied
+    effect is a single hyperparameter named `vaccine_efficacy` that is applied
     to **both** ParameterizedCalls at input building time. They are tied together.
 
 Tying multiple changes to a single hyperparameter **can** be a legitimate thing to
@@ -178,8 +164,8 @@ the ParameterizedCalls.
 ```
 
 This shows the usage of contextual labels to disambiguate hyperparameters that otherwise have identical names. But one
-needs to also specify the context when calibrating or running scenarios. The full names of these two hyperparameters for
-calibration and scenario purposes are now:
+needs to also specify the context when calibrating or running scenarios. The **full** names of these two hyperparameters
+for calibration and scenario purposes are now:
 
 ```python linenums="1"
 'vaccine_efficacy--nodes_1_and_2'
