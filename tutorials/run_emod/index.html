@@ -1,0 +1,2400 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://docs.idmod.org/emodpy-workflow/tutorials/run_emod/">
+      
+      
+        <link rel="prev" href="../create_project/">
+      
+      
+        <link rel="next" href="../modify_reports/">
+      
+      
+      <link rel="icon" href="../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
+    
+    
+      
+        <title>Run EMOD - emodpy-workflow</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SVDSQH04EM"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SVDSQH04EM",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SVDSQH04EM",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#run-emod" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="emodpy-workflow" class="md-header__button md-logo" aria-label="emodpy-workflow" data-md-component="logo">
+      
+  <img src="../../images/emod_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            emodpy-workflow
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Run EMOD
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="light-blue"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="white" data-md-color-accent="light-blue"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/EMOD-Hub/emodpy-workflow" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EMOD-Hub/emodpy-workflow
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="emodpy-workflow" class="md-nav__button md-logo" aria-label="emodpy-workflow" data-md-component="logo">
+      
+  <img src="../../images/emod_logo.png" alt="logo">
+
+    </a>
+    emodpy-workflow
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/EMOD-Hub/emodpy-workflow" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EMOD-Hub/emodpy-workflow
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Install
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/reference_overview/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Reference
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/virtual_environments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Virtual Environments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Projects
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/frames/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Frames
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ingest_form/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ingest Form
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/sweeps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sweep files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/dtktools_comparison/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    emodpy-workflow vs DtkTools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../how_to/how_to_index/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    How-to
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            How-to
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how_to/how_to_make_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Make a new project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how_to/how_to_create_frame/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create a frame
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how_to/how_to_use_elements_in_frame/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Use elements in a frame
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how_to/how_to_list_hyperparameters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    List hyperparameters
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how_to/how_to_run/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Make a single run
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how_to/how_to_calibrate_frame/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calibrate a frame
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how_to/how_to_sweep/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sweep parameters
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how_to/how_to_download_data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Download data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../get_started/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup and Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../create_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Run EMOD
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Run EMOD
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objective
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#control-how-and-where-emod-runs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control how and where EMOD runs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Control how and where EMOD runs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#view-manifestpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      View manifest.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-idmtoolsini" class="md-nav__link">
+    <span class="md-ellipsis">
+      View idmtools.ini
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-results-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a results directory
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-run-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the run command
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-status-on-your-experiment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get status on your experiment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#view-the-files-produced-when-running-an-experiment" class="md-nav__link">
+    <span class="md-ellipsis">
+      View the files produced when running an experiment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#view-the-resultsmy_first_run-folder-and-the-receipt-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      View the results/my_first_run folder and the "receipt file"
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-the-resultsoutputreports" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download the results/output/reports
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plot-the-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plot the results
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-up-modifying-the-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next up: Modifying the simulation
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modify_reports/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Modify Reports
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modify_configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Modify Configuration Parameter
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modify_demographics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Modify Demographics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modify_campaign/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Modify Campaign
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using_parameterized_calls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using ParameterizedCalls
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sweep_parameter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create Scenarios and Do Sweeps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../run_calibration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Run Calibration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../use_calibration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Use Calibration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objective
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#control-how-and-where-emod-runs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control how and where EMOD runs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Control how and where EMOD runs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#view-manifestpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      View manifest.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-idmtoolsini" class="md-nav__link">
+    <span class="md-ellipsis">
+      View idmtools.ini
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-results-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a results directory
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-run-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the run command
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-status-on-your-experiment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get status on your experiment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#view-the-files-produced-when-running-an-experiment" class="md-nav__link">
+    <span class="md-ellipsis">
+      View the files produced when running an experiment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#view-the-resultsmy_first_run-folder-and-the-receipt-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      View the results/my_first_run folder and the "receipt file"
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-the-resultsoutputreports" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download the results/output/reports
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plot-the-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plot the results
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-up-modifying-the-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next up: Modifying the simulation
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="run-emod">Run EMOD</h1>
+<h2 id="objective">Objective</h2>
+<p>The goal of this tutorial is for you to learn how to run a single simulation of EMOD-HIV
+using emodpy-workflow.  There are many ways to run EMOD:</p>
+<ul>
+<li>From the command line</li>
+<li>Using emodpy-hiv</li>
+<li>Using emodpy-workflow</li>
+<li>On an HPC</li>
+<li>On your laptop</li>
+<li>As part of a parameter calibration</li>
+<li>As a parameter sweep</li>
+</ul>
+<p>However, you will frequently want to run a single simulation when you creating different
+behaviors in your simulation or while debugging.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>To run EMOD per the instructions of this tutorial, you need to have done the followinng:</p>
+<ul>
+<li><a href="../setup/">Setup and installed emodpy-workflow</a></li>
+<li><a href="../create_project/">Created a project and a frame</a></li>
+</ul>
+<h2 id="control-how-and-where-emod-runs">Control how and where EMOD runs</h2>
+<p>Before we can start using the "run" command, we first need to know where we can control
+the what and where EMOD runs.  The <a href="../../reference/projects/#manifestpy">manifest.py</a> file is used by
+emopdy-workflow to know what EMOD executable binary to use, to specify a container for
+the executable binary to run in, to specify any simulation post processing scripts, etc.
+The <a href="../../reference/projects/#idmtoolsini">idmtools.ini</a> file is used to specify how EMOD is run on
+different platforms, where a "platform" is a computing device like an HPC or laptop.</p>
+<h3 id="view-manifestpy">View manifest.py</h3>
+<ol>
+<li>In the root of your project directory, open the <code>manifest.py</code> file.</li>
+<li>On about line 39, you should see a variable called <code>executable_path</code>.  This tells
+emodpy-workflow where to get the EMOD executable binary.</li>
+<li>Just below that you should also see a variable called <code>asset_collection_of_container</code>.
+This is variable is used by emodpy-workflow to know what container to run EMOD in.
+(Containers reduce your need to install everything needed to run EMOD.)</li>
+<li>For more information see <a href="../../reference/projects/#manifestpy">manifest.py</a>.</li>
+</ol>
+<h3 id="view-idmtoolsini">View idmtools.ini</h3>
+<ol>
+<li>In the root of your project directory, open the <code>idmtools.ini</code> file.</li>
+<li>
+<p>Towards the top of the file, you should see something similar to the following:</p>
+<div class="highlight"><pre><span></span><code><span class="go">[ContainerPlatform]</span>
+<span class="go">type          = Container</span>
+<span class="go">job_directory = emodpy-jobs</span>
+</code></pre></div>
+</li>
+<li>
+<p>This tells emodpy-workflow that there is a platform called <code>ContainerPlatform</code> that is
+of type <code>Container</code> and that simulation jobs should go in to the <code>emodpy-jobs</code> directory.</p>
+</li>
+<li>For more information see <a href="../../reference/projects/#idmtoolsini">idmtools.ini</a>.</li>
+</ol>
+<h2 id="create-a-results-directory">Create a <code>results</code> directory</h2>
+<p>Since we will be running EMOD multiple times, it is handy to put the results into their
+own directory.</p>
+<ol>
+<li>
+<p>Execute the following command in the root of your project (the directory that contains
+the <code>manifest.py</code> file):</p>
+<div class="highlight"><pre><span></span><code><span class="n">mkdir</span> <span class="n">results</span>
+</code></pre></div>
+<p>This should create a directory called <code>results</code> in your project directory.</p>
+</li>
+</ol>
+<h2 id="using-the-run-command">Using the <code>run</code> command</h2>
+<p>To run EMOD, we will use the emodpy-workflow <code>run</code> command.</p>
+<ol>
+<li>
+<p>Execute the following command in the root of your project:</p>
+<div class="highlight"><pre><span></span><code><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">emodpy_workflow</span><span class="o">.</span><span class="n">scripts</span><span class="o">.</span><span class="n">run</span> <span class="o">-</span><span class="n">h</span>
+</code></pre></div>
+<p>This should produce output similar to the following:</p>
+<div class="highlight"><pre><span></span><code><span class="go">usage: run.py [-h] [-s SAMPLES_FILE] -N SUITE_NAME -F FRAMES [-f DOWNLOAD_FILENAMES] -o OUTPUT_DIR -p PLATFORM</span>
+<span class="go">            [-S SWEEP]</span>
+
+<span class="go">optional arguments:</span>
+<span class="go">-h, --help            show this help message and exit</span>
+<span class="go">-s SAMPLES_FILE, --samples SAMPLES_FILE</span>
+<span class="go">                        csv file with base samples to use for simulation generation. Runs one sim per frame with</span>
+<span class="go">                        configs as-is if not provided.</span>
+<span class="go">-N SUITE_NAME, --suite-name SUITE_NAME</span>
+<span class="go">                        Name of suite for experiments to be run within (Required).</span>
+<span class="go">-F FRAMES, --frames FRAMES</span>
+<span class="go">                        Comma-separated list of model frames to run (Required).</span>
+<span class="go">-f DOWNLOAD_FILENAMES, --files DOWNLOAD_FILENAMES</span>
+<span class="go">                        Filenames to download from scenario simulations. Paths relative to simulation directories.</span>
+<span class="go">                        Comma-separated list if more than one (Default: do not download files)</span>
+<span class="go">-o OUTPUT_DIR, --output-dir OUTPUT_DIR</span>
+<span class="go">                        Directory to write receipt to (always) and scenario output files (if downloading).</span>
+<span class="go">-p PLATFORM, --platform PLATFORM</span>
+<span class="go">                        Platform to run simulations on (Required).</span>
+<span class="go">-S SWEEP, --sweep SWEEP</span>
+<span class="go">                        Python module to load with a sweep definition to generate extra experiments with (Default: no</span>
+<span class="go">                        sweeping).</span>
+</code></pre></div>
+</li>
+<li>
+<p>For our purposes, we are going to focus on the following arguments:</p>
+<ul>
+<li><em>suite name</em> - This is the name you give to a collection of experiments, 'my_first_suite'.</li>
+<li><em>frame</em> - This is the name of the frame who's configuration is what you want to use.
+In our case, it will be 'baseline'</li>
+<li><em>output directory</em> - The path of the directory to put the data for your run, say 'results/my_first_run'.</li>
+<li><em>platform</em> - This is the name of a platform defined in your 'idmtools.ini' file.
+We will be using 'ContainerPlatform'.</li>
+</ul>
+</li>
+<li>
+<p>Execute the following command:</p>
+<div class="highlight"><pre><span></span><code><span class="go">python -m emodpy_workflow.scripts.run -N my_first_suite -F baseline -o results/my_first_run -p ContainerPlatform</span>
+</code></pre></div>
+<p>You should see output similar to the following:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Windows</label><label for="__tabbed_1_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">INI File Found: C:\work\emodpy-training\idmtools.ini</span>
+
+<span class="go">Initializing ContainerPlatform with:</span>
+<span class="go">{</span>
+<span class="go">&quot;job_directory&quot;: &quot;emodpy-jobs&quot;</span>
+<span class="go">}</span>
+<span class="go">Creating Suites: 100%|████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;?, ?suite/s]</span>
+<span class="gp">Creating Experiments:   0%|                                                              | 0/1 [00:00&lt;?, ?experiment/s]&gt;</span><span class="p">&gt;&gt;</span>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+<span class="go">Total parameter access counts:</span>
+<span class="go">{}</span>
+<span class="go">&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+<span class="go">Creating Experiments: 100%|██████████████████████████████████████████████████████| 1/1 [00:06&lt;00:00,  6.50s/experiment]</span>
+<span class="gp">Initializing objects for creation: 0simulation [00:00, ?simulation/s]&gt;</span><span class="p">&gt;&gt;</span>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+<span class="go">Total parameter access counts:</span>
+<span class="go">{}</span>
+<span class="go">&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+<span class="go">Commissioning Simulations: 100%|█████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 17.86simulation/s]</span>
+<span class="go">job_directory: C:\work\emodpy-training\emodpy-jobs</span>
+<span class="go">suite: 2cf29edc-6b4d-459b-9542-3eae5c59a151</span>
+<span class="go">experiment: 8ae683e4-8af6-4cd9-b8a3-5c63a5a10a17</span>
+
+<span class="go">Experiment Directory:</span>
+<span class="go">C:\work\emodpy-training\emodpy-jobs\my_first_suite_2cf29edc-6b4d-459b-9542-3eae5c59a151\my_first_suite_8ae683e4-8af6-4cd9-b8a3-5c63a5a10a17</span>
+
+<span class="go">Container ID: c3a6a8de63be</span>
+
+<span class="go">You may try the following command to check simulations running status:</span>
+<span class="go">idmtools container status 8ae683e4-8af6-4cd9-b8a3-5c63a5a10a17</span>
+<span class="go">Wrote run.py receipt to: results/my_first_run\experiment_index.csv</span>
+<span class="go">Done with model experiment creation.</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">INI File Found: /home/internal.idm.ctr/dbridenbecker/emodpy/my_tutorial/my_project/idmtools.ini</span>
+
+<span class="go">Initializing ContainerPlatform with:</span>
+<span class="go">{</span>
+<span class="go">&quot;job_directory&quot;: &quot;emodpy-jobs&quot;</span>
+<span class="go">}</span>
+<span class="go">Creating Suites: 100%|███████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 1602.10suite/s]</span>
+<span class="gp">Creating Experiments:   0%|                                                                                   | 0/1 [00:00&lt;?, ?experiment/s]&gt;</span><span class="p">&gt;&gt;</span>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+<span class="go">Total parameter access counts:</span>
+<span class="go">{}</span>
+<span class="go">&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+<span class="go">Creating Experiments: 100%|███████████████████████████████████████████████████████████████████████████| 1/1 [00:05&lt;00:00,  5.15s/experiment]</span>
+<span class="gp">Initializing objects for creation: 0simulation [00:00, ?simulation/s]&gt;</span><span class="p">&gt;&gt;</span>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+<span class="go">Total parameter access counts:</span>
+<span class="go">{}</span>
+<span class="go">&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+<span class="go">Commissioning Simulations: 100%|██████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 67.47simulation/s]</span>
+<span class="go">job_directory: /home/internal.idm.ctr/dbridenbecker/emodpy/my_tutorial/my_project/emodpy-jobs</span>
+<span class="go">suite: 38dbabe0-e7f7-49ee-a8f3-983f3657b01d</span>
+<span class="go">experiment: 07c1fa36-2f8b-41f0-a7fe-1afdf5e6233a</span>
+
+<span class="go">Experiment Directory: </span>
+<span class="go">/home/internal.idm.ctr/dbridenbecker/emodpy/my_tutorial/my_project/emodpy-jobs/my_first_suite_38dbabe0-e7f7-49ee-a8f3-983f3657b01d/my_first_suite_07c1fa36-2f8b-41f0-a7fe-1afdf5e6233a</span>
+
+<span class="go">Container ID: c4d227306f49</span>
+
+<span class="go">You may try the following command to check simulations running status: </span>
+<span class="go">idmtools container status 07c1fa36-2f8b-41f0-a7fe-1afdf5e6233a</span>
+<span class="go">Wrote run.py receipt to: results/my_first_run/experiment_index.csv</span>
+<span class="go">Done with model experiment creation.</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This means that the simulations have been submitted to start running.
+It does not mean they are done.</p>
+</div>
+</li>
+</ol>
+<h2 id="get-status-on-your-experiment">Get status on your experiment</h2>
+<p>Notice how in the last four lines of the output that there is information about finding
+the status of your output.  In this case, the following line</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Windows</label><label for="__tabbed_2_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">idmtools container status 8ae683e4-8af6-4cd9-b8a3-5c63a5a10a17</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">idmtools container status 07c1fa36-2f8b-41f0-a7fe-1afdf5e6233a</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>says get status on experiment with the given ID.</p>
+<p>If you execute that line, you should see something similar to:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Windows</label><label for="__tabbed_3_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">INI File Found: C:\work\emodpy-training\idmtools.ini</span>
+
+<span class="go">Experiment Directory:</span>
+<span class="go">c:/work/emodpy-training/emodpy-jobs/my_first_suite_2cf29edc-6b4d-459b-9542-3eae5c59a151/my_first_suite_8ae683e4-8af6-4cd</span>
+<span class="go">9-b8a3-5c63a5a10a17</span>
+
+<span class="go">Simulation Count: 1</span>
+
+<span class="go">SUCCEEDED (1)</span>
+<span class="go">FAILED (0)</span>
+<span class="go">RUNNING (0)</span>
+<span class="go">PENDING (0)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">INI File Found: /home/internal.idm.ctr/dbridenbecker/emodpy/my_tutorial/my_project/idmtools.ini</span>
+
+<span class="go">Experiment Directory: </span>
+<span class="go">/home/internal.idm.ctr/dbridenbecker/emodpy/my_tutorial/my_project/emodpy-jobs/my_first_suite_38dbabe0-e7f7-49ee-a8f3-983f3657b01d/my_first_</span>
+<span class="go">suite_07c1fa36-2f8b-41f0-a7fe-1afdf5e6233a</span>
+
+<span class="go">Simulation Count: 1</span>
+
+<span class="go">SUCCEEDED (1)</span>
+<span class="go">FAILED (0)</span>
+<span class="go">RUNNING (0)</span>
+<span class="go">PENDING (0)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This only works when using the Container Platform.  To see status
+when using other platforms, please see the
+<a href="https://docs.idmod.org/projects/idmtools/en/latest/cli/cli_index.html">Command Line Interface documentation</a>
+for your platform.</p>
+</div>
+<h2 id="view-the-files-produced-when-running-an-experiment">View the files produced when running an experiment</h2>
+<p>When using the Container and SLURM platforms, you can access the directories where the
+experiments and simulations are running.  In our case, we are using the Container Platform
+and our idmtools.ini file told emodpy-workflow to put the files into a local folder
+called "emodpy-jobs".  If we navigate into this folder, we can see all of the files
+associated with running the experiment and simulations.  Let's go investigate.</p>
+<ol>
+<li>
+<p>From the main project directory execute the following commands:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Windows</label><label for="__tabbed_4_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">cd emodpy-jobs</span>
+<span class="go">dir</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>emodpy-jobs
+ls<span class="w"> </span>-l
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>You should see something similar to:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Windows</label><label for="__tabbed_5_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">Directory of C:\work\my_training\my_project\emodpy-jobs</span>
+
+<span class="gp">09/02/2025  01:30 PM    &lt;DIR&gt;</span>          .
+<span class="gp">09/02/2025  01:30 PM    &lt;DIR&gt;</span>          ..
+<span class="gp">09/02/2025  01:30 PM    &lt;DIR&gt;</span>          my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">total 4</span>
+<span class="go">drwxrwxr-x 3 dbridenbecker dbridenbecker 4096 Sep  5 12:32 my_first_suite_38dbabe0-e7f7-49ee-a8f3-983f3657b01d</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Notice the directory <code>my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31</code> starts
+with the name we gave the suite.</p>
+</li>
+<li>
+<p>Look in the the <strong>suite directory</strong> by executing commands similar to the
+following (your directory name is likely different):</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Windows</label><label for="__tabbed_6_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">cd my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31</span>
+<span class="go">dir</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>my_first_suite_38dbabe0-e7f7-49ee-a8f3-983f3657b01d
+ls<span class="w"> </span>-l
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>You should see something similar to the following:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Windows</label><label for="__tabbed_7_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">Directory of C:\work\my_training\my_project\emodpy-jobs\my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31</span>
+
+<span class="gp">09/02/2025  01:30 PM    &lt;DIR&gt;</span>          .
+<span class="gp">09/02/2025  01:30 PM    &lt;DIR&gt;</span>          ..
+<span class="go">09/02/2025  01:30 PM               484 metadata.json</span>
+<span class="gp">09/02/2025  01:30 PM    &lt;DIR&gt;</span>          my_first_suite_857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">total</span> <span class="mi">8</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">dbridenbecker</span> <span class="n">dbridenbecker</span>  <span class="mi">515</span> <span class="n">Sep</span>  <span class="mi">5</span> <span class="mi">12</span><span class="p">:</span><span class="mi">32</span> <span class="n">metadata</span><span class="o">.</span><span class="n">json</span>
+<span class="n">drwxrwxr</span><span class="o">-</span><span class="n">x</span> <span class="mi">4</span> <span class="n">dbridenbecker</span> <span class="n">dbridenbecker</span> <span class="mi">4096</span> <span class="n">Sep</span>  <span class="mi">5</span> <span class="mi">12</span><span class="p">:</span><span class="mi">32</span> <span class="n">my_first_suite_07c1fa36</span><span class="o">-</span><span class="mi">2</span><span class="n">f8b</span><span class="o">-</span><span class="mi">41</span><span class="n">f0</span><span class="o">-</span><span class="n">a7fe</span><span class="o">-</span><span class="mi">1</span><span class="n">afdf5e6233a</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Yes, it looks very similar, but this is the experiment directory.</p>
+</li>
+<li>
+<p>Look in the <strong>experiment directory</strong> by executing commands similar to the
+following (your directory name is likely different):
+    === "Windows"
+        <div class="highlight"><pre><span></span><code><span class="go">cd my_first_suite_857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5</span>
+<span class="go">dir</span>
+</code></pre></div>
+    === "Linux"
+        <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>my_first_suite_07c1fa36-2f8b-41f0-a7fe-1afdf5e6233a
+ls<span class="w"> </span>-l
+</code></pre></div></p>
+<p>You should see something similar to the following:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Windows</label><label for="__tabbed_8_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">Directory of C:\work\my_training\my_project\emodpy-jobs\my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31\my_first_suite_857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5</span>
+
+<span class="gp">09/02/2025  01:30 PM    &lt;DIR&gt;</span>          .
+<span class="gp">09/02/2025  01:30 PM    &lt;DIR&gt;</span>          ..
+<span class="gp">09/02/2025  01:30 PM    &lt;DIR&gt;</span>          84efd93c-b13a-4bd4-ae54-f4ac5ab7aa9d
+<span class="gp">09/02/2025  01:30 PM    &lt;DIR&gt;</span>          Assets
+<span class="go">09/02/2025  01:30 PM               229 batch.sh</span>
+<span class="go">09/02/2025  01:30 PM             1,006 metadata.json</span>
+<span class="go">09/02/2025  01:30 PM               179 run_simulation.sh</span>
+<span class="go">09/02/2025  01:30 PM                 0 stderr.txt</span>
+<span class="go">09/02/2025  01:30 PM               181 stdout.txt</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">total 24</span>
+<span class="go">drwxrwxr-x 3 dbridenbecker dbridenbecker 4096 Sep  5 12:32 45eefc10-bf1d-48bf-a7f0-d90d1c94bd8f</span>
+<span class="go">drwxrwxr-x 2 dbridenbecker dbridenbecker 4096 Sep  5 12:32 Assets</span>
+<span class="go">-rwxrwxrwx 1 dbridenbecker dbridenbecker  229 Sep  5 12:32 batch.sh</span>
+<span class="go">-rw-rw-r-- 1 dbridenbecker dbridenbecker 1067 Sep  5 12:32 metadata.json</span>
+<span class="go">-rwxrwxrwx 1 dbridenbecker dbridenbecker  179 Sep  5 12:32 run_simulation.sh</span>
+<span class="go">-rw-r--r-- 1 root          root             0 Sep  5 12:32 stderr.txt</span>
+<span class="go">-rw-r--r-- 1 root          root           181 Sep  5 12:32 stdout.txt</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>The <strong>experiment</strong> directory will have one folder for each simulation of the
+experiment.  In this case, there is only one simulation with ID:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Windows</label><label for="__tabbed_9_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><code>84efd93c-b13a-4bd4-ae54-f4ac5ab7aa9d</code></p>
+</div>
+<div class="tabbed-block">
+<p><code>45eefc10-bf1d-48bf-a7f0-d90d1c94bd8f</code></p>
+</div>
+</div>
+</div>
+<p>For the most part, you do not need to know about the other files in the directory.
+However, the <code>metadata.json</code> file does contain some details about the experiment
+and its simulations.</p>
+</li>
+<li>
+<p>Look in the <strong>simulation directory</strong> <code>84efd93c-b13a-4bd4-ae54-f4ac5ab7aa9d</code></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Windows</label><label for="__tabbed_10_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">cd 84efd93c-b13a-4bd4-ae54-f4ac5ab7aa9d</span>
+<span class="go">dir</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>45eefc10-bf1d-48bf-a7f0-d90d1c94bd8f
+ls<span class="w"> </span>-l
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>You should see something similar to the following:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Windows</label><label for="__tabbed_11_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">Directory of C:\work\my_training\my_project\emodpy-jobs\my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31\my_first_suite_857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5\84efd93c-b13a-4bd4-ae54-f4ac5ab7aa9d</span>
+
+<span class="gp">09/02/2025  01:30 PM    &lt;DIR&gt;</span>          .
+<span class="gp">09/02/2025  01:30 PM    &lt;DIR&gt;</span>          ..
+<span class="gp">09/02/2025  01:30 PM    &lt;SYMLINKD&gt;</span>     Assets [..\Assets]
+<span class="go">09/02/2025  01:30 PM           206,144 campaign.json</span>
+<span class="go">09/02/2025  01:30 PM             7,226 config.json</span>
+<span class="go">09/02/2025  01:32 PM                 2 job_status.txt</span>
+<span class="go">09/02/2025  01:30 PM             9,310 metadata.json</span>
+<span class="gp">09/02/2025  01:32 PM    &lt;DIR&gt;</span>          output
+<span class="go">09/02/2025  01:32 PM            30,139 status.txt</span>
+<span class="go">09/02/2025  01:30 PM                 0 stderr.txt</span>
+<span class="go">09/02/2025  01:32 PM           120,255 stdout.txt</span>
+<span class="go">09/02/2025  01:30 PM           330,404 tmpncr6smi4.json</span>
+<span class="go">09/02/2025  01:30 PM               762 _run.sh</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">total 704</span>
+<span class="gp">lrwxrwxrwx 1 dbridenbecker dbridenbecker      9 Sep  5 12:32 Assets -&gt;</span> ../Assets
+<span class="go">-rw-rw-r-- 1 dbridenbecker dbridenbecker 206144 Sep  5 12:32 campaign.json</span>
+<span class="go">-rw-rw-r-- 1 dbridenbecker dbridenbecker   7257 Sep  5 12:32 config.json</span>
+<span class="go">-rw-r--r-- 1 root          root               2 Sep  5 12:34 job_status.txt</span>
+<span class="go">-rw-rw-r-- 1 dbridenbecker dbridenbecker   9393 Sep  5 12:32 metadata.json</span>
+<span class="go">drwxr-xr-x 2 root          root            4096 Sep  5 12:34 output</span>
+<span class="go">-rwxrwxrwx 1 dbridenbecker dbridenbecker    762 Sep  5 12:32 _run.sh</span>
+<span class="go">-rw-r--r-- 1 root          root           30139 Sep  5 12:34 status.txt</span>
+<span class="go">-rw-r--r-- 1 root          root               0 Sep  5 12:32 stderr.txt</span>
+<span class="go">-rw-r--r-- 1 root          root          120255 Sep  5 12:34 stdout.txt</span>
+<span class="go">-rw-rw-r-- 1 dbridenbecker dbridenbecker 320723 Sep  5 12:32 tmpu8tbs9qp.json</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>The <strong>simulation directory</strong> is the directory where a single realization/simulation
+of EMOD is being run.  If you have simulations that are failing or not running to
+completion, you should look at the <code>stderr.txt</code> file and the <code>stdout.txt</code> file.
+These files can contain error messages directly from the EMOD executable.  Finally,
+the <code>output</code> directory contains the report data that was generated for this
+realization/simulation.  (We will be using the <code>download</code> command to organize our
+report files, but if that becomes limiting, you can access them directly.)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If something is failing or not working like you expect, an EMOD developer
+will need the contents of this directory in order to duplicate and debug
+the issue.</p>
+</div>
+</li>
+<li>
+<p>View the end of the <code>stdout.txt</code> file.</p>
+<p>Use a text editor to view <code>stdout.txt</code> file and scroll to the bottom.  You should
+see something similar to the following:</p>
+<div class="highlight"><pre><span></span><code><span class="go">00:01:56 [0] [I] [Simulation] Update(): Time: 32606.4 Year: 2049.8 Rank: 0 StatPop: 102414 Infected: 529</span>
+<span class="go">00:01:57 [0] [I] [Simulation] Update(): Time: 32636.8 Year: 2049.9 Rank: 0 StatPop: 102636 Infected: 528</span>
+<span class="go">00:01:57 [0] [I] [Simulation] Finalizing &#39;InsetChart.json&#39; reporter.</span>
+<span class="go">00:01:57 [0] [I] [Simulation] Finalized  &#39;InsetChart.json&#39; reporter.</span>
+<span class="go">00:01:57 [0] [I] [Simulation] Finalizing &#39;ReportHIVByAgeAndGender.csv&#39; reporter.</span>
+<span class="go">00:01:57 [0] [I] [Simulation] Finalized  &#39;ReportHIVByAgeAndGender.csv&#39; reporter.</span>
+<span class="go">00:01:57 [0] [I] [Eradication] Controller executed successfully.</span>
+</code></pre></div>
+<p>The <code>stdout.txt</code> file contains information that EMOD can log to standard out.
+For example, the line that has <code>[Simulation] Update(): Time:</code> in it is printed
+each time step of the simulation.  Seeing these being written out can be helpful
+to know that the simulation is still running.  The line that contains
+<code>Controller executed successfully</code> lets us know that the simulation has finished.
+This file can contain warnings or error messages.  This can be a great place to
+look when starting to debug why your simulations are not running.</p>
+</li>
+<li>
+<p>Go back to the project directory - <code>my_project</code></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Windows</label><label for="__tabbed_12_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">cd</span> <span class="o">..</span>
+<span class="n">cd</span> <span class="o">..</span>
+<span class="n">cd</span> <span class="o">..</span>
+<span class="n">cd</span> <span class="o">..</span>
+<span class="n">cd</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">cd</span> <span class="o">..</span>
+<span class="n">cd</span> <span class="o">..</span>
+<span class="n">cd</span> <span class="o">..</span>
+<span class="n">cd</span> <span class="o">..</span>
+<span class="n">pwd</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>You should see something similar to:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Windows</label><label for="__tabbed_13_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="gp">C:\work\my_training\my_project&gt;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">/home/internal.idm.ctr/dbridenbecker/emodpy/my_tutorial/my_project</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>You should be back to your <a href="../../reference/projects/">project directory</a>.</p>
+</li>
+</ol>
+<h2 id="view-the-resultsmy_first_run-folder-and-the-receipt-file">View the <code>results/my_first_run</code> folder and the "receipt file"</h2>
+<p>In our <code>run</code> command, you specified the output as <code>-o results/my_first_run</code>.</p>
+<ol>
+<li>
+<p>Look at the contents of the <code>results/my_first_run</code> folder</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Windows</label><label for="__tabbed_14_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">dir results\my_first_run</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-l<span class="w"> </span>results/my_first_run
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>You should see something similar to the following:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">Windows</label><label for="__tabbed_15_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">Directory of C:\work\my_training\my_project\results\my_first_run</span>
+
+<span class="gp">09/02/2025  02:52 PM    &lt;DIR&gt;</span>          .
+<span class="gp">09/02/2025  02:52 PM    &lt;DIR&gt;</span>          ..
+<span class="go">09/02/2025  01:30 PM               275 experiment_index.csv</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">total 4</span>
+<span class="go">-rw-rw-r-- 1 dbridenbecker dbridenbecker 309 Sep  5 12:32 experiment_index.csv</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Look at the contents of the <code>results/my_first_run/experiment_index.csv</code></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="16:2"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">Windows</label><label for="__tabbed_16_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">type results\my_first_run\experiment_index.csv</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">cat results/my_first_run/experiment_index.csv</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>You should see something similar to the following:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">Windows</label><label for="__tabbed_17_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">index,frame,experiment_id,experiment_name,experiment_directory</span>
+<span class="go">0,baseline,857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5,my_first_suite,C:\work\my_training\my_project\emodpy-jobs\my_first_suite_2f7f3943-0814-418a-9792-604fc7db2a31\my_first_suite_857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">index,frame,experiment_id,experiment_name,experiment_directory</span>
+<span class="go">0,baseline,07c1fa36-2f8b-41f0-a7fe-1afdf5e6233a,my_first_suite,/home/internal.idm.ctr/dbridenbecker/emodpy/my_tutorial/my_project/emodpy-jobs/my_first_suite_38dbabe0-e7f7-49ee-a8f3-983f3657b01d/my_first_suite_07c1fa36-2f8b-41f0-a7fe-1afdf5e6233a</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>This file can provide you information about the experiment and where the files
+are located.  We will use it in our next step to download the report data.</p>
+</li>
+</ol>
+<h2 id="download-the-resultsoutputreports">Download the results/output/reports</h2>
+<p>Now that we have seen all of the files created when running an experiment,
+let's get back to our project directory and get our report data.</p>
+<ol>
+<li>
+<p>Execute the <code>download</code> command to see what the options are</p>
+<div class="highlight"><pre><span></span><code><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">emodpy_workflow</span><span class="o">.</span><span class="n">scripts</span><span class="o">.</span><span class="n">download</span> <span class="o">-</span><span class="n">h</span>
+</code></pre></div>
+<p>You should see something similar to the following:</p>
+<div class="highlight"><pre><span></span><code><span class="gp gp-VirtualEnv">(env)</span> <span class="gp">C:\work\my_training\my_project&gt;</span>python -m emodpy_workflow.scripts.download -h
+<span class="go">usage: download.py [-h] [-f FILES] [-r RECEIPT_FILE] [-s SAMPLES_FILE] [--suite-id SUITE_ID] [--exp-id EXPERIMENT_ID]</span>
+<span class="go">                [-o OUTPUT_DIR] -p PLATFORM</span>
+
+<span class="go">optional arguments:</span>
+<span class="go">-h, --help            show this help message and exit</span>
+<span class="go">-f FILES, --files FILES</span>
+<span class="go">                        Comma-separated list of simulation directory relative file paths to download (Default:</span>
+<span class="go">                        output\ReportHIVByAgeAndGender.csv)</span>
+<span class="go">-r RECEIPT_FILE, --receipt RECEIPT_FILE</span>
+<span class="go">                        Commissioning receipt file path. Either set -r OR (--suite-id and -o) OR (--exp-id and -o) OR</span>
+<span class="go">                        (-s and -o).</span>
+<span class="go">-s SAMPLES_FILE, --samples SAMPLES_FILE</span>
+<span class="go">                        Resampled parameter sets csv file of simulations to plot. Either set -r OR (--suite-id and -o)</span>
+<span class="go">                        OR (--exp-id and -o) OR (-s and -o).</span>
+<span class="go">--suite-id SUITE_ID   Id of suite to download simulations from. Either set -r OR (--suite-id and -o) OR (--exp-id</span>
+<span class="go">                        and -o) OR (-s and -o).</span>
+<span class="go">--exp-id EXPERIMENT_ID</span>
+<span class="go">                        Id of experiment to download simulations from. Either set -r OR (--suite-id and -o) OR (--exp-</span>
+<span class="go">                        id and -o) OR (-s and -o).</span>
+<span class="go">-o OUTPUT_DIR, --output-dir OUTPUT_DIR</span>
+<span class="go">                        Directory to write output into. Either set -r OR (--suite-id and -o) OR (--exp-id and -o) OR</span>
+<span class="go">                        (-s and -o).</span>
+<span class="go">-p PLATFORM, --platform PLATFORM</span>
+<span class="go">                        Platform to download from (Required).</span>
+</code></pre></div>
+</li>
+<li>
+<p>Execute the <code>download</code> command to download the InsetChart.json files</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="18:2"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><input id="__tabbed_18_2" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="__tabbed_18_1">Windows</label><label for="__tabbed_18_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">python -m emodpy_workflow.scripts.download -f &quot;output/InsetChart.json&quot; -r results\my_first_run\experiment_index.csv -p ContainerPlatform</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>emodpy_workflow.scripts.download<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;output/InsetChart.json&quot;</span><span class="w"> </span>-r<span class="w"> </span>results/my_first_run/experiment_index.csv<span class="w"> </span>-p<span class="w"> </span>ContainerPlatform
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>In this command, we specified the following:</p>
+<ul>
+<li><code>-f "output/InsetChart.json</code> - EMOD puts the report files into a subfolder
+called "outputs".  In this case, we want the InsetChart.json report since
+it contains a lot of high level statistics.</li>
+<li><code>-r results/my_first_run/experiment_index.csv</code> - Since we have a "receipt"
+file, we use it here to tell the <code>download</code> command where the data is.</li>
+<li><code>-p ContainerPlatform</code> - This tells the <code>download</code> command to use the
+Container protocol when getting data.</li>
+</ul>
+<p>You should see something similar to the following:</p>
+<div class="highlight"><pre><span></span><code><span class="go">INI File Found: /home/internal.idm.ctr/dbridenbecker/emodpy/my_tutorial/my_project/idmtools.ini</span>
+
+<span class="go">Initializing ContainerPlatform with:</span>
+<span class="go">{</span>
+<span class="go">&quot;job_directory&quot;: &quot;emodpy-jobs&quot;</span>
+<span class="go">}</span>
+<span class="go">Waiting on Experiment my_first_suite to Finish running: 100%|█████████████████████████████████████| 1/1 [00:00&lt;00:00, 2343.19simulation/s]</span>
+<span class="go">100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 25.25it/s]</span>
+<span class="go">Running Analyzer Reduces: 100%|████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 465.67it/s]</span>
+<span class="go">Done downloading files to: /home/internal.idm.ctr/dbridenbecker/emodpy/my_tutorial/my_project/results/my_first_run</span>
+</code></pre></div>
+<p>As you can tell, there are many ways to specify the download of the data.
+The <a href="../../how_to/how_to_download_data/">how-tos</a> can show you different
+ways to do it.</p>
+</li>
+<li>
+<p>See that a new folder was added to the `results/my_first_run:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="19:2"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><input id="__tabbed_19_2" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="__tabbed_19_1">Windows</label><label for="__tabbed_19_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">dir results\my_first_run</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">ls</span> <span class="o">-</span><span class="n">l</span> <span class="n">results</span><span class="o">/</span><span class="n">my_first_run</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Now when we look in this folder we should see something similar to the following:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="20:2"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><input id="__tabbed_20_2" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="__tabbed_20_1">Windows</label><label for="__tabbed_20_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">Directory of C:\work\my_training\my_project\results\my_first_run</span>
+
+<span class="gp">09/02/2025  02:52 PM    &lt;DIR&gt;</span>          .
+<span class="gp">09/02/2025  02:52 PM    &lt;DIR&gt;</span>          ..
+<span class="go">09/02/2025  01:30 PM               275 experiment_index.csv</span>
+<span class="gp">09/02/2025  02:52 PM    &lt;DIR&gt;</span>          my_first_suite--0
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">total 8</span>
+<span class="go">-rw-rw-r-- 1 dbridenbecker dbridenbecker  309 Sep  5 12:32 experiment_index.csv</span>
+<span class="go">drwxrwxr-x 3 dbridenbecker dbridenbecker 4096 Sep  5 15:00 my_first_suite--0</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>The <code>my_first_suite--0</code> directory was created.</p>
+</li>
+<li>
+<p>See that a folder was created with the name of the report:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="21:2"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><input id="__tabbed_21_2" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="__tabbed_21_1">Windows</label><label for="__tabbed_21_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">dir results\my_first_run\my_first_suite--0</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">ls</span> <span class="o">-</span><span class="n">l</span> <span class="n">results</span><span class="o">/</span><span class="n">my_first_run</span><span class="o">/</span><span class="n">my_first_suite</span><span class="o">--</span><span class="mi">0</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>You should see something similar to the following:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="22:2"><input checked="checked" id="__tabbed_22_1" name="__tabbed_22" type="radio" /><input id="__tabbed_22_2" name="__tabbed_22" type="radio" /><div class="tabbed-labels"><label for="__tabbed_22_1">Windows</label><label for="__tabbed_22_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">Directory of C:\work\my_training\my_project\results\my_first_run\my_first_suite--0</span>
+
+<span class="gp">09/02/2025  02:52 PM    &lt;DIR&gt;</span>          .
+<span class="gp">09/02/2025  02:52 PM    &lt;DIR&gt;</span>          ..
+<span class="gp">09/02/2025  02:52 PM    &lt;DIR&gt;</span>          InsetChart
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">total 4</span>
+<span class="go">drwxrwxr-x 2 dbridenbecker dbridenbecker 4096 Sep  5 15:00 InsetChart</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Notice that <code>InsetChart</code> is the base name of the report file we requested
+to download.</p>
+</li>
+<li>
+<p>See where the data has been put by executing the following command:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="23:2"><input checked="checked" id="__tabbed_23_1" name="__tabbed_23" type="radio" /><input id="__tabbed_23_2" name="__tabbed_23" type="radio" /><div class="tabbed-labels"><label for="__tabbed_23_1">Windows</label><label for="__tabbed_23_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">dir results\my_first_run\my_first_suite--0\InsetChart</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-l<span class="w"> </span>results/my_first_run/my_first_suite--0/InsetChart
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>You should see something similar to the following:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="24:2"><input checked="checked" id="__tabbed_24_1" name="__tabbed_24" type="radio" /><input id="__tabbed_24_2" name="__tabbed_24" type="radio" /><div class="tabbed-labels"><label for="__tabbed_24_1">Windows</label><label for="__tabbed_24_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">Directory of C:\work\my_training\my_project\results\my_first_run\my_first_suite--0\InsetChart</span>
+
+<span class="gp">09/02/2025  02:52 PM    &lt;DIR&gt;</span>          .
+<span class="gp">09/02/2025  02:52 PM    &lt;DIR&gt;</span>          ..
+<span class="go">09/02/2025  02:52 PM           300,997 InsetChart_sample00000_run00001.json</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">total 296</span>
+<span class="go">-rw-rw-r-- 1 dbridenbecker dbridenbecker 300997 Sep  5 15:00 InsetChart_sample00000_run00001.json</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>The directory should contain one file for each simulation of the experiment.
+In this case, there is only one.</p>
+</li>
+</ol>
+<h2 id="plot-the-results">Plot the results</h2>
+<p>Now that we have our data downloaded, let's plot the data to see what happened
+in the simulation.</p>
+<ol>
+<li>
+<p>Execute the following command to see what options are available when plotting InsetChart.</p>
+<div class="highlight"><pre><span></span><code><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">emodpy_hiv</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">plot_inset_chart</span> <span class="o">-</span><span class="n">h</span>
+</code></pre></div>
+<p>You should see something similar to the following:</p>
+<div class="highlight"><pre><span></span><code><span class="gp gp-VirtualEnv">(env)</span> <span class="gp">C:\work\my_training\my_project&gt;</span>python -m emodpy_hiv.plotting.plot_inset_chart -h
+<span class="go">usage: plot_inset_chart.py [-h] [-d [DIR]] [-t [TITLE]] [-o OUTPUT]</span>
+<span class="go">                        [reference] [comparison1] [comparison2] [comparison3]</span>
+
+<span class="go">positional arguments:</span>
+<span class="go">reference             Reference InsetChart filename</span>
+<span class="go">comparison1           Comparison1 InsetChart filename</span>
+<span class="go">comparison2           Comparison2 InsetChart filename</span>
+<span class="go">comparison3           Comparison3 InsetChart filename</span>
+
+<span class="go">optional arguments:</span>
+<span class="go">-h, --help            show this help message and exit</span>
+<span class="go">-d [DIR], --dir [DIR]</span>
+<span class="go">                        Directory, or parent directory that contains subdirectories, of InsetChart.json files</span>
+<span class="go">-t [TITLE], --title [TITLE]</span>
+<span class="go">                        Title of Plot</span>
+<span class="go">-o OUTPUT, --output OUTPUT</span>
+<span class="go">                        If provided, a directory will be created and images saved to the folder. If not provided, it</span>
+<span class="go">                        opens windows.</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are executing these commands via SSH or on Codespaces, you
+will need to use the <code>-o</code> or <code>--output</code> option to create an image
+file that you can view.</p>
+</div>
+</li>
+<li>
+<p>Execute the following command to plot the data in InsetChart.json:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="25:2"><input checked="checked" id="__tabbed_25_1" name="__tabbed_25" type="radio" /><input id="__tabbed_25_2" name="__tabbed_25" type="radio" /><div class="tabbed-labels"><label for="__tabbed_25_1">Windows</label><label for="__tabbed_25_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">python -m emodpy_hiv.plotting.plot_inset_chart -d results\my_first_run\my_first_suite--0\InsetChart</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="go">python -m emodpy_hiv.plotting.plot_inset_chart -d results/my_first_run/my_first_suite--0/InsetChart</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>This should produce an image or window that looks like the following:</p>
+<p><img alt="Inset Chart" src="../../images/run_emod_inset_chart.png" /></p>
+<p>If we look at the plot in column three, row three, you see something like
+the following:</p>
+<p><img alt="Infected" src="../../images/run_emod_inset_chart_infected.png" /></p>
+<p>where prevalence goes up to about 1.5% in the middle of the simulation and then
+declines to about 0.5%.</p>
+</li>
+</ol>
+<h2 id="next-up-modifying-the-simulation">Next up: Modifying the simulation</h2>
+<p>Now that you have run EMOD once, investigate the other tutorials where you can
+modify the simulation and run the model.</p>
+<ul>
+<li><a href="../modify_reports/">Modify Reports</a></li>
+<li><a href="../modify_configuration/">Modify Configuration</a></li>
+<li><a href="../modify_campaign/">Modify Campaign</a></li>
+<li><a href="../modify_demographics/">Modify Demographics</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks for your feedback! If you like, provide additional information by using our <a href="https://app.smartsheet.com/b/form/ec8dbb77809949ecab7286a5ca74a206" target="_blank" rel="noopener">feedback form</a>.
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="https://app.smartsheet.com/b/form/ec8dbb77809949ecab7286a5ca74a206" target="_blank" rel="noopener">feedback form</a>.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../create_project/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Create Project">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Create Project
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../modify_reports/" class="md-footer__link md-footer__link--next" aria-label="Next: Modify Reports">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Modify Reports
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      
+<div class="md-copyright">
+    
+    <div class="md-copyright__highlight">
+        Copyright &copy; 2025 Gates Foundation. All rights reserved.
+        
+        <a href="" target="_blank" rel="noopener" style="TEXT-DECORATION: underline">Privacy and Cookies Notice</a>
+        
+        <a href="https://www.gatesfoundation.org/Privacy-and-Cookies-Notice" target="_blank" rel="noopener" style="TEXT-DECORATION: underline"></a>
+        
+        <a href="" target="_blank" rel="noopener" style="TEXT-DECORATION: underline">Terms of Use</a>
+        
+        <a href="https://www.gatesfoundation.org/Terms-of-Use" target="_blank" rel="noopener" style="TEXT-DECORATION: underline"></a>
+        
+    </div>
+    
+    
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/EMOD-Hub" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  </body>
+</html>

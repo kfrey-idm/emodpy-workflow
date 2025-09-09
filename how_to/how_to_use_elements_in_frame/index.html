@@ -1,0 +1,1608 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://docs.idmod.org/emodpy-workflow/how_to/how_to_use_elements_in_frame/">
+      
+      
+        <link rel="prev" href="../how_to_create_frame/">
+      
+      
+        <link rel="next" href="../how_to_list_hyperparameters/">
+      
+      
+      <link rel="icon" href="../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
+    
+    
+      
+        <title>Use elements in a frame - emodpy-workflow</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SVDSQH04EM"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SVDSQH04EM",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SVDSQH04EM",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#use-elements-in-a-frame" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="emodpy-workflow" class="md-header__button md-logo" aria-label="emodpy-workflow" data-md-component="logo">
+      
+  <img src="../../images/emod_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            emodpy-workflow
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Use elements in a frame
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="light-blue"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="white" data-md-color-accent="light-blue"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/EMOD-Hub/emodpy-workflow" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EMOD-Hub/emodpy-workflow
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="emodpy-workflow" class="md-nav__button md-logo" aria-label="emodpy-workflow" data-md-component="logo">
+      
+  <img src="../../images/emod_logo.png" alt="logo">
+
+    </a>
+    emodpy-workflow
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/EMOD-Hub/emodpy-workflow" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EMOD-Hub/emodpy-workflow
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Install
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/reference_overview/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Reference
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/virtual_environments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Virtual Environments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Projects
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/frames/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Frames
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/ingest_form/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ingest Form
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/sweeps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sweep files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/dtktools_comparison/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    emodpy-workflow vs DtkTools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../how_to_index/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    How-to
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            How-to
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how_to_make_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Make a new project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how_to_create_frame/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create a frame
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Use elements in a frame
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Use elements in a frame
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#add-additional-config-elements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add additional config elements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-additional-campaign-elements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add additional campaign elements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#replace-a-campaign-or-demographics-element-of-a-frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      Replace a campaign or demographics element of a frame
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specify-an-ingest-form-for-a-frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specify an ingest form for a frame
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how_to_list_hyperparameters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    List hyperparameters
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how_to_run/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Make a single run
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how_to_calibrate_frame/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Calibrate a frame
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how_to_sweep/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sweep parameters
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how_to_download_data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Download data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../tutorials/get_started/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup and Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/create_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/run_emod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Run EMOD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/modify_reports/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Modify Reports
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/modify_configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Modify Configuration Parameter
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/modify_demographics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Modify Demographics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/modify_campaign/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Modify Campaign
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/using_parameterized_calls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using ParameterizedCalls
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/sweep_parameter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create Scenarios and Do Sweeps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/run_calibration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Run Calibration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/use_calibration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Use Calibration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#add-additional-config-elements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add additional config elements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-additional-campaign-elements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add additional campaign elements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#replace-a-campaign-or-demographics-element-of-a-frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      Replace a campaign or demographics element of a frame
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specify-an-ingest-form-for-a-frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specify an ingest form for a frame
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="use-elements-in-a-frame">Use elements in a frame</h1>
+<h2 id="add-additional-config-elements">Add additional config elements</h2>
+<p>To add a new hyperparameter to the config, add a new ParameterizedCall to config.py in the chosen frame.</p>
+<p>For example, to add a hyperparameter named <strong>Base_Infectivity</strong> that allows modification to the same-named EMOD-HIV 
+config parameter in a frame named <strong>baseline</strong>:</p>
+<ol>
+<li>
+<p>Add the following new function to frames/baseline/config.py:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">modify_base_infectivity</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">Base_Infectivity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">Base_Infectivity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">Base_Infectivity</span> <span class="o">=</span> <span class="n">Base_Infectivity</span>
+</code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>In the same frames/baseline/config.py file, modify the function <strong>get_config_parameterized_calls</strong>
+by adding lines similar to line 5 and 6 below.  Line 5 will create a ParameterizedCall object using
+the new function and line 6 will add it to the list of config ParameterizedCalls.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_config_parameterized_calls</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="n">ReadOnlyDict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ParameterizedCall</span><span class="p">]:</span>
+    <span class="n">parameterized_calls</span> <span class="o">=</span> <span class="n">country_model</span><span class="o">.</span><span class="n">get_config_parameterized_calls</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+
+    <span class="c1"># Add any additional ParameterizedCalls here</span>
+    <span class="n">pc</span> <span class="o">=</span> <span class="n">ParameterizedCall</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">modify_base_infectivity</span><span class="p">,</span> <span class="n">hyperparameters</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Base_Infectivity&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">})</span>
+    <span class="n">parameterized_calls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pc</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">parameterized_calls</span>
+</code></pre></div></td></tr></table></div>
+<p>The hyperparameter named <strong>Base_Infectivity</strong> will now be available for use.</p>
+</li>
+</ol>
+<h2 id="add-additional-campaign-elements">Add additional campaign elements</h2>
+<p>To add a new campaign element (often an intervention), create and add an appropriate intervention 
+object in a function and then add a new ParameterizedCall using it in the campaign.py of the chosen frame.</p>
+<p>For example:</p>
+<ol>
+<li>
+<p>Assume you created a new frame using the <strong>extend_frame</strong> command and called it <strong>hiv_vaccine</strong>.</p>
+</li>
+<li>
+<p>Add the following new function creating a vaccine intervention to frames/hiv_vaccine/campaign.py:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">emodpy_hiv.campaign.individual_intervention</span><span class="w"> </span><span class="kn">import</span> <span class="n">ControlledVaccine</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">emodpy_hiv.campaign.distributor</span><span class="w"> </span><span class="kn">import</span> <span class="n">add_intervention_triggered</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">emodpy_hiv.campaign.waning_config</span><span class="w"> </span><span class="kn">import</span> <span class="n">Constant</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">add_hiv_vaccine</span><span class="p">(</span><span class="n">campaign</span><span class="p">:</span> <span class="n">emod_api</span><span class="o">.</span><span class="n">campaign</span><span class="p">,</span> <span class="n">vaccine_efficacy</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">):</span>
+    <span class="n">hiv_vaccine</span> <span class="o">=</span> <span class="n">ControlledVaccine</span><span class="p">(</span><span class="n">campaign</span><span class="o">=</span><span class="n">campaign</span><span class="p">,</span>
+                                    <span class="n">waning_config</span><span class="o">=</span><span class="n">Constant</span><span class="p">(</span><span class="n">constant_effect</span><span class="o">=</span><span class="n">vaccine_efficacy</span><span class="p">))</span>
+    <span class="n">add_intervention_triggered</span><span class="p">(</span><span class="n">campaign</span><span class="o">=</span><span class="n">campaign</span><span class="p">,</span>
+                            <span class="n">intervention_list</span><span class="o">=</span><span class="p">[</span><span class="n">hiv_vaccine</span><span class="p">],</span>
+                            <span class="n">triggers_list</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;STIDebut&quot;</span><span class="p">],</span>
+                            <span class="n">start_year</span><span class="o">=</span><span class="mi">2030</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">campaign</span>
+</code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>In the same frames/hiv_vaccine/campaign.py file, modify the function <strong>get_campaign_parameterized_calls</strong>
+by adding lines similar to line 5 and 6 below.  Line 5 will create a ParameterizedCall object using
+the new function and line 6 will add it to the list of campaign ParameterizedCalls.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_campaign_parameterized_calls</span><span class="p">(</span><span class="n">campaign</span><span class="p">:</span> <span class="n">emod_api</span><span class="o">.</span><span class="n">campaign</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ParameterizedCall</span><span class="p">]:</span>
+    <span class="n">parameterized_calls</span> <span class="o">=</span> <span class="n">source_frame</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">campaign_parameterizer</span><span class="p">(</span><span class="n">campaign</span><span class="o">=</span><span class="n">campaign</span><span class="p">)</span>
+
+    <span class="c1"># Add any additional ParameterizedCalls here</span>
+    <span class="n">pc</span> <span class="o">=</span> <span class="n">ParameterizedCall</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">add_hiv_vaccine</span><span class="p">,</span> <span class="n">hyperparameters</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;vaccine_efficacy&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">})</span>
+    <span class="n">parameterized_calls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pc</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">parameterized_calls</span>
+</code></pre></div></td></tr></table></div>
+<p>The hyperparameter named <strong>vaccine_efficacy</strong> will now be available for use.</p>
+</li>
+</ol>
+<hr />
+<h2 id="replace-a-campaign-or-demographics-element-of-a-frame">Replace a campaign or demographics element of a frame</h2>
+<p>To override an element of an EMOD-HIV campaign or demographics, create a Python subclass of the country model
+you want to use and add overriding function(s) of the same name(s) to the country model functions you want to replace.</p>
+<p>For example, creating a Python country model subclass named <strong>ZambiaModified</strong> using an alternate 
+<strong>add_state_TestingOnChild6w</strong> function for the Zambia model campaign in frame <strong>zambia_modified</strong>. </p>
+<ol>
+<li>
+<p>Use the <strong>new_frame</strong> command to create a fresh Zambia country model starting point
+(see <a href="../how_to_create_frame/#create-a-frame">Create a new frame</a>):</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>emodpy_workflow.scripts.new_frame<span class="w"> </span>--country<span class="w"> </span>Zambia<span class="w"> </span>--dest<span class="w"> </span>zambia_modified
+</code></pre></div>
+</li>
+<li>
+<p>Update the original Zambia country model import near the top:</p>
+<p>Replace the following line:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">emodpy_hiv.countries</span><span class="w"> </span><span class="kn">import</span> <span class="n">Zambia</span> <span class="k">as</span> <span class="n">country_model</span>
+</code></pre></div>
+<p>with</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">emodpy_hiv.countries</span><span class="w"> </span><span class="kn">import</span> <span class="n">Zambia</span>
+</code></pre></div>
+</li>
+<li>
+<p>Add the following new Zambia country model Python subclass in frames/zambia_modified/campaign.py containing the
+desired override/replacement. The additional naming line at the end updates the rest of the file to use the new country
+model.</p>
+<p>In this example, we are copy/pasting the original Zambia <strong>add_state_TestingOnChild6w</strong> function and modifying the 
+internal <strong>child_testing_time_value_map</strong> values to be two years earlier than the original:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ZambiaModified</span><span class="p">(</span><span class="n">Zambia</span><span class="p">):</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_state_TestingOnChild6w</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span>
+                                <span class="n">campaign</span><span class="p">:</span> <span class="n">emod_api</span><span class="o">.</span><span class="n">campaign</span><span class="p">,</span>
+                                <span class="n">node_ids</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">child_testing_start_year</span> <span class="o">=</span> <span class="mi">2002</span>
+        <span class="n">child_testing_time_value_map</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Times&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2002</span><span class="p">,</span> <span class="mi">2003</span><span class="p">,</span> <span class="mi">2004</span><span class="p">,</span> <span class="mi">2006</span><span class="p">,</span> <span class="mi">2007</span><span class="p">],</span>
+                                        <span class="s2">&quot;Values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3365</span><span class="p">]}</span>
+        <span class="n">disqualifying_properties</span> <span class="o">=</span> <span class="p">[</span><span class="n">coc</span><span class="o">.</span><span class="n">CascadeState</span><span class="o">.</span><span class="n">LOST_FOREVER</span><span class="p">,</span>
+                                    <span class="n">coc</span><span class="o">.</span><span class="n">CascadeState</span><span class="o">.</span><span class="n">ON_ART</span><span class="p">,</span>
+                                    <span class="n">coc</span><span class="o">.</span><span class="n">CascadeState</span><span class="o">.</span><span class="n">LINKING_TO_ART</span><span class="p">,</span>
+                                    <span class="n">coc</span><span class="o">.</span><span class="n">CascadeState</span><span class="o">.</span><span class="n">ON_PRE_ART</span><span class="p">,</span>
+                                    <span class="n">coc</span><span class="o">.</span><span class="n">CascadeState</span><span class="o">.</span><span class="n">LINKING_TO_PRE_ART</span><span class="p">,</span>
+                                    <span class="n">coc</span><span class="o">.</span><span class="n">CascadeState</span><span class="o">.</span><span class="n">ART_STAGING</span><span class="p">,</span>
+                                    <span class="n">coc</span><span class="o">.</span><span class="n">CascadeState</span><span class="o">.</span><span class="n">TESTING_ON_SYMPTOMATIC</span><span class="p">]</span>
+        <span class="n">property_restrictions</span> <span class="o">=</span> <span class="s1">&#39;Accessibility:Yes&#39;</span>
+        <span class="n">coc</span><span class="o">.</span><span class="n">add_state_TestingOnChild6w</span><span class="p">(</span><span class="n">campaign</span><span class="o">=</span><span class="n">campaign</span><span class="p">,</span>
+                                    <span class="n">disqualifying_properties</span><span class="o">=</span><span class="n">disqualifying_properties</span><span class="p">,</span>
+                                    <span class="n">time_value_map</span><span class="o">=</span><span class="n">child_testing_time_value_map</span><span class="p">,</span>
+                                    <span class="n">node_ids</span><span class="o">=</span><span class="n">node_ids</span><span class="p">,</span>
+                                    <span class="n">property_restrictions</span><span class="o">=</span><span class="n">property_restrictions</span><span class="p">,</span>
+                                    <span class="n">start_year</span><span class="o">=</span><span class="n">child_testing_start_year</span><span class="p">)</span>
+
+<span class="n">country_model</span> <span class="o">=</span> <span class="n">ZambiaModified</span>
+</code></pre></div></td></tr></table></div>
+<p>The frame <strong>zambia_modified</strong> now is identical to a Zambia country model frame but with the targeted section of the
+campaign replaced.</p>
+</li>
+</ol>
+<p>The process for replacing demographics elements is identical, but frames/zambia_modified/demographics.py is edited 
+instead.</p>
+<hr />
+<h2 id="specify-an-ingest-form-for-a-frame">Specify an ingest form for a frame</h2>
+<p>The way to specify the <a href="../../reference/ingest_form/">ingest form</a> to use for <strong>all</strong>
+<a href="../../reference/frames/">frames</a> in a project is by editing the <strong>ingest_filename</strong> attribute in its
+<strong>manifest.py</strong> file.</p>
+<p>For example:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">ingest_forms_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s1">&#39;calibration&#39;</span><span class="p">,</span> <span class="s1">&#39;ingest_forms&#39;</span><span class="p">)</span>
+<span class="n">ingest_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ingest_forms_dir</span><span class="p">,</span>
+    <span class="s1">&#39;Zambia_calibration_ingest_form_2022-05-19__source__edited_for_calibration_testing--ALL_NODE.xlsm&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>... sets the ingest file to use to be the file at path:</p>
+<p>&lt;project_directory&gt;/calibration/ingest_forms/Zambia_calibration_ingest_form_2022-05-19__source__edited_for_calibration_testing--ALL_NODE.xlsm</p>
+<p>To <strong>override</strong> this ingest_filename path <strong>for a specific frame only</strong> requires an edit to the chosen frame's EMOD_HIV
+object specification in its __init__.py file. Change "manifest.ingest_filename" below in your chosen frame to the
+desired path:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">EMOD_HIV</span><span class="p">(</span>
+    <span class="n">manifest</span><span class="o">=</span><span class="n">manifest</span><span class="p">,</span>
+    <span class="n">config_initializer</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">initialize_config</span><span class="p">,</span>
+    <span class="n">config_parameterizer</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">get_config_parameterized_calls</span><span class="p">,</span>
+    <span class="n">demographics_initializer</span><span class="o">=</span><span class="n">demographics</span><span class="o">.</span><span class="n">initialize_demographics</span><span class="p">,</span>
+    <span class="n">demographics_parameterizer</span><span class="o">=</span><span class="n">demographics</span><span class="o">.</span><span class="n">get_demographics_parameterized_calls</span><span class="p">,</span>
+    <span class="n">campaign_initializer</span><span class="o">=</span><span class="n">campaign</span><span class="o">.</span><span class="n">initialize_campaign</span><span class="p">,</span>
+    <span class="n">campaign_parameterizer</span><span class="o">=</span><span class="n">campaign</span><span class="o">.</span><span class="n">get_campaign_parameterized_calls</span><span class="p">,</span>
+    <span class="n">ingest_form_path</span><span class="o">=</span><span class="n">manifest</span><span class="o">.</span><span class="n">ingest_filename</span><span class="p">,</span>  <span class="c1"># &lt;-- change the value here for single-frame update only</span>
+    <span class="n">build_reports</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">build_reports</span>
+<span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks for your feedback! If you like, provide additional information by using our <a href="https://app.smartsheet.com/b/form/ec8dbb77809949ecab7286a5ca74a206" target="_blank" rel="noopener">feedback form</a>.
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="https://app.smartsheet.com/b/form/ec8dbb77809949ecab7286a5ca74a206" target="_blank" rel="noopener">feedback form</a>.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../how_to_create_frame/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Create a frame">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Create a frame
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../how_to_list_hyperparameters/" class="md-footer__link md-footer__link--next" aria-label="Next: List hyperparameters">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                List hyperparameters
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      
+<div class="md-copyright">
+    
+    <div class="md-copyright__highlight">
+        Copyright &copy; 2025 Gates Foundation. All rights reserved.
+        
+        <a href="" target="_blank" rel="noopener" style="TEXT-DECORATION: underline">Privacy and Cookies Notice</a>
+        
+        <a href="https://www.gatesfoundation.org/Privacy-and-Cookies-Notice" target="_blank" rel="noopener" style="TEXT-DECORATION: underline"></a>
+        
+        <a href="" target="_blank" rel="noopener" style="TEXT-DECORATION: underline">Terms of Use</a>
+        
+        <a href="https://www.gatesfoundation.org/Terms-of-Use" target="_blank" rel="noopener" style="TEXT-DECORATION: underline"></a>
+        
+    </div>
+    
+    
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/EMOD-Hub" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  </body>
+</html>
