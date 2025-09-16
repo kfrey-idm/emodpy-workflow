@@ -27,7 +27,7 @@ configuration.
 2. Run:
 
     ```bash
-    python -m emodpy_workflow.scripts.run -F baseline -p PLATFORM -o OUTPUT -N BaseInfectivityAndCondomMaxScenario -S sweeps.py
+    python -m emodpy_workflow.scripts.run -f baseline -p PLATFORM -o OUTPUT -N BaseInfectivityAndCondomMaxScenario -w sweeps.py
     ```
 
     ... where PLATFORM is the idmtools.ini platform name to run on and  OUTPUT is the directory for storing the run receipt 
@@ -65,7 +65,7 @@ configuration.
 2. Run:
 
     ```bash
-    python -m emodpy_workflow.scripts.run -F baseline -p PLATFORM -o OUTPUT -N BaseInfectivityAndCondomMaxScenarios3 -S sweeps.py
+    python -m emodpy_workflow.scripts.run -f baseline -p PLATFORM -o OUTPUT -N BaseInfectivityAndCondomMaxScenarios3 -w sweeps.py
     ```
 
     ... where PLATFORM is the idmtools.ini platform name to run on and  OUTPUT is the directory for storing the run receipt 
@@ -100,7 +100,7 @@ simulation each, using 5 different formation_rate--INFORMAL values.
 2. Run:
 
     ```bash
-    python -m emodpy_workflow.scripts.run -F baseline -p PLATFORM -o OUTPUT -N BaselineInformalFormationRate5 -S formation_rate_sweeps.py
+    python -m emodpy_workflow.scripts.run -f baseline -p PLATFORM -o OUTPUT -N BaselineInformalFormationRate5 -w formation_rate_sweeps.py
     ```
 
     ... where PLATFORM is the idmtools.ini platform name to run on and  OUTPUT is the directory for storing the run receipt 
@@ -137,7 +137,7 @@ values.
 2. Run:
 
     ```bash
-    python -m emodpy_workflow.scripts.run -F baseline -p PLATFORM -o OUTPUT -N BaselineInternalVariability25 -S run_number_sweeps.py
+    python -m emodpy_workflow.scripts.run -f baseline -p PLATFORM -o OUTPUT -N BaselineInternalVariability25 -w run_number_sweeps.py
     ```
 
     ... where PLATFORM is the idmtools.ini platform name to run on and  OUTPUT is the directory for storing the run receipt 
@@ -173,7 +173,7 @@ Assume **resampled_parameter_sets.csv** file exists with 200 calibrated paramete
 2. Run:
 
     ```bash
-    python -m emodpy_workflow.scripts.run -F baseline -p ContainerPlatform -o OUTPUT -N SUITE_NAME -s resampled_parameter_sets.csv -S sweeps.py
+    python -m emodpy_workflow.scripts.run -f baseline -p ContainerPlatform -o OUTPUT -N SUITE_NAME -s resampled_parameter_sets.csv -w sweeps.py
     ```
 
     ... where OUTPUT is the directory for storing the run receipt file and

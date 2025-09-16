@@ -175,9 +175,9 @@ def parse_args():
                              'frame with configs as-is if not provided.')
     parser.add_argument('-N', '--suite-name', dest='suite_name', type=str, required=True,
                         help='Name of suite for experiments to be run within (Required).')
-    parser.add_argument('-F', '--frames', dest='frames', type=str, required=True,
+    parser.add_argument('-f', '--frames', dest='frames', type=str, required=True,
                         help='Comma-separated list of model frames to run (Required).')
-    parser.add_argument('-f', '--files', dest='download_filenames', type=str, default=None,
+    parser.add_argument('-d', '--files', dest='download_filenames', type=str, default=None,
                         help='Filenames to download from scenario simulations. '
                              'Paths relative to simulation directories. Comma-separated list if more than one '
                              '(Default: do not download files)')
@@ -186,7 +186,7 @@ def parse_args():
                              '(if downloading).')
     parser.add_argument('-p', '--platform', dest='platform', type=str, required=True,
                         help=f"Platform to run simulations on (Required).")
-    parser.add_argument('-S', '--sweep', dest='sweep', type=str, default=None,
+    parser.add_argument('-w', '--sweep', dest='sweep', type=str, default=None,
                         help='Python module to load with a sweep definition to generate extra experiments with '
                              '(Default: no sweeping).')
 

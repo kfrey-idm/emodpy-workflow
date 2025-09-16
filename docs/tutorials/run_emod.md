@@ -84,8 +84,8 @@ To run EMOD, we will use the emodpy-workflow `run` command.
     This should produce output similar to the following:
 
     ```doscon
-    usage: run.py [-h] [-s SAMPLES_FILE] -N SUITE_NAME -F FRAMES [-f DOWNLOAD_FILENAMES] -o OUTPUT_DIR -p PLATFORM
-                [-S SWEEP]
+    usage: run.py [-h] [-s SAMPLES_FILE] -N SUITE_NAME -f FRAMES [-d DOWNLOAD_FILENAMES] -o OUTPUT_DIR -p PLATFORM
+                [-w SWEEP]
 
     optional arguments:
     -h, --help            show this help message and exit
@@ -94,16 +94,16 @@ To run EMOD, we will use the emodpy-workflow `run` command.
                             configs as-is if not provided.
     -N SUITE_NAME, --suite-name SUITE_NAME
                             Name of suite for experiments to be run within (Required).
-    -F FRAMES, --frames FRAMES
+    -f FRAMES, --frames FRAMES
                             Comma-separated list of model frames to run (Required).
-    -f DOWNLOAD_FILENAMES, --files DOWNLOAD_FILENAMES
+    -d DOWNLOAD_FILENAMES, --files DOWNLOAD_FILENAMES
                             Filenames to download from scenario simulations. Paths relative to simulation directories.
                             Comma-separated list if more than one (Default: do not download files)
     -o OUTPUT_DIR, --output-dir OUTPUT_DIR
                             Directory to write receipt to (always) and scenario output files (if downloading).
     -p PLATFORM, --platform PLATFORM
                             Platform to run simulations on (Required).
-    -S SWEEP, --sweep SWEEP
+    -w SWEEP, --sweep SWEEP
                             Python module to load with a sweep definition to generate extra experiments with (Default: no
                             sweeping).
     ```
@@ -119,7 +119,7 @@ To run EMOD, we will use the emodpy-workflow `run` command.
 3. Execute the following command:
 
     ```doscon
-    python -m emodpy_workflow.scripts.run -N my_first_suite -F baseline -o results/my_first_run -p ContainerPlatform
+    python -m emodpy_workflow.scripts.run -N my_first_suite -f baseline -o results/my_first_run -p ContainerPlatform
     ```
 
     You should see output similar to the following:
@@ -567,12 +567,12 @@ let's get back to our project directory and get our report data.
 
     ```doscon
     (env) C:\work\my_training\my_project>python -m emodpy_workflow.scripts.download -h
-    usage: download.py [-h] [-f FILES] [-r RECEIPT_FILE] [-s SAMPLES_FILE] [--suite-id SUITE_ID] [--exp-id EXPERIMENT_ID]
+    usage: download.py [-h] [-d FILES] [-r RECEIPT_FILE] [-s SAMPLES_FILE] [--suite-id SUITE_ID] [--exp-id EXPERIMENT_ID]
                     [-o OUTPUT_DIR] -p PLATFORM
 
     optional arguments:
     -h, --help            show this help message and exit
-    -f FILES, --files FILES
+    -d FILES, --files FILES
                             Comma-separated list of simulation directory relative file paths to download (Default:
                             output\ReportHIVByAgeAndGender.csv)
     -r RECEIPT_FILE, --receipt RECEIPT_FILE
@@ -597,16 +597,16 @@ let's get back to our project directory and get our report data.
 
     === "Windows"
         ```doscon
-        python -m emodpy_workflow.scripts.download -f "output/InsetChart.json" -r results\my_first_run\experiment_index.csv -p ContainerPlatform
+        python -m emodpy_workflow.scripts.download -d "output/InsetChart.json" -r results\my_first_run\experiment_index.csv -p ContainerPlatform
         ```
     === "Linux"
         ```bash
-        python -m emodpy_workflow.scripts.download -f "output/InsetChart.json" -r results/my_first_run/experiment_index.csv -p ContainerPlatform
+        python -m emodpy_workflow.scripts.download -d "output/InsetChart.json" -r results/my_first_run/experiment_index.csv -p ContainerPlatform
         ```
 
     In this command, we specified the following:
 
-    - `-f "output/InsetChart.json` - EMOD puts the report files into a subfolder
+    - `-d "output/InsetChart.json` - EMOD puts the report files into a subfolder
     called "outputs".  In this case, we want the InsetChart.json report since
     it contains a lot of high level statistics.
     - `-r results/my_first_run/experiment_index.csv` - Since we have a "receipt"

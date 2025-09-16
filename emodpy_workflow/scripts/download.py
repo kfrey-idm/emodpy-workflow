@@ -75,7 +75,7 @@ def parse_args():
     import argparse
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('-f', '--files', dest='files', type=str, default=DEFAULTS['files'],
+    parser.add_argument('-d', '--files', dest='files', type=str, default=DEFAULTS['files'],
                         help=f"Comma-separated list of simulation directory relative file paths to download "
                              f"(Default: {DEFAULTS['files']})")
 

@@ -66,7 +66,7 @@ def parse_args():
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('-F', '--frame', dest='frame', type=str, required=True,
+    parser.add_argument('-f', '--frame', dest='frame', type=str, required=True,
                         help=f"Model frame name to calibrate (directory of python input builders). Required.")
     parser.add_argument('-N', '--name', dest='calibration_name', type=str, default=DEFAULTS['calibration_name'],
                         help=f"Name of calibration (Default: {DEFAULTS['calibration_name']})")

@@ -3,7 +3,7 @@
 A single simulation of a default county model configuration can be run as follows:
 
 ```bash
-python -m emodpy_workflow.scripts.run -F FRAME -p PLATFORM -o OUTPUT -N SUITE_NAME
+python -m emodpy_workflow.scripts.run -f FRAME -p PLATFORM -o OUTPUT -N SUITE_NAME
 ```
 
 where

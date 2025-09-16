@@ -24,7 +24,7 @@ def parse_args():
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('-F', '--frame', dest='frame', type=str, required=True,
+    parser.add_argument('-f', '--frame', dest='frame', type=str, required=True,
                         help=f"Model frame name to search for available parameters in "
                              f"(directory of python input builders). Required.")
 

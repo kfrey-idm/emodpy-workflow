@@ -11,7 +11,7 @@ this tutorial will focus on the nuts-and-bolts of calibration. Calibrating **wel
 The following command will start a calibration of a frame named **baseline** created in a prior tutorial:
 
 ```bash
-python -m emodpy_workflow.scripts.calibrate -N BaselineCalibration -F baseline -i 2 -n 8 -o calibration/ -p ContainerPlatform optim_tool -v 0.1
+python -m emodpy_workflow.scripts.calibrate -N BaselineCalibration -f baseline -i 2 -n 8 -o calibration/ -p ContainerPlatform optim_tool -v 0.1
 ```
 
 While we are waiting for it to complete, we will review some details related to what is actually happening.
@@ -104,7 +104,7 @@ the following will plot female HIV prevalance in the four resampled simulations 
 data:
 
 ```bash
-python -m emodpy_workflow.scripts.plot_sims_with_reference -F baseline -s samples.csv -c Prevalence -g Female -p ContainerPlatform
+python -m emodpy_workflow.scripts.plot_sims_with_reference -f baseline -s samples.csv -c Prevalence -g Female -p ContainerPlatform
 ```
 
 The resultant plots are written by default to directory **plot_sims_with_reference_output**. Take a look, for example,

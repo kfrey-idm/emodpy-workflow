@@ -3,7 +3,7 @@
 The basic command to calibrate a frame to reference data in an ingest form using the optim_tool algorithm is:
 
 ```bash
-python -m emodpy_workflow.scripts.calibrate -F FRAME -p PLATFORM optim_tool
+python -m emodpy_workflow.scripts.calibrate -f FRAME -p PLATFORM optim_tool
 ```
 
 ... where FRAME is the name of the frame to calibrate and PLATFORM is the idmtools.ini platform name to run on.

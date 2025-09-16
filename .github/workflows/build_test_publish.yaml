@@ -45,7 +45,7 @@ jobs:
       - name: run new_frame and available_parameters script
         run:  |
           python -m emodpy_workflow.scripts.new_frame --country Zambia --dest baseline
-          python -m emodpy_workflow.scripts.available_parameters -F baseline
+          python -m emodpy_workflow.scripts.available_parameters -f baseline
         working-directory: ./examples/zambia
       - name: run scripts.download 
         run:  python -m emodpy_workflow.scripts.download -h

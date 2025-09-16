@@ -26,7 +26,7 @@ This copies the `baseline` configuration and allows you to remove or simplify th
 ## Run EMOD
 
 ```bash
-python -m hiv_workflow.scripts.run -N NoHealthSystem -F no_health_system -o results/no_health_system -p ContainerPlatform
+python -m hiv_workflow.scripts.run -N NoHealthSystem -f no_health_system -o results/no_health_system -p ContainerPlatform
 ```
 
 Todo: reference to previous "Run EMOD" section.
@@ -36,7 +36,7 @@ Todo: reference to previous "Run EMOD" section.
 Download the InsetChart from the `results/no_health_system` directory:
 
 ```bash
-python -m emodpy_workflow.scripts.download -f output/InsetChart.json -r results/no_health_system/experiment_index.csv -p ContainerPlatform
+python -m emodpy_workflow.scripts.download -d output/InsetChart.json -r results/no_health_system/experiment_index.csv -p ContainerPlatform
 ```
 
 Use the plotting tool to compare the output:
@@ -101,7 +101,7 @@ def get_campaign_parameterized_calls(campaign):
 ## Run EMOD
 
 ```bash
-python -m hiv_workflow.scripts.run -N VaccineTracker -F vaccine_using_tracker -o results/vaccine_using_tracker -p ContainerPlatform
+python -m hiv_workflow.scripts.run -N VaccineTracker -f vaccine_using_tracker -o results/vaccine_using_tracker -p ContainerPlatform
 ```
 - Check that 'vaccine_efficacy' becomes a hyperparameters for Campaign. TBD
 - Check that ControlledVaccine is added to campaign,.json. TBD
