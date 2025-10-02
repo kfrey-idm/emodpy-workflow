@@ -1,14 +1,15 @@
 site_name: emodpy-workflow
-site_url: https://docs.idmod.org/emodpy-workflow
+site_url: https://emod.idmod.org/emodpy-workflow/
 repo_name: EMOD-Hub/emodpy-workflow # update to your repo name
 repo_url: https://github.com/EMOD-Hub/emodpy-workflow # update to your repo URL
+edit_uri: tree/main/docs/ # path to the docs folder in your repo
 theme:
   name: material
   custom_dir: docs/customization/overrides
   font: 
     text: Roboto
     code: Roboto Mono
-  logo: images/emod_logo.png
+  logo: images/EMOD_logo.png
   favicon: images/favicon.ico
   features:
     - navigation.footer # include a footer with links to privacy, terms, etc.

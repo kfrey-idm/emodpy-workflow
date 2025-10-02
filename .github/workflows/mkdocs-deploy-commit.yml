@@ -1,9 +1,12 @@
-name: MkDocs Deploy
+name: MkDocs Deploy on Commit to main
 on:
   push:
     branches:
-      - master 
       - main
+    paths:
+      - 'docs/**'
+      - 'mkdocs.yml'
+
 permissions:
   contents: write
 jobs:
