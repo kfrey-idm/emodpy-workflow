@@ -73,12 +73,6 @@ a simple calibration on a couple of parameters using emodpy-workflow.  It is NOT
 meant as an introduction to calibration, but if you understand calibration, it
 provides you with the instructions on how to do it.
 
-Clark - You will do your first simple calibration with emodpy-workflow.
-You will learn how to specify reference data and the hyperparameters to calibrate.
-You will also learn how to resample a calibration process (select calibrated
-parameterizations). However, it is not intended to teach the art/science of 
-calibration.
-
 ## Use a calibration
 
 The ["Use a Calibration" tutorial](use_calibration.md) will show you how to use a calibration

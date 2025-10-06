@@ -39,9 +39,11 @@ nav: # Navigation structure for the documentation
     - reference/commands.md
     - reference/projects.md
     - reference/frames.md
-    - reference/ingest_form.md
+    - reference/how_to_ingest_form.md
     - reference/sweeps.md
     - reference/dtktools_comparison.md
+    - reference/age_bin_format.md
+    - reference/filling_an_ingest_form.md
   - How-to:
     - how_to/how_to_index.md
     - how_to/how_to_make_project.md
@@ -52,6 +54,7 @@ nav: # Navigation structure for the documentation
     - how_to/how_to_calibrate_frame.md
     - how_to/how_to_sweep.md
     - how_to/how_to_download_data.md
+    - how_to/how_to_ingest_form.md
   - Tutorials: # this creates a section in the TOC
     - tutorials/get_started.md
     - tutorials/setup.md
