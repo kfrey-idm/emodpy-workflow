@@ -255,7 +255,6 @@ def frame_exists(frame_name: str, frame_root: str = 'frames') -> bool:
 
 def _read_and_write_frame_template(frame_template_name: str, new_frame_name: str, variables: Dict[str, str],
                                    frame_root: str = 'frames', dry_run: bool = False) -> None:
-    print(f"Variables are: {variables}")
     if frame_exists(frame_name=new_frame_name, frame_root=frame_root) and not dry_run:
         raise FrameExistsError(f"Destination frame: {new_frame_name} already exists. Cannot overwrite it.")
 
