@@ -82,7 +82,7 @@ def parse_args():
     parser.add_argument('-r', '--receipt', dest='receipt_file', type=str, default=DEFAULTS['receipt_file'],
                         help=f'Commissioning receipt file path. {usage_str}.')
     parser.add_argument('-s', '--samples', dest='samples_file', type=str, default=DEFAULTS['samples_file'],
-                        help=f"Resampled parameter sets csv file of simulations to plot. {usage_str}.")
+                        help=f"Resampled parameter sets csv file of simulations to download. {usage_str}.")
     parser.add_argument('--suite-id', dest='suite_id', type=str, default=DEFAULTS['suite_id'],
                         help=f'Id of suite to download simulations from. {usage_str}.')
     parser.add_argument('--exp-id', dest='experiment_id', type=str, default=DEFAULTS['experiment_id'],
