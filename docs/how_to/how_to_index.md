@@ -10,3 +10,4 @@ The following items provide helpful snippets on how to do things with emodpy-wor
 - [Run a single simulation](how_to_run.md)
 - [Download data](how_to_download_data.md)
 - [Specific edits of a calibration ingest form](how_to_ingest_form.md)
+- [Publish a new country model](how_to_publish_new_country_model.md)

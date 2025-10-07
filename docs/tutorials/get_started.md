@@ -51,7 +51,10 @@ change how often people create commercial relationships.
 
 The campaign is where users make most of their changes.  It is where you determine
 the "when, why, where, to whom, and what" of interventions.
-The ["change campaign"](modify_campaign.md) tutorial will teach you how to things
+The ["modify campaign: minimal campaign"](modify_campaign_1_minimal_campaign.md), 
+["modify campaign: add HIV vaccine"](modify_campaign_2_add_vaccine.md), and
+["modify campaign: modify country model"](modify_campaign_3_modify_country_model.md)
+tutorials will teach you how to things
 like add an intervention or change a state of the cascade of care.
 
 ## Make a parameter calibrate-able or sweep-able - ParameterizedCalls
