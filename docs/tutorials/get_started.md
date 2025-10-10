@@ -40,13 +40,6 @@ The ["change configuration"](modify_configuration.md) tutorial will teach you ho
 change parameters in a structured way so you can easily compare the new parameters to
 the baseline.
 
-## Modify the demographics
-
-The ["change demographics"](modify_demographics.md) tutorial show you how you can
-change the different aspects of the population and their behaviors.  You will learn
-how to change the initial ages of the population, add an individual property, and
-change how often people create commercial relationships.
-
 ## Modify the campaign
 
 The campaign is where users make most of their changes.  It is where you determine
@@ -67,7 +60,7 @@ tutorial will how to make a parameter availabe.
 
 The ["sweep parameter"](sweep_parameter.md) tutorial will show you how to sweep
 a parameter that is "available".  Users typically do this to see how different
-values of a parameter impact the simulation outcome.
+values of a parameter impact the simulation outcome. 
 
 ## Run a simple calibration
 
@@ -76,8 +69,4 @@ a simple calibration on a couple of parameters using emodpy-workflow.  It is NOT
 meant as an introduction to calibration, but if you understand calibration, it
 provides you with the instructions on how to do it.
 
-## Use a calibration
-
-The ["Use a Calibration" tutorial](use_calibration.md) will show you how to use a calibration
-as input to configure and run EMOD. 
 

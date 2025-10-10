@@ -39,7 +39,7 @@ nav: # Navigation structure for the documentation
     - reference/commands.md
     - reference/projects.md
     - reference/frames.md
-    - reference/how_to_ingest_form.md
+    - reference/filling_an_ingest_form.md
     - reference/sweeps.md
     - reference/dtktools_comparison.md
     - reference/age_bin_format.md
@@ -63,14 +63,12 @@ nav: # Navigation structure for the documentation
     - tutorials/run_emod.md
     - tutorials/modify_reports.md
     - tutorials/modify_configuration.md
-    - tutorials/modify_demographics.md
     - tutorials/modify_campaign_1_minimal_campaign.md
     - tutorials/modify_campaign_2_add_vaccine.md
     - tutorials/modify_campaign_3_modify_country_model.md
     - tutorials/using_parameterized_calls.md
     - tutorials/sweep_parameter.md
     - tutorials/run_calibration.md
-    - tutorials/use_calibration.md
     #- Get Started: tutorials/intro.ipynb # the topic following index.md sometimes requires an explicit title
   #- Glossary: glossary.md
   # API Reference will automatically be generated and added to the TOC

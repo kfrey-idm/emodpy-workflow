@@ -795,6 +795,5 @@ modify the simulation and run the model.
 - [Modify Reports](modify_reports.md)
 - [Modify Configuration](modify_configuration.md)
 - [Modify Campaign](modify_campaign.md)
-- [Modify Demographics](modify_demographics.md)
 
 

@@ -320,7 +320,6 @@ country model.
 
     - [Modify Configuration](modify_configuration.md)
     - [Modify Campaign](modify_campaign.md)
-    - [Modify Demographics](modify_demographics.md)
 
 ## Next up: Running your baseline frame
 

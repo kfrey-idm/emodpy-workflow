@@ -421,7 +421,6 @@ mastering these techniques, you can tailor simulations to specific research ques
 For further customization, refer to the following tutorials:
 
 - [Modify Config](./modify_configuration.md): Adjust simulation parameters and settings.
-- [Modify Demographics](./modify_demographics.md): Change population structure and attributes.
 - [Modify Reports](./modify_reports.md): Customize output reports and data collection.
 
 Combining these approaches enables comprehensive control over your **EMOD** workflows and simulation outcomes.
