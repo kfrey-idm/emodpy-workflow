@@ -1,4 +1,4 @@
-## Publish a new country model
+# Publish a new country model
 
 To publish a new country model, you can follow the steps below. This example uses the `ZambiaWithLongLastingPrep` country model in 
 [Modify Campaign 3: Modify Country Model](../tutorials/modify_campaign_3_modify_country_model.md) tutorial.

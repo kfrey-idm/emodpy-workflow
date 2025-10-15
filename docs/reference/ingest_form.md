@@ -1,4 +1,4 @@
-# Filling an Ingest Form
+# Ingest Form
 
 An ingest form is a multi-sheet Excel spreadsheet that organizes reference data and sets analysis controls
 for the `calibrate` command. It controls the non-iterative aspects of a calibration process, while the `calibrate`
@@ -171,7 +171,7 @@ within the specified min and max values: **min** <= initial_value <= **max**.
 * map_to: If present, only exists for back-compatibility purposes. Does not need to be filled.
 
 Information about definining and using hyperparameters is covered in the 
-[using parameterized calls tutorial](../tutorials/using_parameterized_calls.md).
+[using parameterized calls tutorial](../tutorials/use_parameterized_calls.md).
 
 Finding currently available hyperparameters is detailed in the 
 [how to list hyperparameters](../how_to/how_to_list_hyperparameters.md) guide.

@@ -74,7 +74,7 @@ Running **calibrate** generates the model output needed. Reference data and scor
 
 Additional resources:
 
-* [Filling an ingest form reference](../reference/filling_an_ingest_form.md)
+* [Filling an ingest form reference](../reference/ingest_form.md)
 * [Ingest form how-to](../how_to/how_to_ingest_form.md)
 
 ## Calibration output

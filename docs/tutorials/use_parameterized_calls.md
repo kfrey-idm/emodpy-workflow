@@ -1,4 +1,4 @@
-# Using ParameterizedCalls
+# Use ParameterizedCalls
 
 A ParameterizedCall is a mapping of a hyperparameter names (strings) to specific locations in the model input building
 process. These mappings are used to map hyperparameter values to model changes during input build time, for example, during

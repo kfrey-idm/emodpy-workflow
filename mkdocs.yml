@@ -14,6 +14,7 @@ theme:
   features:
     - navigation.footer # include a footer with links to privacy, terms, etc.
     - content.code.copy # enable copy buttons for code blocks
+    - navigation.indexes # enable parent index page for sections
   palette:
     # Light Mode
     - scheme: default
@@ -27,25 +28,22 @@ theme:
       toggle:
         icon: material/weather-sunny
         name: Dark mode
-      primary: white
+      primary: black
       accent: light blue
 
 nav: # Navigation structure for the documentation
   - Home: index.md # the rest of the nav illustrates a typical doc structure
   - installation.md # including the topic title is optional
   - Reference:
-    - reference/reference_overview.md
     - reference/virtual_environments.md
     - reference/commands.md
     - reference/projects.md
     - reference/frames.md
-    - reference/filling_an_ingest_form.md
     - reference/sweeps.md
     - reference/dtktools_comparison.md
     - reference/age_bin_format.md
-    - reference/filling_an_ingest_form.md
+    - reference/ingest_form.md
   - How-to:
-    - how_to/how_to_index.md
     - how_to/how_to_make_project.md
     - how_to/how_to_create_frame.md
     - how_to/how_to_use_elements_in_frame.md
@@ -66,7 +64,7 @@ nav: # Navigation structure for the documentation
     - tutorials/modify_campaign_1_minimal_campaign.md
     - tutorials/modify_campaign_2_add_vaccine.md
     - tutorials/modify_campaign_3_modify_country_model.md
-    - tutorials/using_parameterized_calls.md
+    - tutorials/use_parameterized_calls.md
     - tutorials/sweep_parameter.md
     - tutorials/run_calibration.md
     #- Get Started: tutorials/intro.ipynb # the topic following index.md sometimes requires an explicit title
@@ -99,27 +97,21 @@ markdown_extensions:
       alternate_style: true
   - pymdownx.blocks.caption # captions for images, tables, etc.
 
-# javascript customization
-#extra_javascript:
-#  - docs/customization/javascripts/mathjax.js
-#  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+# javascript and CSS customization
+extra_javascript:
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+extra_css: 
+  - customization/css/extra.css # custom CSS for footer spacing
 
 plugins:
   - search # search functionality
   - autorefs # automatically create linkable references
-  - include-markdown: # include other files, such as READMEs
-  # - mkdocs-jupyter: # enables Jupyter notebooks to be rendered
-  #     execute: true
-  #     allow_errors: true
-  - section-index # enables nested sections
-  #- mkdocs-autoapi: # API reference generation
-  #    autoapi_ignore: # list of files or folder to ignore for API generation
-  #      - tests/**/*
-  #      - build/**/*
-  #      - docs/*
-  #      - setup.py
-  #    autoapi_add_nav_entry: true # breaks modules into separate pages
-  #- mkdocstrings: # process docstrings to generate API reference
+  - include-markdown # include other files, such as READMEs
+  - table-reader # enables rendering of CSV/TSV files as tables
+  - mkdocs-jupyter: # enables Jupyter notebooks to be rendered
+      execute: true
+      allow_errors: false # set to true to continue executing cells even if one fails
+      include-source: true
 
 copyright: Copyright &copy; 2025 Gates Foundation. All rights reserved.
 
@@ -127,15 +119,25 @@ extra:
   generator: false
   footer_links:
     - text: "Privacy and Cookies Notice"
-    - href: "https://www.gatesfoundation.org/Privacy-and-Cookies-Notice"
+      href: "https://www.gatesfoundation.org/Privacy-and-Cookies-Notice"
     - text: "Terms of Use"
-    - href: "https://www.gatesfoundation.org/Terms-of-Use"
+      href: "https://www.gatesfoundation.org/Terms-of-Use"
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/EMOD-Hub # update to your repo
+      link: https://github.com/EMOD-Hub/emodpy-workflow # update to your repo
+    - icon: fontawesome/regular/envelope
+      link: mailto:idm@gatesfoundation.org
+    - icon: octicons/globe-24
+      link: https://idmod.org
+    - icon: simple/youtube
+      link: http://www.youtube.com/@institutefordiseasemodelin1987
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/company/institute-disease-modeling
+
   analytics:
     provider: google
     property: G-SVDSQH04EM
+    tracking_id: # no tracking until we can implement OneTrust cookie consent
     feedback:
       title: Was this page helpful?
       ratings:

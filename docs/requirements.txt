@@ -5,4 +5,7 @@ mkdocs-autoapi # automatically generate module md files
 mkdocs-section-index # ability to create parent topics in TOC
 python-markdown-math # integrate LaTeX math
 pymdown-extensions # various extensions for markdown
-# mkdocs-jupyter # jupyter notebooks
+mkdocs-jupyter # jupyter notebooks
+mkdocstrings # generate API reference from docstrings
+mkdocstrings-python # python handler for mkdocstrings
+mkdocs-table-reader-plugin # directly insert csv and other formats as tables

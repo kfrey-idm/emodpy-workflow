@@ -11,10 +11,10 @@ The following tutorials assume you are familiar with the following:
 If you have been using EMOD-HIV with DtkTools, this [comparison](../reference/dtktools_comparison.md)
 page will help you to understand what is different from how you have been using EMOD-HIV.
 
-## Setup and Installation
+## Install and Set Up
 
 You can do the tutorials locally or using GitHub Codespaces.  The
-[Setup and Installation](setup.md) instructions will get you prepared to
+[Install and Set Up](setup.md) instructions will get you prepared to
 do the following tutorials.
 
 ## Create a project
@@ -53,7 +53,7 @@ like add an intervention or change a state of the cascade of care.
 ## Make a parameter calibrate-able or sweep-able - ParameterizedCalls
 
 emodpy-workflow provides a standard way of calibrating or sweeping any parameter
-that is "available".  The ["using ParameterizedCall"](using_parameterized_calls.md)
+that is "available".  The ["using ParameterizedCall"](use_parameterized_calls.md)
 tutorial will how to make a parameter availabe.
 
 ## Sweep a parameter
