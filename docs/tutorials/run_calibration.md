@@ -1,4 +1,4 @@
-# Run Calibration
+# Run calibration
 
 ## What is calibration?
 

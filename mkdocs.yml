@@ -111,7 +111,7 @@ plugins:
   - mkdocs-jupyter: # enables Jupyter notebooks to be rendered
       execute: true
       allow_errors: false # set to true to continue executing cells even if one fails
-      include-source: true
+      include_source: true
 
 copyright: Copyright &copy; 2025 Gates Foundation. All rights reserved.
 
@@ -135,9 +135,8 @@ extra:
       link: https://linkedin.com/company/institute-disease-modeling
 
   analytics:
-    provider: google
-    property: G-SVDSQH04EM
-    tracking_id: # no tracking until we can implement OneTrust cookie consent
+    provider: custom
+    property: GTM-NK4K647
     feedback:
       title: Was this page helpful?
       ratings:

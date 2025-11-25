@@ -1,4 +1,4 @@
-# Create Scenarios and Do Sweeps
+# Create scenarios and do sweeps
 
 This tutorial utilizes ParameterizedCalls. The tutorial covering them is located [here](use_parameterized_calls.md) 
 and should be completed first.

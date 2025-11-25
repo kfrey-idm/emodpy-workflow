@@ -1,4 +1,4 @@
-# Ingest Form
+# Ingest form
 
 The [filling an ingest form reference](../reference/ingest_form.md) covers the context in which the macros
 noted in this how-to are used.  

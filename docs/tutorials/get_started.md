@@ -1,4 +1,4 @@
-# Get Started with EMOD-HIV and emodpy-workflow
+# Get started with EMOD-HIV and emodpy-workflow
 
 ## Assumptions
 

@@ -1,4 +1,4 @@
-# Ingest Form
+# Ingest form
 
 An ingest form is a multi-sheet Excel spreadsheet that organizes reference data and sets analysis controls
 for the `calibrate` command. It controls the non-iterative aspects of a calibration process, while the `calibrate`
