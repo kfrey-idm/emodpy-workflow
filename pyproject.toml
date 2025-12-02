@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "emodpy-workflow"
-version = "1.0.5"
+version = "1.0.6"
 description = "IDM's emodpy modeling workflow scripts and supporting libraries"
 readme = "README.md"
 requires-python = ">=3.9"
