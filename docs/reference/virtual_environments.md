@@ -1,4 +1,4 @@
-# Virtual Environments
+# Virtual environments
 
 ## Why use virtual environments
 

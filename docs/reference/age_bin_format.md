@@ -1,4 +1,4 @@
-# Ingest Form Age Bin Format
+# Ingest form age bin format
 
 The ingest form uses a particular format for age bins. These age bins are used on multiple sheets: **Site**, 
 **Analyzers**, and **observational data** sheets.

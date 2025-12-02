@@ -1,4 +1,4 @@
-# Install and Set Up
+# Install and set up
 
 ## Choose to run the tutorials locally or use [GitHub Codespaces](https://docs.github.com/en/codespaces/about-codespaces/what-are-codespaces).
 

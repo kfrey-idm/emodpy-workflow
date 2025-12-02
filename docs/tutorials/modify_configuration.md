@@ -1,4 +1,4 @@
-# Modify Configuration Parameters
+# Modify configuration parameters
 
 Configuration parameters are simulation-wide parameters that affect how EMOD runs at a fundamental level. These include
 parameters related, but not limited to:

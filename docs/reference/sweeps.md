@@ -1,4 +1,4 @@
-# **Sweep files**
+# Sweep files
 
 A sweep file is a Python file that specifies sets of hyperparameter overrides,
 often referred to as "scenarios". Scenarios address specific scientific questions,

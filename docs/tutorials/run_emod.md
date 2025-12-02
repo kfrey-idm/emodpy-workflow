@@ -792,8 +792,8 @@ in the simulation.
 Now that you have run EMOD once, investigate the other tutorials where you can
 modify the simulation and run the model.
 
-- [Modify Reports](modify_reports.md)
-- [Modify Configuration](modify_configuration.md)
-- [Modify Campaign](modify_campaign.md)
+- [Modify reports](modify_reports.md)
+- [Modify configuration](modify_configuration.md)
+- [Modify campaign](modify_campaign_1_minimal_campaign.md)
 
 
