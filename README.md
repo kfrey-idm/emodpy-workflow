@@ -111,7 +111,7 @@ All commands can be run via:
 </p>
 
 ```
-python -m emod_workflow.scripts.COMMAND_NAME_HERE < ARGUMENTS HERE >
+python -m emodpy_workflow.scripts.COMMAND_NAME_HERE < ARGUMENTS HERE >
 ```
 
 <p>
@@ -119,7 +119,7 @@ Information on command arguments and their usage is available via:
 </p>
 
 ```
-python -m emod_workflow.scripts.COMMAND_NAME_HERE --help
+python -m emodpy_workflow.scripts.COMMAND_NAME_HERE --help
 ```
 
 - new_project
