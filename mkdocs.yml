@@ -1,8 +1,9 @@
 site_name: emodpy-workflow
-site_url: https://emod.idmod.org/emodpy-workflow/
-repo_name: EMOD-Hub/emodpy-workflow # update to your repo name
-repo_url: https://github.com/EMOD-Hub/emodpy-workflow # update to your repo URL
+site_url: https://emod-hub.github.io/emodpy-workflow/
+repo_name: EMOD-Hub/emodpy-workflow
+repo_url: https://github.com/EMOD-Hub/emodpy-workflow/
 edit_uri: tree/main/docs/ # path to the docs folder in your repo
+
 theme:
   name: material
   custom_dir: docs/customization/overrides
@@ -12,18 +13,16 @@ theme:
   logo: images/EMOD_logo.png
   favicon: images/favicon.ico
   features:
-    - navigation.footer # include a footer with links to privacy, terms, etc.
-    - content.code.copy # enable copy buttons for code blocks
-    - navigation.indexes # enable parent index page for sections
+    # - navigation.footer
+    - content.code.copy
+    - navigation.indexes  # enable parent index page for sections
   palette:
-    # Light Mode
     - scheme: default
       toggle:
         icon: material/weather-night
         name: Light mode
       primary: white
       accent: light blue
-    # Dark Mode
     - scheme: slate
       toggle:
         icon: material/weather-sunny
@@ -31,9 +30,9 @@ theme:
       primary: black
       accent: light blue
 
-nav: # Navigation structure for the documentation
-  - Home: index.md # the rest of the nav illustrates a typical doc structure
-  - installation.md # including the topic title is optional
+nav:  # Navigation structure for the documentation
+  - Home: index.md  # the rest of the nav illustrates a typical doc structure
+  - installation.md  # including the topic title is optional
   - Reference:
     - reference/virtual_environments.md
     - reference/commands.md
@@ -71,52 +70,56 @@ nav: # Navigation structure for the documentation
   #- Glossary: glossary.md
   # API Reference will automatically be generated and added to the TOC
 
-# icons, semantic markup, emojis 
+plugins:
+  - search:
+  - autorefs:
+  - include-markdown:
+  - table-reader:  # enables rendering of CSV/TSV files as tables
+  - mkdocs-jupyter:  # enables Jupyter notebooks to be rendered
+      execute: true
+      allow_errors: false  # set to true to continue executing cells even if one fails
+      include_source: true
+
 markdown_extensions:
+  - admonition:
+  - attr_list:  # enables HTMl and CSS classes to inline elements
+  - def_list:
   - toc:
       toc_depth: 3
-  - attr_list # enables HTMl and CSS classes to inline elements
-  - md_in_html # enables grids
-  - admonition # warnings, etc.
-  - def_list
-  - pymdownx.emoji: # emojis and icons
+  - md_in_html:  # enables grids
+  - pymdownx.arithmatex:  # Latex processing for math equations
+      generic: true
+  - pymdownx.blocks.caption:  # captions for images, tables, etc.
+  - pymdownx.blocks.details:  # allows nesting of collapsible code
+  - pymdownx.caret:  # superscripts
+  - pymdownx.details:  # collapsible elements
+  - pymdownx.emoji:  # emojis and icons
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
-  - pymdownx.arithmatex: # Latex processing for math equations
-      generic: true
-  - pymdownx.snippets: # snippet reuse functionality
-  - pymdownx.blocks.details: # allows nesting of collapsible code
-  - pymdownx.highlight: # syntax highlighting for code blocks
-      linenums: true    # adds line numbers to code blocks automatically
-      anchor_linenums: true # adds HTML anchors (#L1, #L2, etc.) to each line so you can link to specific ones.
+  - pymdownx.highlight:  # syntax highlighting for code blocks
+      linenums: true  # adds line numbers to code blocks automatically
+      anchor_linenums: true  # adds HTML anchors (#L1, #L2, etc.) to each line so you can link to specific ones.
       default_lang: 'python'
-  - pymdownx.inlinehilite # syntax highlighting for inline code
-  - pymdownx.superfences # enables code, diagram fences to be nested in lists, etc.e
-  - pymdownx.details # collapsible elements
+  - pymdownx.inlinehilite:  # syntax highlighting for inline code
+  - pymdownx.mark:  # text highlighting
+  - pymdownx.snippets:  # snippet reuse functionality
+      auto_append:
+        - docs/bib.md
+  - pymdownx.superfences:  # enables code, diagram fences to be nested in lists, etc.e
   - pymdownx.tabbed: # tabbed content that can be toggled
       alternate_style: true
-  - pymdownx.blocks.caption # captions for images, tables, etc.
-
-# javascript and CSS customization
-extra_javascript:
-  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
-extra_css: 
-  - customization/css/extra.css # custom CSS for footer spacing
-
-plugins:
-  - search # search functionality
-  - autorefs # automatically create linkable references
-  - include-markdown # include other files, such as READMEs
-  - table-reader # enables rendering of CSV/TSV files as tables
-  - mkdocs-jupyter: # enables Jupyter notebooks to be rendered
-      execute: true
-      allow_errors: false # set to true to continue executing cells even if one fails
-      include_source: true
+  - pymdownx.tilde:  # subscripts
 
 copyright: Copyright &copy; 2025 Gates Foundation. All rights reserved.
 
+extra_javascript:
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - customization/css/extra.css
+
 extra:
-  generator: false
+  generator: false  # Removes acknowledgement of mkdocs-material
   footer_links:
     - text: "Privacy and Cookies Notice"
       href: "https://www.gatesfoundation.org/Privacy-and-Cookies-Notice"
@@ -124,7 +127,7 @@ extra:
       href: "https://www.gatesfoundation.org/Terms-of-Use"
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/EMOD-Hub/emodpy-workflow # update to your repo
+      link: https://github.com/EMOD-Hub/
     - icon: fontawesome/regular/envelope
       link: mailto:idm@gatesfoundation.org
     - icon: octicons/globe-24
@@ -133,7 +136,8 @@ extra:
       link: http://www.youtube.com/@institutefordiseasemodelin1987
     - icon: fontawesome/brands/linkedin
       link: https://linkedin.com/company/institute-disease-modeling
-
+    - icon: fontawesome/brands/slack
+      link: https://gatesfoundation.enterprise.slack.com/
   analytics:
     provider: custom
     property: GTM-NK4K647

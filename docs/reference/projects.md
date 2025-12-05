@@ -62,5 +62,4 @@ obtaining files, etc) accepts an idmtools.ini platform block name (like
 ContainerPlatform) via argument to identify which resource to utilize.
 
 The new_project command will automatically create one that can then be modified.
-Details of the file format can be found [here](https://docs.idmod.org/projects/idmtools/en/latest/configuration.html).
-
+Details of the file format can be found [here][idmtools_config].

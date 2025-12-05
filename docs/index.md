@@ -9,8 +9,8 @@ provides standard way of using EMOD-HIV.
 ## Other related documentation
 
 - [emodpy-hiv]()
-- [EMOD-HIV](https://docs.idmod.org/projects/emodpy-hiv/en/latest/)
-- [idmtools](https://docs.idmod.org/projects/idmtools/en/latest/index.html)
+- [EMOD-HIV][emodpy-hiv]
+- [idmtools][idmtools]
 
 ## Community
 

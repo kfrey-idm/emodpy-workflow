@@ -33,7 +33,7 @@ regions of interest. They contain all information (Python functions) needed to b
 a default set of EMOD-HIV inputs (config, demographics, campaign).
 
 Country models are standard **Python code** and live in the
-[emodpy-hiv repository](https://github.com/EMOD-Hub/emodpy-hiv).
+[emodpy-hiv repository][emodpy-hiv].
 Usage of country models in a project is the domain of **frames**.
 
 ### Frames
