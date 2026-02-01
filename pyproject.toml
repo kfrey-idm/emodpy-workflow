@@ -1,7 +1,5 @@
-# Made publicly available with the MIT license.
-
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -12,8 +10,7 @@ readme = "README.md"
 requires-python = ">=3.9"
 authors = [
     {name = "Clark Kirkman IV", email = "clark.kirkmand@gatesfoundation.org"}
-    ]
-
+]
 keywords=["modeling", "IDM"]
 
 dependencies = [
@@ -27,26 +24,38 @@ dependencies = [
     "numpy~=2.0",
     "urllib3<2.0" # ==1.26.14 # temporary hack to avoid error on BigPurple. https://github.com/urllib3/urllib3/issues/2168
 ]
-
 license = "MIT"
-
 classifiers=[
         "Programming Language :: Python :: 3.9",
         "Framework:: IDM-Tools :: models",
-        "Operating System :: OS Independent"]
-
-[project.optional-dependencies]
-test = [
-    "parameterized"
+        "Operating System :: OS Independent",
 ]
 
+[project.optional-dependencies]
+docs = [
+    "mkdocs-material",
+    "mkdocs-include-markdown-plugin",
+    "mkdocs-autorefs",
+    "mkdocs-autoapi",
+    "mkdocs-section-index",
+    "python-markdown-math",
+    "pymdown-extensions",
+    "mkdocs-jupyter",
+    "mkdocstrings",
+    "mkdocstrings-python",
+    "mkdocs-table-reader-plugin",
+]
 packaging = [
     "build",
     "flake8",
     "coverage",
     "py-make",
     "bump2version",
-    "twine"]
+    "twine",
+]
+test = [
+    "parameterized",
+]
 
 [project.urls]
 Repository="https://github.com/EMOD-Hub/emodpy-workflow"
