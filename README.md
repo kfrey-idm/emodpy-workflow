@@ -273,14 +273,10 @@ parameter_sets = {
 <a id="community"></a>
 # Community
 
-The EMOD Community is made up of researchers and software developers, primarily focused on malaria and HIV research.
-We value mutual respect, openness, and a collaborative spirit. If these values resonate with you, 
-we invite you to join our EMOD Slack Community by completing this form:
-
-https://forms.office.com/r/sjncGvBjvZ
+Please join us in [Discussions](https://github.com/orgs/EMOD-Hub/discussions)
 
 <a id="support"></a>
-# Support and contributions
+# Support and Contributions
 
 The code in this repository was developed by IDM to support our research in disease
 transmission and managing epidemics. We’ve made it publicly available under the MIT
