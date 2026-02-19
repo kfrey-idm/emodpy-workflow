@@ -120,8 +120,6 @@ that meet the following criteria are more likely to be merged:
 .. _Google style docstrings: https://www.sphinx-doc.org/en/master/usage/extensions/example_google.html
 .. _project README: https://github.com/EMOD-Hub/emodpy-workflow/blob/main/README.md
 
-If you have additional questions or comments, contact idmsupport@gatesfoundation.org.
-
 Resources
 =========
 
