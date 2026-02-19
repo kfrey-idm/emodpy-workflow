@@ -24,12 +24,17 @@ included in the following README files:
 
    -  `Project README <https://github.com/EMOD-Hub/emodpy-workflow/blob/main/README.md>`__: Setup and project overview.
 
+Discussions
+===========
+
+Have a comment or a question? Check out our [Discussions space](https://github.com/orgs/EMOD-Hub/discussions).
+
 Contribution types
 ===================
 
 We welcome the following types of contributions:
 
-1. Issues:
+1. [Issues:](https://github.com/EMOD-Hub/issues-and-discussions/issues)
 
     * Bug reports.
     * Feature requests.
@@ -61,7 +66,7 @@ If you notice unexpected behavior or a limitation in emodpy-workflow, follow the
 
 .. _documentation: https://docs.idmod.org/projects/emodpy-workflow/en/latest/
 
-.. _issues: https://github.com/EMOD-Hub/emodpy-workflow/issues
+.. _issues: https://github.com/EMOD-Hub/issues-and-discussions/issues
 
 
 Open a feature request
