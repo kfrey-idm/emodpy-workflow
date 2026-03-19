@@ -5,7 +5,8 @@
 The following is required:
 
 - Windows or Linux (Mac is loosely supported)
-- [Python 3.9.X (3.9.13 or higher) (64-bit)](https://www.python.org/downloads/release/python-3913/)
+- Python 3.13 (but also supports 3.11-3.14)
+- Docker (optional, but required for the Container Platform)
 
 ### Python
 
@@ -15,10 +16,10 @@ To verify you have the correct version, enter the following command:
 python --version
 ```
 
-You should see something similar to the following and it should start with "3.9":
+You should see something similar to the following and it should start with "3.13":
 
 ```doscon
-Python 3.9.19
+Python 3.13.2
 ```
 
 If you do not get that, you may need to provide the full path to the python executable
@@ -68,8 +69,8 @@ The following commands will setup a
 
 ## Install emodpy-workflow:
 
-Use the following command to install emodpy-workflow from IDM's Artifactory:
+Use the following command to install emodpy-workflow from PyPi:
 
 ```
-python -m pip install emodpy-workflow --extra-index-url=https://packages.idmod.org/api/pypi/pypi-production/simple
+python -m pip install emodpy-workflow 
 ```

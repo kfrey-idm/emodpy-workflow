@@ -18,7 +18,7 @@ class MockDemographics(HIVDemographics):
 
 # A very simple function that accepts ANY parameters and sets them on the provided context object, providing that their
 # values are not None.
-def testing_func(demographics, **kwargs):
+def setting_func(demographics, **kwargs):
     for key, value in kwargs.items():
         if key is not None and value is not None:
             setattr(demographics, key, value)
@@ -39,13 +39,13 @@ class TestParameterizedCall(unittest.TestCase):
         self._check_values(obj=self.demographics, check={'a': 1, 'b': 2, 'c': 3, 'd': 4})
 
     def test_no_parameters_to_set_uses_pc_hyperparameter_defaults(self):
-        pcs = [ParameterizedCall(func=testing_func, hyperparameters={'a': 11, 'b': 22})]
+        pcs = [ParameterizedCall(func=setting_func, hyperparameters={'a': 11, 'b': 22})]
         parameters = {}
         _set_parameters(on=self.demographics, parameters_to_set=parameters, parameterized_calls=pcs)
         self._check_values(obj=self.demographics, check={'a': 11, 'b': 22, 'c': 3, 'd': 4})
 
     def test_parameters_to_set_override_everything(self):
-        pcs = [ParameterizedCall(func=testing_func, hyperparameters={'a': 11, 'b': 22, 'c': None, 'd': None})]
+        pcs = [ParameterizedCall(func=setting_func, hyperparameters={'a': 11, 'b': 22, 'c': None, 'd': None})]
         parameters = {'a': 111, 'd': 444}
         _set_parameters(on=self.demographics, parameters_to_set=parameters, parameterized_calls=pcs)
         self._check_values(obj=self.demographics, check={'a': 111, 'b': 22, 'c': 3, 'd': 444})

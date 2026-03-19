@@ -16,8 +16,7 @@ pip install --upgrade pip
 # pip install numpy pandas matplotlib seaborn ipykernel ipywidgets
 
 
-# dev install emodpy-malaria (can be replaced later by pip install emodpy-malaria from jfrog)
-pip install -e . --index-url=https://packages.idmod.org/api/pypi/pypi-production/simple
+# dev install
+pip install -e .
 # install idmtools
-pip install idmtools[full] --index-url=https://packages.idmod.org/api/pypi/pypi-production/simple --upgrade --force-reinstall
-pip install idmtools-test --index-url=https://packages.idmod.org/api/pypi/pypi-production/simple  --upgrade --force-reinstall
+pip install idmtools[full]

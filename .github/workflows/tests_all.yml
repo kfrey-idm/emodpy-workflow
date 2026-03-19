@@ -1,47 +1,48 @@
-name: build test
+name: Run tests
+
 on:
   pull_request:
     branches:
-      - 'main'
-  push:
-    branches-ignore:
-      - 'main'
+      - main
+
+  # Allows manual run from the Actions tab
+  workflow_dispatch:
+
+  # Allows re-use in other workflows
+  workflow_call:
 
 jobs:
-  build_test:
-    runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, '***SKIPBUILD***')"
+  run-tests:
+    name: Run tests
+    runs-on: ${{ matrix.os }}
     strategy:
-      max-parallel: 1
+      max-parallel: 8
       matrix:
-        python-version: [ 3.9 ]
+        os: [ubuntu-latest, windows-latest]
+        python-version: ['3.11', '3.13', '3.14']
     steps:
-      - name: Checkout sources with LFS
-        uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v6
         with:
           lfs: true
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Config github user
-        run: |
-          git config --global user.email "idm_bamboo_user@idmod.org"
-          git config --global user.name "BambooUser-IDM"
-      - uses: actions/setup-python@master
+      - name: Setup python ${{ matrix.python-version }}
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
-          architecture: x64
-      - name: Build and install package
-        uses: ./.github/actions/build-install-package
-        with:
-          pyproject_file: 'pyproject.toml'
-      - name: run unit tests
-        run: python -m unittest discover .
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install .[test]
+      - name: Run tests
+        run: |
+          python3 -m pytest --dist loadfile -v --junitxml="test_results.xml"
         working-directory: ./tests
       - name: run new_frame and available_parameters script
         run:  |
           python -m emodpy_workflow.scripts.new_frame --country Zambia --dest baseline
           python -m emodpy_workflow.scripts.available_parameters -f baseline
         working-directory: ./examples/zambia
-      - name: run scripts.download 
+      - name: run scripts.download
         run:  python -m emodpy_workflow.scripts.download -h
         working-directory: ./examples/zambia
       - name: run scripts.calibrate
@@ -56,6 +57,3 @@ jobs:
       - name: scripts.extend_frame
         run: python -m emodpy_workflow.scripts.extend_frame --source baseline --dest scenario1
         working-directory: ./examples/zambia
-      
-
-

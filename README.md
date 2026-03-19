@@ -29,9 +29,7 @@ emodpy-workflow as it provides standard way of using EMOD-HIV.
 <a id="software-prerequisites"></a>
 ## Software Prerequisites
 
-- This guide assumes Python 3.9.X (3.9.13 or higher) (64-bit) is installed 
-(https://www.python.org/downloads/release/python-3913/) in Windows or Linux and assumes it is custom-installed into 
-C:\Python39 in Windows or /c/Python39 in Linux.  (Downloads:  <a href="https://www.python.org/ftp/python/3.9.13/python-3.9.13-amd64.exe">exe</a>,  <a href="https://www.python.org/ftp/python/3.9.13/Python-3.9.13.tgz">tgz</a>)
+- This guide assumes Python 3.11.X or higher (64-bit) is installed 
 
 - This guide further assumes a Linux-like command terminal is being used for Windows (for example, git bash in Windows), not the
 built-in Windows cmd.
@@ -46,7 +44,7 @@ installation of Python.
 
 ### > Create the virtual environment
 ```
-/c/Python39/python -m venv ~/environments/emodpy-workflow
+python -m venv <path_to_your_venv>/emodpy-workflow
 ```
 
 ### > Activate the virtual environment:
@@ -54,13 +52,13 @@ installation of Python.
 
 #### _Bash in Windows:_
 ```
-source ~/environments/emodpy-workflow/Scripts/activate
+source <path_to_your_venv>/emodpy-workflow/Scripts/activate
 ```
 
 
 #### _In Linux:_
 ```
-source ~/environments/emodpy-workflow/bin/activate
+source <path_to_your_venv>/emodpy-workflow/bin/activate
 ```
 
 ### > Ensure pip is up-to-date:
@@ -71,7 +69,7 @@ python -m pip install pip --upgrade
 <a id="obtain-and-install-emodpy-workflow"></a>
 ## 2. Obtain and install emodpy-workflow:
 ```
-python -m pip install emodpy-workflow --extra-index-url=https://packages.idmod.org/api/pypi/pypi-production/simple
+python -m pip install emodpy-workflow
 ```
 
 ---
