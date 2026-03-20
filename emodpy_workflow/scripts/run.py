@@ -57,7 +57,6 @@ def build_scenario_experiment(platform, samples, experiment_name, frame, suite_i
     experiment = Experiment(name=experiment_name,
                             simulations=TemplatedSimulations(base_task=task, builders={builder}), parent_id=suite_id)
     # doesn't work for now platform.num_cores = frame.num_cores  # TODO: this does set per-exp num_cores in comps (min/max cores is this) BUT it also does it on the sim config (breaks!)
-    platform.create_items(experiment)
     return experiment
 
 
@@ -138,6 +137,7 @@ def main(args):
                 'experiment_name': experiment_name
             }
             # add the experiment directory to the receipt if it exists on the platform
+            suite.add_experiment(experiment)
             try:
                 exp_directory = platform.get_directory(item=experiment)
                 frame_and_experiment_info['experiment_directory'] = exp_directory
@@ -149,7 +149,7 @@ def main(args):
     # https://github.com/InstituteforDiseaseModeling/idmtools/issues/1653
     suite.experiments.extend(experiments)
 
-    platform.run_items(experiments)
+    platform.run_items([suite])
     write_receipt(receipt=receipt, receipt_path=receipt_path)
 
     print('Done with model experiment creation.')

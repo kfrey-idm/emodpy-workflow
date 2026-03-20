@@ -19,7 +19,7 @@ dependencies = [ #pandas and scikit-learn are dependencies of emodpy-hiv, so we 
     "openpyxl==3.0.9",
     "scipy~=1.17",
     "seaborn~=0.13",
-    "urllib3<2.0"
+    "urllib3~=2.6"
 ]
 license = "MIT"
 classifiers=[

@@ -46,7 +46,7 @@ python -m pip install --upgrade pip
 Now, you have an environment where you can install the latest version of emodpy-workflow!!!
 
 ```
-pip install hiv-workflow –extra-index-url=https://packages.idmod.org/api/pypi/pypi-production/simple
+pip install hiv-workflow 
 ```
 
 ### Deactivate a virtual environment
