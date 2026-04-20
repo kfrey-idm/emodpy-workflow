@@ -113,7 +113,6 @@ def main(args):
     # Now generate and run one simulation per sample in each experiment
     # The number of experiments is one per sweep entry (if provided) or one per frame (default with no sweeping)
     suite = make_a_suite(platform=platform, suite_name=args.suite_name)
-    experiments = []
     receipt = []
     for frame_name, frame in frames.items():
         frame.initialize_executable()
@@ -128,7 +127,6 @@ def main(args):
                                                    frame=frame,
                                                    suite_id=suite.id,
                                                    sample_overrides=overrides)
-            experiments.append(experiment)
 
             # generate the receipt data for this experiment
             frame_and_experiment_info = {
@@ -144,11 +142,6 @@ def main(args):
             except AttributeError:
                 pass
             receipt.append({**frame_and_experiment_info, **overrides})
-
-    # Necessary only due to idmtools bug, e.g.,
-    # https://github.com/InstituteforDiseaseModeling/idmtools/issues/1653
-    suite.experiments.extend(experiments)
-
     platform.run_items([suite])
     write_receipt(receipt=receipt, receipt_path=receipt_path)
 
