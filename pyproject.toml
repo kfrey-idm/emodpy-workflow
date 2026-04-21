@@ -27,7 +27,7 @@ classifiers=[
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
         "Programming Language :: Python :: 3.13",
-		"Programming Language :: Python :: 3.14",
+        "Programming Language :: Python :: 3.14",
         "Operating System :: OS Independent",
 ]
 
@@ -35,15 +35,11 @@ classifiers=[
 docs = [
     "mkdocs-material",
     "mkdocs-include-markdown-plugin",
-    "mkdocs-autorefs",
-    "mkdocs-autoapi",
-    "mkdocs-section-index",
-    "python-markdown-math",
-    "pymdown-extensions",
-    "mkdocs-jupyter",
-    "mkdocstrings",
     "mkdocstrings-python",
+    "mkdocs-autoapi",
+    "mkdocs-glightbox",
     "mkdocs-table-reader-plugin",
+    "mkdocs-jupyter",
 ]
 lint = [
     "flake8~=7.3",

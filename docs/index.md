@@ -1,3 +1,7 @@
+---
+title: Home
+---
+
 # Welcome to emodpy-workflow
 
 emodpy-workflow is a collection of commands and interfaces intended to support data-driven
@@ -8,7 +12,7 @@ provides standard way of using EMOD-HIV.
 
 ## Other related documentation
 
-- [emodpy-hiv](emodpy-hiv)
+- [emodpy-hiv][emodpy-hiv]
 - [idmtools][idmtools]
 
 ## Community

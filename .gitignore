@@ -6,3 +6,9 @@ __pycache__
 
 *.log
 env/
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/

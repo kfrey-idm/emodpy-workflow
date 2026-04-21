@@ -1,8 +1,7 @@
 site_name: emodpy-workflow
-site_url: https://emod-hub.github.io/emodpy-workflow/
+site_url: https://emod.idmod.org/emodpy-workflow/
 repo_name: EMOD-Hub/emodpy-workflow
 repo_url: https://github.com/EMOD-Hub/emodpy-workflow/
-edit_uri: tree/main/docs/ # path to the docs folder in your repo
 
 theme:
   name: material
@@ -66,19 +65,19 @@ nav:  # Navigation structure for the documentation
     - tutorials/use_parameterized_calls.md
     - tutorials/sweep_parameter.md
     - tutorials/run_calibration.md
-    #- Get Started: tutorials/intro.ipynb # the topic following index.md sometimes requires an explicit title
-  #- Glossary: glossary.md
-  # API Reference will automatically be generated and added to the TOC
+  - Related projects: https://emod.idmod.org/
 
 plugins:
   - search:
   - autorefs:
   - include-markdown:
-  - table-reader:  # enables rendering of CSV/TSV files as tables
+  - glightbox:
+  - table-reader:
   - mkdocs-jupyter:  # enables Jupyter notebooks to be rendered
       execute: true
       allow_errors: false  # set to true to continue executing cells even if one fails
       include_source: true
+  - mkdocstrings:
 
 markdown_extensions:
   - admonition:
@@ -136,8 +135,6 @@ extra:
       link: http://www.youtube.com/@institutefordiseasemodelin1987
     - icon: fontawesome/brands/linkedin
       link: https://linkedin.com/company/institute-disease-modeling
-    - icon: fontawesome/brands/slack
-      link: https://gatesfoundation.enterprise.slack.com/
   analytics:
     provider: custom
     property: GTM-NK4K647
