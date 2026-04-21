@@ -1,5 +1,4 @@
 # TODO: refactor/rename this file as the custom parameter API.
-from inspect import getfullargspec
 from typing import Callable, List, Dict, Any
 
 from emodpy_hiv.parameterized_call import ParameterizedCall

@@ -13,16 +13,15 @@ from idmtools.entities.templated_simulation import TemplatedSimulations
 from idmtools_calibra.utilities.mod_fn import ModFn
 from idmtools_calibra.utilities.parameter_set import ParameterSet, NaNDetectedError
 
-
-DOLPHIN = '''
+DOLPHIN = r'''
                                   _
                              _.-~~.)
-       _.--~~~~~---....__  .' . .,' 
+       _.--~~~~~---....__  .' . .,'
      ,'. . . . . . . . . .~- ._ (
     ( .. .g. . . . . . . . . . .~-._
- .~__.-~    ~`. . . . . . . . . . . -. 
- `----..._      ~-=~~-. . . . . . . . ~-.  
-           ~-._   `-._ ~=_~~--. . . . . .~.  
+ .~__.-~    ~`. . . . . . . . . . . -.
+ `----..._      ~-=~~-. . . . . . . . ~-.
+           ~-._   `-._ ~=_~~--. . . . . .~.
             | .~-.._  ~--._-.    ~-. . . . ~-.
              \ .(   ~~--.._~'       `. . . . .~-.                ,
               `._\         ~~--.._    `. . . . . ~-.    .- .   ,'/
@@ -31,7 +30,7 @@ DOLPHIN = '''
      - . -~            -. _ . - ~ - _   - ~     ~--..__~ _,. /   \  -
              . __ ..                   ~-               ~~_. (  `
   _ _               `-       ..  - .    . - ~ ~ .    \    ~-` ` `  `.
-                                               - .  `  .   \  \ `. 
+                                               - .  `  .   \  \ `.
 '''
 
 
@@ -180,7 +179,7 @@ def parse_args():
                         help='Directory to write receipt to (always) and scenario output files '
                              '(if downloading).')
     parser.add_argument('-p', '--platform', dest='platform', type=str, required=True,
-                        help=f"Platform to run simulations on (Required).")
+                        help="Platform to run simulations on (Required).")
     parser.add_argument('-w', '--sweep', dest='sweep', type=str, default=None,
                         help='Python module to load with a sweep definition to generate extra experiments with '
                              '(Default: no sweeping).')

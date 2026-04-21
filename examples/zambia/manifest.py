@@ -40,13 +40,10 @@ executable_path = os.path.join(manifest_dir, bin_dir, 'Eradication')
 schema_path = os.path.join(manifest_dir, bin_dir, 'schema.json')
 
 # COMPS
-# asset_collection_of_container = os.path.join(manifest_dir, bin_dir, 'dtk_centos_p39.id')
-
-# COMPS2
-# asset_collection_of_container = os.path.join(manifest_dir, bin_dir, "rocky_dtk_runner_py39.sif")
+# asset_collection_of_container = os.path.join(manifest_dir, bin_dir, 'comps_sif_asset_ubuntu.id')
 
 # SLURM cluster
-# asset_collection_of_container = "/gpfs/data/bershteynlab/EMOD/singularity_images/centos_dtk-build.sif"
+# asset_collection_of_container = "/gpfs/data/bershteynlab/EMOD/singularity_images/???.sif"
 
 # Otherwise/ContainerPlatform
 asset_collection_of_container = None

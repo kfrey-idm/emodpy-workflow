@@ -3,7 +3,7 @@
 
 from typing import List
 
-from emodpy_hiv.countries import {country} as country_model
+from emodpy_hiv.countries import {country} as country_model # noqa: E999
 from emodpy_hiv.demographics.hiv_demographics import HIVDemographics
 from emodpy_hiv.parameterized_call import ParameterizedCall
 

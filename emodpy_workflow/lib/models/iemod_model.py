@@ -2,11 +2,7 @@ import os
 from types import ModuleType
 from typing import List, Callable, Dict, Any, Union
 
-from idmtools.entities.itask import ITask
-
 from emodpy.emod_task import EMODTask
-from idmtools.assets import Asset
-from idmtools.assets.asset_collection import AssetCollection
 
 from emodpy_workflow.lib.models.imodel import IModel
 from emodpy_workflow.lib.utils.builders.general import build_parameterized_object
@@ -122,5 +118,3 @@ class IEMODModel(IModel):
                                               parameterized_calls=self.campaign_parameterizer(campaign=initialized_campaign),
                                               obj=initialized_campaign)
         return campaign
-
-

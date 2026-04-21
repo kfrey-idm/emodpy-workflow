@@ -6,7 +6,7 @@ from typing import List
 from emodpy_hiv.demographics.hiv_demographics import HIVDemographics
 from emodpy_hiv.parameterized_call import ParameterizedCall
 
-from .. import {source_frame} as source_frame
+from .. import {source_frame} as source_frame  # noqa: E999
 
 
 def initialize_demographics(manifest):

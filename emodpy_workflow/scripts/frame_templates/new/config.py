@@ -5,7 +5,7 @@ from typing import List
 
 from emod_api.schema_to_class import ReadOnlyDict
 from emodpy.reporters.base import ReportFilter
-from emodpy_hiv.countries import {country} as country_model
+from emodpy_hiv.countries import {country} as country_model # noqa: E999
 from emodpy_hiv.parameterized_call import ParameterizedCall
 from emodpy_hiv.reporters.reporters import Reporters, ReportHIVByAgeAndGender
 

@@ -7,7 +7,7 @@ from emod_api.schema_to_class import ReadOnlyDict
 from emodpy_hiv.parameterized_call import ParameterizedCall
 from emodpy_hiv.reporters.reporters import Reporters
 
-from .. import {source_frame} as source_frame
+from .. import {source_frame} as source_frame  # noqa: E999
 
 
 def initialize_config(manifest):

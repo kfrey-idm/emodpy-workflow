@@ -2,13 +2,20 @@ from emodpy_workflow.lib.analysis.age_bin import AgeBin
 from emodpy_workflow.lib.analysis.population_obs import PopulationObs
 
 
-class InvalidDateException(Exception): pass
-class InvalidAgeBinException(Exception): pass
-class InvalidDataframeColumnException(Exception): pass
+class InvalidDateException(Exception): pass # noqa: E701
+class InvalidAgeBinException(Exception): pass # noqa: E701
+class InvalidDataframeColumnException(Exception): pass # noqa: E701
 
 
-def model_population_in_year(year, obs_population: int, df, low_age: float=None, high_age:float=None, age_bin=None,
-                             year_col='Year', population_col='Population', verbose=False) -> (int, float):
+def model_population_in_year(year,
+                             obs_population: int,
+                             df,
+                             low_age: float = None,
+                             high_age: float = None,
+                             age_bin=None,
+                             year_col='Year',
+                             population_col='Population',
+                             verbose=False) -> (int, float):
     """
 
     Args:
@@ -50,11 +57,11 @@ def model_population_in_year(year, obs_population: int, df, low_age: float=None,
         age_col = 'Age'
         df = df[[year_col, age_col, population_col, node_column]]
         df = df.ix[
-            (df[year_col] == year) &
-            (df[age_col] >= low_age) &
-            (df[age_col] < high_age) &
+            (df[year_col] == year) &             # noqa: W504
+            (df[age_col] >= low_age) &           # noqa: W504
+            (df[age_col] < high_age) &           # noqa: W504
             (df[node_column] != node_agg_value)
-            ]
+        ]
     elif 'AgeBin' in df.columns:
         age_bin = str(AgeBin(start=low_age, end=high_age))
         age_bins = list(df['AgeBin'].unique())
@@ -64,10 +71,10 @@ def model_population_in_year(year, obs_population: int, df, low_age: float=None,
         age_col = 'AgeBin'
         df = df[[year_col, age_col, population_col, node_column]]
         df = df.loc[
-            (df[year_col] == year) &
-            (df[age_col] == age_bin) &
+            (df[year_col] == year) &            # noqa: W504
+            (df[age_col] == age_bin) &          # noqa: W504
             (df[node_column] != node_agg_value)
-            ]
+        ]
     else:
         raise InvalidDataframeColumnException('No known age column in dataframe. Must have Age or AgeBin.')
 

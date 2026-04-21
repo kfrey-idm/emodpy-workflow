@@ -12,9 +12,9 @@ from emodpy_workflow.lib.analysis.condition import Condition
 
 class DataFrameWrapper:
 
-    class UnsupportedFileType(Exception): pass
-    class MissingRequiredData(Exception): pass
-    class InconsistentStratification(Exception): pass
+    class UnsupportedFileType(Exception): pass # noqa: E701
+    class MissingRequiredData(Exception): pass # noqa: E701
+    class InconsistentStratification(Exception): pass # noqa: E701
 
     CSV = 'csv'
 
@@ -64,7 +64,7 @@ class DataFrameWrapper:
                 e.g. ['min_age', operator.ge, 25] (to select rows where 'min_age' is >= 25)
         :param keep_only: If not None, then is a list of data channels to keep (in addition to stratifiers)
                 after filtering. Rows with any NaN values will be dropped after trimming to these channels.
-        
+
         :return: an object of the same type as the object this method is called on with only selected rows remaining.
         """
         # conditions: e.g. [ ['min_age', operator.ge, 20]  ]
@@ -95,12 +95,12 @@ class DataFrameWrapper:
     def merge(self, other_dfw, index, keep_only=None):
         """
         Attempts to merge two DataFrameWrapper objects into one using the provided index list as a multi-index.
-        
+
         :param other_dfw: the DataFrameWrapper object to merge with.
         :param index: a list of columns to merge on. All are required in both DataFrameWrapper objects.
         :param keep_only: a list of columns. Triggers removal of result rows where NaN appears in any of these specified
             columns. Result will contain these columns AND those from provided index.
-        
+
         :return: A newly created, merged object of the exact type of self and the stratifiers equal to the provided
             index.
         """
@@ -110,7 +110,7 @@ class DataFrameWrapper:
         # we technically need the 'keep_only' items, too, but that is more complicated due to the merge
         self.verify_required_items(needed=index)
         other_dfw.verify_required_items(needed=index)
-        
+
         this_df = self._dataframe.set_index(index)
         other_df = other_dfw._dataframe.set_index(index)
         merged_df = pd.merge(this_df, other_df, left_index=True, right_index=True)

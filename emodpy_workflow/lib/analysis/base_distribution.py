@@ -12,7 +12,7 @@ from emodpy_workflow.lib.analysis.data_frame_wrapper import DataFrameWrapper
 
 class BaseDistribution(object, metaclass=ABCMeta):
 
-    class UnknownDistributionException(Exception): pass
+    class UnknownDistributionException(Exception): pass # noqa: E701
 
     LOG_FLOAT_TINY = np.log(np.finfo(float).tiny)
 

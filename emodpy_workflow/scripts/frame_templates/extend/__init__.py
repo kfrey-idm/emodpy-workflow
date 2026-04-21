@@ -4,11 +4,11 @@
 from emodpy_workflow.lib.models.emod_hiv import EMOD_HIV
 from emodpy_workflow.lib.utils.runtime import load_manifest
 
-manifest = load_manifest()
-
 from . import config
 from . import demographics
 from . import campaign
+
+manifest = load_manifest()
 
 model = EMOD_HIV(
     manifest=manifest,

@@ -7,7 +7,7 @@ import emod_api
 import emod_api.campaign as campaign
 from emodpy_hiv.parameterized_call import ParameterizedCall
 
-from .. import {source_frame} as source_frame
+from .. import {source_frame} as source_frame  # noqa: E999
 
 
 def initialize_campaign(manifest) -> emod_api.campaign:

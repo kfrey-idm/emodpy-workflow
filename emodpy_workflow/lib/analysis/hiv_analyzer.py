@@ -16,9 +16,9 @@ logger = logging.getLogger(__name__)
 
 
 class HIVAnalyzer(BaseCalibrationAnalyzer):
-    class ProvincialityException(Exception): pass
-    class MissingDataException(Exception): pass
-    class InvalidSiteException(Exception): pass
+    class ProvincialityException(Exception): pass # noqa: E701
+    class MissingDataException(Exception): pass # noqa: E701
+    class InvalidSiteException(Exception): pass # noqa: E701
 
     SIM_RESULT_CHANNEL = 'Result'
     log_float_tiny = np.log(np.finfo(float).tiny)
@@ -87,7 +87,7 @@ class HIVAnalyzer(BaseCalibrationAnalyzer):
                                               stratifiers=self.reference.stratifiers)
         if self.reference._dataframe.empty:
             raise self.MissingDataException(f"Missing reference data in ingest form for channel: {channel}, "
-                                             f"provinciality: {provinciality}, ang_bins:  {age_bins_str}.")
+                                            f"provinciality: {provinciality}, ang_bins:  {age_bins_str}.")
 
     def _trim_df(self, df):
         # keep only provincial or non-provincial/agg data, not both, depending on request
@@ -129,10 +129,10 @@ class HIVAnalyzer(BaseCalibrationAnalyzer):
         missing_tuples = self.reference.find_missing_tuples(sim_dfw, value_column_base=self.channel.name,
                                                             value_column_target=self.SIM_RESULT_CHANNEL)
         if missing_tuples:
-            raise self.MissingDataException("\n\n[%s] Missing some reference data in simulation output."%self.uid)
-                                            # "\nThe following tuples are missing in the simulation data for the chanel {}:"
-                                            # "\n\n{}".format(self.uid, self.channel.name, tabulate(missing_tuples, headers=self.reference.stratifiers))
-                                            # )
+            raise self.MissingDataException("\n\n[%s] Missing some reference data in simulation output." % self.uid)
+            # "\nThe following tuples are missing in the simulation data for the chanel {}:"
+            # "\n\n{}".format(self.uid, self.channel.name, tabulate(missing_tuples, headers=self.reference.stratifiers))
+            # )
 
         merged._dataframe.index.name = 'Index'
         result = {
@@ -230,19 +230,20 @@ class HIVAnalyzer(BaseCalibrationAnalyzer):
         else:
             raise Exception('dict (per-node) reference population not currently supported. '
                             'Please ask for a developer for assistance.')
-            assert(isinstance(self.reference_population, dict))
-            pop_df = pop_df.reset_index(drop=True).set_index('Node')
-            pop_df.rename(self.node_map, inplace=True)
-            pop_df = pop_df.reset_index().groupby(['Year', 'Node']).sum().loc[self.reference_year]
-            ref = pd.DataFrame({'Reference': self.reference_population})
-            pop_scaling_factor = ref['Reference']/pop_df['Result']
-            if self.verbose:
-                print('Progress: %d of %d (%.1f%%).  Pop scaling is provincially weighted from %.2f to %.2f.' %
-                      (len(self.sim_ids)-num_outstanding,
-                       len(self.sim_ids),
-                       100*(len(self.sim_ids)-num_outstanding) / float(len(self.sim_ids)),
-                       pop_scaling_factor.min(),
-                       pop_scaling_factor.max()))
+            assert isinstance(self.reference_population, dict)
+
+            # pop_df = pop_df.reset_index(drop=True).set_index('Node')
+            # pop_df.rename(self.node_map, inplace=True)
+            # pop_df = pop_df.reset_index().groupby(['Year', 'Node']).sum().loc[self.reference_year]
+            # ref = pd.DataFrame({'Reference': self.reference_population})
+            # pop_scaling_factor = ref['Reference'] / pop_df['Result']
+            # if self.verbose:
+            #     print('Progress: %d of %d (%.1f%%).  Pop scaling is provincially weighted from %.2f to %.2f.' %
+            #           (len(self.sim_ids) - num_outstanding,
+            #            len(self.sim_ids),
+            #            100 * (len(self.sim_ids) - num_outstanding) / float(len(self.sim_ids)),
+            #            pop_scaling_factor.min(),
+            #            pop_scaling_factor.max()))
 
             for prov, pop_df in pop_scaling_factor.items():
                 if prov in self.ps_ave:

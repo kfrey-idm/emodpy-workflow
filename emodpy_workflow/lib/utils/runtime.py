@@ -95,11 +95,11 @@ def compute_num_cores(max_memory_mb: int) -> int:
     Returns: number of cores to request
     """
     from math import ceil
-    return ceil(max_memory_mb/8000)
+    return ceil(max_memory_mb / 8000)
 
 
 def get_embedded_python_paths(pre_processing_path: str = None, in_processing_path: str = None,
-                             post_processing_path: str = None) -> List[str]:
+                              post_processing_path: str = None) -> List[str]:
     """
     Adds EMOD python pre/in/post-processing file(s) to the given task as assets and makes sure embedded python
     is turned off if none are given (it currently defaults to on).
@@ -199,7 +199,7 @@ def map_sample_to_model_input(simulation: Simulation, sample: dict, config_build
     simulation.task.handle_implicit_configs()
 
     if verbose:
-        print('>'*80)
+        print('>' * 80)
         print(f"Total parameter access counts:\n{sample.access_count}")
         # print(f"Sample: {sample}")
     for k in sample.keys():
@@ -208,7 +208,7 @@ def map_sample_to_model_input(simulation: Simulation, sample: dict, config_build
             print(f"WARNING: parameter: {k} was accessed {access_count} times.")
         elif access_count == 0:
             raise UnusedParameterException(f"Parameter: {k} is not used by the specified frame.")
-    print('<'*80)
+    print('<' * 80)
     return tags
 
 
@@ -345,7 +345,7 @@ def detect_duplicate_items_in(items: Iterable) -> List:
 
 def load_manifest() -> ModuleType:
     try:
-        return importlib.import_module(f'manifest')
+        return importlib.import_module('manifest')
     except ModuleNotFoundError:
         print(f"\n{os.path.basename(__file__)} must be run from a project version directory.\n")
         exit()

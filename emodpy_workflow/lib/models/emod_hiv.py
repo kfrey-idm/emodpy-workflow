@@ -35,12 +35,12 @@ class EMOD_HIV(IEMODModel):
                 add_post_channel_config_as_asset(task=task, channels=channels, reference_data=reference_data, site_info=site_info)
 
             embedded_python_paths = get_embedded_python_paths(pre_processing_path=pre_processing_path,
-                                                                in_processing_path=in_processing_path,
-                                                                post_processing_path=post_processing_path)
+                                                              in_processing_path=in_processing_path,
+                                                              post_processing_path=post_processing_path)
         else:
             post_processing_config_file_setter = None
             embedded_python_paths = get_embedded_python_paths(pre_processing_path=pre_processing_path,
-                                                                in_processing_path=in_processing_path)
+                                                              in_processing_path=in_processing_path)
         return embedded_python_paths, post_processing_config_file_setter
 
     @staticmethod

@@ -16,16 +16,16 @@ from emodpy_workflow.lib.analysis.population_obs import PopulationObs
 from emodpy_workflow.lib.utils.io import excel
 
 
-class UnsupportedFileFormat(Exception): pass
-class MissingRequiredWorksheet(Exception): pass
-class IncompleteParameterSpecification(Exception): pass
-class IncompleteAnalyzerSpecification(Exception): pass
-class IncompleteDataSpecification(Exception): pass
-class ParameterOutOfRange(Exception): pass
-class InvalidAnalyzerWeight(Exception): pass
-class AnalyzerSheetException(Exception): pass
-class SiteNodeMappingException(Exception): pass
-class ObsMetadataException(Exception): pass
+class UnsupportedFileFormat(Exception): pass # noqa: E701
+class MissingRequiredWorksheet(Exception): pass # noqa: E701
+class IncompleteParameterSpecification(Exception): pass # noqa: E701
+class IncompleteAnalyzerSpecification(Exception): pass # noqa: E701
+class IncompleteDataSpecification(Exception): pass # noqa: E701
+class ParameterOutOfRange(Exception): pass # noqa: E701
+class InvalidAnalyzerWeight(Exception): pass # noqa: E701
+class AnalyzerSheetException(Exception): pass # noqa: E701
+class SiteNodeMappingException(Exception): pass # noqa: E701
+class ObsMetadataException(Exception): pass # noqa: E701
 
 
 EMPTY = [None, '', '--select--']  # not sure if this could be something else

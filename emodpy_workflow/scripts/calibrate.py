@@ -67,7 +67,7 @@ def parse_args():
     parser = argparse.ArgumentParser()
 
     parser.add_argument('-f', '--frame', dest='frame', type=str, required=True,
-                        help=f"Model frame name to calibrate (directory of python input builders). Required.")
+                        help="Model frame name to calibrate (directory of python input builders). Required.")
     parser.add_argument('-N', '--name', dest='calibration_name', type=str, default=DEFAULTS['calibration_name'],
                         help=f"Name of calibration (Default: {DEFAULTS['calibration_name']})")
     parser.add_argument('-n', '--nsamples', dest='n_samples', type=int, default=DEFAULTS['n_samples'],
@@ -81,7 +81,7 @@ def parse_args():
     parser.add_argument('-o', '--output', dest='output', type=str, default=DEFAULTS['output'],
                         help=f"Directory to put calibration directory inside of (Default: {DEFAULTS['output']})")
     parser.add_argument('-p', '--platform', dest='platform', type=str, required=True,
-                        help=f"Platform to run calibration on (Required).")
+                        help="Platform to run calibration on (Required).")
 
     # and now the subparsers for the available next-point algorithms
     subparsers = parser.add_subparsers(dest='selected_algorithm')

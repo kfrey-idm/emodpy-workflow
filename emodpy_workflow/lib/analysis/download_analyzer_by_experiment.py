@@ -54,7 +54,7 @@ class DownloadAnalyzerByExperiment(IAnalyzer):
             with open(file_path, 'wb') as outfile:
                 try:
                     outfile.write(data[source_filename])
-                except Exception as e:
+                except Exception:
                     print(f"Could not write the file {source_filename} for simulation {item.id}")
             file_paths.append(file_path)
         return file_paths  # returning file_paths written out so reduce() can report them to the caller

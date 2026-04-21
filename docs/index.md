@@ -8,18 +8,15 @@ provides standard way of using EMOD-HIV.
 
 ## Other related documentation
 
-- [emodpy-hiv]()
-- [EMOD-HIV][emodpy-hiv]
+- [emodpy-hiv](emodpy-hiv)
 - [idmtools][idmtools]
 
 ## Community
 
 The EMOD community is made up of researchers and software developers, primarily focused on
 malaria and HIV research. We value mutual respect, openness, and a collaborative spirit.
-If these values resonate with you, we invite you to join our EMOD Slack community by
-completing this form:
 
-[https://forms.office.com/r/sjncGvBjvZ](https://forms.office.com/r/sjncGvBjvZ)
+Have a question or a comment? Check out our [Discussions](https://github.com/EMOD-Hub/issues-and-discussions) space.
 
 ## Support and contributions
 
@@ -34,8 +31,6 @@ modeling needs as contemplated under the MIT License.
 If you have feature requests, issues, or new code, please see our
 [CONTRIBUTING](https://github.com/EMOD-Hub/emodpy-workflow/blob/main/CONTRIBUTING.rst) page
 for how to provide your feedback.
-
-Questions or comments can be directed to [idmsupport@gatesfoundation.org](<mailto:idmsupport@gatesfoundation.org>).
 
 ## Disclaimer
 

@@ -77,7 +77,10 @@ class PopulationObs(DataFrameWrapper):
         self.derived_items += new_channels
         return new_channels
 
-    def find_missing_tuples(self, target:object, value_column_base:str, value_column_target:str=None) -> Optional[List[tuple]]:
+    def find_missing_tuples(self,
+                            target: object,
+                            value_column_base: str,
+                            value_column_target: str = None) -> Optional[List[tuple]]:
         """
         Finds the missing tuples in the target based on the startifiers and a column containing value.
         Args:
@@ -110,5 +113,3 @@ class PopulationObs(DataFrameWrapper):
 
         # We had missing ones
         return [tuple(x) for x in left_only[self.stratifiers].values]
-
-

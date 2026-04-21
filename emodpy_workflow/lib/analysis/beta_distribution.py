@@ -8,8 +8,8 @@ from emodpy_workflow.lib.analysis.base_distribution import BaseDistribution
 
 
 class BetaDistribution(BaseDistribution):
-    class InvalidEffectiveCountException(Exception): pass
-    class InvalidCountChannelException(Exception): pass
+    class InvalidEffectiveCountException(Exception): pass # noqa: E701
+    class InvalidCountChannelException(Exception): pass # noqa: E701
 
     COUNT_CHANNEL = 'effective_count'
     UNCERTAINTY_CHANNEL = COUNT_CHANNEL  # ugly, but prevents code refactor of things using COUNT_CHANNEL. And
@@ -21,8 +21,8 @@ class BetaDistribution(BaseDistribution):
         # help people correct their old habits; 'Count' has been replaced with 'effective_count'
         if 'Count' in (dfw.stratifiers + dfw.channels):
             raise self.InvalidCountChannelException('Count is no longer used as a channel. '
-                                             'Add %s to the additional columns list in your ingest form instead.' %
-                                             self.COUNT_CHANNEL)
+                                                    'Add %s to the additional columns list in your ingest form instead.' %
+                                                    self.COUNT_CHANNEL)
 
         # First verify that the data row counts are set properly (all > 0)
         try:
@@ -35,7 +35,7 @@ class BetaDistribution(BaseDistribution):
                                                       self.COUNT_CHANNEL)
 
         # filter before adding beta params to make sure to not alter the input dfw parameter object
-        channels_to_keep = [channel, self.COUNT_CHANNEL]+additional_keep
+        channels_to_keep = [channel, self.COUNT_CHANNEL] + additional_keep
         channels_to_keep = channels_to_keep + [weight_channel] if weight_channel is not None else channels_to_keep
         dfw = dfw.filter(keep_only=channels_to_keep)
         self.alpha_channel, self.beta_channel = self.add_beta_parameters(dfw=dfw, channel=channel)
@@ -50,8 +50,8 @@ class BetaDistribution(BaseDistribution):
         # This is what we're calculating:
         # BETA(output_i | alpha=alpha(Data), beta = beta(Data) )
         betaln = np.multiply((a - 1), np.log(x)) \
-                 + np.multiply((b - 1), np.log(1 - x)) \
-                 - (gammaln(a) + gammaln(b) - gammaln(a + b))
+               + np.multiply((b - 1), np.log(1 - x)) \
+               - (gammaln(a) + gammaln(b) - gammaln(a + b)) # noqa: E127
 
         # Replace -inf with log(machine tiny)
         betaln[np.isinf(betaln)] = self.LOG_FLOAT_TINY
@@ -132,5 +132,3 @@ class BetaDistribution(BaseDistribution):
             beta = 1 + (1 - dfw._dataframe[channel]) * dfw._dataframe[BetaDistribution.COUNT_CHANNEL]
             dfw._dataframe = dfw._dataframe.join(pd.DataFrame({alpha_channel: alpha, beta_channel: beta}))
         return new_channels
-
-

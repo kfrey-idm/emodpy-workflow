@@ -49,8 +49,8 @@ if __name__ == '__main__':
     print(f"d['b'] = {d['b']}")
     try:
         d['c']
-    except KeyError as e:
-        print(f"No such key d['c'], as expected")
+    except KeyError:
+        print("No such key d['c'], as expected")
 
     # get() access tests
     print('--- .get() tests')
@@ -66,13 +66,13 @@ if __name__ == '__main__':
     print(f"d.pop('a') = {d.pop('a')}")
     try:
         d.pop('a')
-    except KeyError as e:
-        print(f"No such key d.pop('a'), as expected")
+    except KeyError:
+        print("No such key d.pop('a'), as expected")
     print(f"d.get('a') = {d.get('a')}")
     try:
         d['a']
-    except KeyError as e:
-        print(f"No such key d['a'], as expected")
+    except KeyError:
+        print("No such key d['a'], as expected")
 
     print("d['a'] = 1")
     d['a'] = 1
@@ -81,7 +81,7 @@ if __name__ == '__main__':
     print(f"d.get('a') = {d.get('a')}")
     try:
         d['a']
-    except KeyError as e:
-        print(f"No such key d['a'], as expected")
+    except KeyError:
+        print("No such key d['a'], as expected")
 
     print(f"All access counts: {d.access_count}")

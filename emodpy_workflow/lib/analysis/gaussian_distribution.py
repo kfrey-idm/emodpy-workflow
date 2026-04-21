@@ -8,7 +8,7 @@ from emodpy_workflow.lib.analysis.base_distribution import BaseDistribution
 
 
 class GaussianDistribution(BaseDistribution):
-    class InvalidUncertaintyException(Exception): pass
+    class InvalidUncertaintyException(Exception): pass # noqa: E701
 
     UNCERTAINTY_CHANNEL = 'two_sigma'
 
@@ -24,7 +24,7 @@ class GaussianDistribution(BaseDistribution):
             raise self.InvalidUncertaintyException('All %s values must be present and positive (>0) for gaussian distributions.' %
                                                    self.UNCERTAINTY_CHANNEL)
 
-        channels_to_keep = [channel, self.UNCERTAINTY_CHANNEL]+additional_keep
+        channels_to_keep = [channel, self.UNCERTAINTY_CHANNEL] + additional_keep
         channels_to_keep = channels_to_keep + [weight_channel] if weight_channel is not None else channels_to_keep
         dfw = dfw.filter(keep_only=channels_to_keep)
         self.additional_channels.append(self.UNCERTAINTY_CHANNEL)
@@ -63,8 +63,8 @@ class GaussianDistribution(BaseDistribution):
         raw_data_variance = np.divide(two_sigma, 1.96)**2
 
         log_of_gaussian = - log_root_2pi -\
-                          np.multiply(0.5, np.log(raw_data_variance)) -\
-                          np.divide(np.multiply(0.5, ((sim_data - raw_data)**2)), raw_data_variance)
+            np.multiply(0.5, np.log(raw_data_variance)) -\
+            np.divide(np.multiply(0.5, ((sim_data - raw_data)**2)), raw_data_variance)
 
         # add likelihood columns to df
         df_sample_PA = df.copy()

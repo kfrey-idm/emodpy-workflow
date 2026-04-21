@@ -44,7 +44,7 @@ class DefinedName(object):
 
         self.name = self.opdr.name
         self.sheet, self.cells = self.opdr.attr_text.split('!')
-        self.scope = 'workbook' if self.opdr.localSheetId is None else self.sheet.replace('\'','')
+        self.scope = 'workbook' if self.opdr.localSheetId is None else self.sheet.replace('\'', '')
 
     @classmethod
     def load_from_workbook(cls, wb):

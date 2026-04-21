@@ -46,7 +46,7 @@ def timing(f, message):
     result = f()
     t_end = time.time()
     if message is not None:
-        print('{0:>10f}'.format(t_end-t_start))
+        print('{0:>10f}'.format(t_end - t_start))
 
     return result
 
@@ -78,7 +78,7 @@ def get_reports(data):
     channels_ref = list(ref_config.keys())
 
     channels_not_supported = list(set(channels_ref) - set(channels_supported))
-    if(len(channels_not_supported)) > 0:
+    if (len(channels_not_supported)) > 0:
         raise UndefinedChannelException('No definition for how to post-process channel: %s' % channels_not_supported[0])
 
     # add details for each channel
@@ -116,7 +116,7 @@ def get_reports(data):
     if channel in channels_ref:
         entry = {'Name': channel,
                  'Type': 'Prevalence',
-                 'Year': set([x + 0.5 for x in range(2000,   last_prevalence_year)] + get_year(channel=channel)),
+                 'Year': set([x + 0.5 for x in range(2000, last_prevalence_year)] + get_year(channel=channel)),
                  'AgeBins': get_age_bin(channel=channel),
                  'Gender': get_gender(channel=channel),
                  'ByNode': 'Both',

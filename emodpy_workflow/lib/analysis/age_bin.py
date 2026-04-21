@@ -3,12 +3,12 @@ import re
 
 class AgeBin:
 
-    class InvalidAgeBinFormat(Exception): pass
-    class NotMergeable(Exception): pass
+    class InvalidAgeBinFormat(Exception): pass # noqa: E701
+    class NotMergeable(Exception): pass # noqa: E701
 
     STR_FORMAT = '[%s%s%s)'
     # e.g. [15, 49) -> [(15)(, )(49))  delimiter must contain no numeric characters or '.'
-    SPLIT_REGEX = re.compile('^\[(?P<start>[0-9.]+)(?P<delimiter>[^0-9.]+)(?P<end>[0-9.]+)\)$')
+    SPLIT_REGEX = re.compile(r'^\[(?P<start>[0-9.]+)(?P<delimiter>[^0-9.]+)(?P<end>[0-9.]+)\)$')
     DEFAULT_DELIMITER = ':'
     ALL = 'all'
 
@@ -69,8 +69,8 @@ class AgeBin:
     def from_string(cls, str):
         try:
             start, delimiter, end = cls._split_string(str=str)
-        except (KeyError, IndexError, TypeError) as e:
-            example = cls(15,49)
+        except (KeyError, IndexError, TypeError):
+            example = cls(15, 49)
             raise cls.InvalidAgeBinFormat('Required AgeBin format is e.g.: %s' % example)
         return cls(start=start, end=end, delimiter=delimiter)
 
@@ -100,7 +100,7 @@ class AgeBin:
         # merge what is left over to see if it matches target_bin
         try:
             merged_bin = cls.merge_bins(bins)
-        except cls.NotMergeable as e:
+        except cls.NotMergeable:
             return False
 
         return True if merged_bin == target_bin else False

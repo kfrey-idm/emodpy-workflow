@@ -354,9 +354,9 @@ def main(args):
     downloaded_filepaths = download(args=dl_args)
 
     # identify the selected channel and (if downloaded) Population data files
-    regex = re.compile(f"^{channel.name}.*\.csv$")
+    regex = re.compile(rf"^{channel.name}.*\.csv$")
     result_filenames = sorted([fn for fn in downloaded_filepaths if regex.match(Path(fn).name)])
-    regex = re.compile(f"^Population.*\.csv$")
+    regex = re.compile(r"^Population.*\.csv$")
     population_filenames = sorted([fn for fn in downloaded_filepaths if regex.match(Path(fn).name)])
     if len(result_filenames) == 0:
         raise Exception(f"No simulation files were downloaded. Is the provided samples file empty?: "
@@ -408,7 +408,7 @@ def parse_args():
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument('-f', '--frame', dest='frame', type=str, required=True,
-                        help=f"Model frame name to calibration referenced data from. Required.")
+                        help="Model frame name to calibration referenced data from. Required.")
     parser.add_argument('-s', '--samples', dest='samples_file', type=str, # default=DEFAULTS['samples_file'],
                         help='Resampled parameter sets csv file of simulations to plot '
                              '(Mutually exclusive with --exp-id).')
@@ -423,7 +423,7 @@ def parse_args():
     parser.add_argument('-o', '--output-dir', dest='output_dir', default=DEFAULTS['output_dir'],
                         help=f"Directory to download simulation data and write plotting images to (Default: {DEFAULTS['output_dir']}).")
     parser.add_argument('-p', '--platform', dest='platform', type=str, required=True,
-                        help=f"Platform to obtain simulation data from (Required).")
+                        help="Platform to obtain simulation data from (Required).")
     parser.add_argument('--start_year', dest='start_year', type=float, default=DEFAULTS['start_year'],
                         help='Plot data starting at this inclusive year (Default: beginning of all data).')
     parser.add_argument('--end_year', dest='end_year', type=float, default=DEFAULTS['end_year'],
@@ -440,7 +440,7 @@ def parse_args():
 
 def validate_args(args):
     if not ((args.experiment_id is not None) ^ (args.samples_file is not None)):
-        raise Exception(f"Must provide an experiment_id (--exp-id) or a samples file (-s) but not both.")
+        raise Exception("Must provide an experiment_id (--exp-id) or a samples file (-s) but not both.")
 
 
 if __name__ == '__main__':

@@ -39,4 +39,3 @@ def generate_map_sample_to_model_input_wrapper(config_builder: Callable, campaig
 
 def constrain_sample_wrapper(custom_sample_constrainer: Callable) -> Callable:
     return partial(constrain_sample, custom_sample_constrainer=custom_sample_constrainer)
-

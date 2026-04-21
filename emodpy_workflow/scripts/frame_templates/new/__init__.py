@@ -4,14 +4,14 @@
 from emodpy_workflow.lib.models.emod_hiv import EMOD_HIV
 from emodpy_workflow.lib.utils.runtime import load_manifest
 
-# The manifest contains input file pathing information for the project
-manifest = load_manifest()
-
 # EMOD contains three main configuration objects: config, demographics, and campaign. The related information
 # for generating these input objects is placed into concern-specific files in this directory.
 from . import config
 from . import demographics
 from . import campaign
+
+# The manifest contains input file pathing information for the project
+manifest = load_manifest()
 
 # 'model' is a required attribute of this file. All core scripts access frames by loading the 'model' attribute.
 # The model attribute is assigned a model- and disease-specific object that contains all information regarding

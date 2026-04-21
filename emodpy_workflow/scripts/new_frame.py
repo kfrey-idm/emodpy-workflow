@@ -50,9 +50,9 @@ def parse_args():
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--country', dest='country_model', type=str, required=True,
-                        help=f"Country model name to make new frame with. Required.")
+                        help="Country model name to make new frame with. Required.")
     parser.add_argument('--dest', dest='dest_frame', type=str, required=True,
-                        help=f"Name of new model frame. Required.")
+                        help="Name of new model frame. Required.")
 
     args = parser.parse_args()
     return args

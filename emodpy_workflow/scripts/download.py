@@ -91,7 +91,7 @@ def parse_args():
     parser.add_argument('-o', '--output-dir', dest='output_dir', type=str, default=DEFAULTS['output_dir'],
                         help=f'Directory to write output into. {usage_str}.')
     parser.add_argument('-p', '--platform', dest='platform', type=str, required=True,
-                        help=f"Platform to download from (Required).")
+                        help="Platform to download from (Required).")
 
     args = parser.parse_args()
     args.files = args.files.strip().split(',')

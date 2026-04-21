@@ -23,9 +23,9 @@ def parse_args():
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--source', dest='source_frame', type=str, required=True,
-                        help=f"Name of model frame name extend from. Required.")
+                        help="Name of model frame name extend from. Required.")
     parser.add_argument('--dest', dest='dest_frame', type=str, required=True,
-                        help=f"Name of new model frame. Required.")
+                        help="Name of new model frame. Required.")
 
     args = parser.parse_args()
     return args

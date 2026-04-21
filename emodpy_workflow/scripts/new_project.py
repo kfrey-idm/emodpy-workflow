@@ -39,8 +39,8 @@ def parse_args():
     parser = argparse.ArgumentParser()
 
     parser.add_argument('-d', '--directory', dest='dest_dir', type=str, required=True,
-                        help=f"Path of new project directory to create and populate with initial files and "
-                             f"subdirectories. Required.")
+                        help="Path of new project directory to create and populate with initial files and "
+                             "subdirectories. Required.")
 
     args = parser.parse_args()
     args.dest_dir = Path(args.dest_dir)

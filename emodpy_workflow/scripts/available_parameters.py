@@ -10,7 +10,7 @@ def main(args):
     pprint(available_parameters)
 
     # detect duplicates as they can create undefined behavior as to how a parameter works
-    line = ''.join('-'*80)
+    line = ''.join('-' * 80)
     all_parameters = list(chain(*available_parameters.values()))
     duplicate_arguments = detect_duplicate_items_in(items=all_parameters)
     if len(duplicate_arguments) > 0:
@@ -25,8 +25,8 @@ def parse_args():
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-f', '--frame', dest='frame', type=str, required=True,
-                        help=f"Model frame name to search for available parameters in "
-                             f"(directory of python input builders). Required.")
+                        help="Model frame name to search for available parameters in "
+                             "(directory of python input builders). Required.")
 
     args = parser.parse_args()
     args.frame = load_frame(frame_name=args.frame)

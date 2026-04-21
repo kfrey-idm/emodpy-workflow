@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "emodpy-workflow"
-version = "2.0.5"
+version = "2.1.0"
 description = "IDM's emodpy modeling workflow scripts and supporting libraries"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -15,7 +15,7 @@ keywords=["modeling", "IDM"]
 
 dependencies = [ #pandas and scikit-learn are dependencies of emodpy-hiv, so we don't need to specify them here
     "idmtools_calibra~=3.0",
-    "emodpy-hiv~=3.0",
+    "emodpy-hiv~=3.1",
     "openpyxl==3.0.9",
     "scipy~=1.17",
     "seaborn~=0.13",
@@ -68,7 +68,7 @@ emodpy_workflow = [
 ]
 
 [tool.bumpversion]
-current_version = "2.0.5"
+current_version = "2.1.0"
 commit = true
 
 [[tool.bumpversion.files]]
