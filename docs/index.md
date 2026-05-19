@@ -10,6 +10,18 @@ of creating, calibrating, running, and obtaining output from EMOD-HIV model scen
 Teams of users can more easily work with each other's projects using emodpy-workflow as it
 provides standard way of using EMOD-HIV.
 
+## Project status
+
+EMOD-Hub projects are provided as open source software under the MIT License for
+community use, research, and development.
+
+**Unless otherwise noted, these projects are no longer actively maintained or supported
+by IDM or the Gates Foundation.**
+
+Community contributions are welcome, and trusted collaborators may review and
+merge pull requests, but no guarantees are made regarding support, pull request
+review, security response, maintenance, or release timelines.
+
 ## Other related documentation
 
 - [emodpy-hiv][emodpy-hiv]
@@ -20,7 +32,7 @@ provides standard way of using EMOD-HIV.
 The EMOD community is made up of researchers and software developers, primarily focused on
 malaria and HIV research. We value mutual respect, openness, and a collaborative spirit.
 
-Have a question or a comment? Check out our [Discussions](https://github.com/EMOD-Hub/issues-and-discussions) space.
+Have a question or a comment? Check out our [Discussions](https://github.com/orgs/EMOD-Hub/discussions) space.
 
 ## Support and contributions
 
@@ -33,7 +45,7 @@ requests. You are welcome to create your own fork and modify the code to suit yo
 modeling needs as contemplated under the MIT License.
 
 If you have feature requests, issues, or new code, please see our
-[CONTRIBUTING](https://github.com/EMOD-Hub/emodpy-workflow/blob/main/CONTRIBUTING.rst) page
+[CONTRIBUTING](https://github.com/EMOD-Hub/.github/blob/main/CONTRIBUTING.md) page
 for how to provide your feedback.
 
 ## Disclaimer

@@ -8,13 +8,13 @@
 All commands can be run via:
 
 ```bash
-python -m emod_workflow.scripts.COMMAND_NAME_HERE <ARGUMENTS_HERE>
+python -m emodpy_workflow.scripts.COMMAND_NAME_HERE <ARGUMENTS_HERE>
 ```
 
 Information on command arguments and their usage is available via:
 
 ```bash
-python -m emod_workflow.scripts.COMMAND_NAME_HERE --help
+python -m emodpy_workflow.scripts.COMMAND_NAME_HERE --help
 ```
 
 ## `new_project`
