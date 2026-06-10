@@ -30,7 +30,7 @@ theme:
 
 nav:
   - Home: index.md
-  - Installation:: installation.md
+  - Installation: installation.md
   - Tutorials: # this creates a section in the TOC
     - tutorials/get_started.md
     - tutorials/setup.md
