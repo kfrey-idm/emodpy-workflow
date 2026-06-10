@@ -326,6 +326,7 @@ following (your directory name is likely different):
 
 3. Look in the **experiment directory** by executing commands similar to the
 following (your directory name is likely different):
+
     === "Windows"
         ```doscon
         cd my_first_suite_857c15be-a4b9-4d46-86f5-d0c0f9a2fbe5
@@ -633,7 +634,7 @@ let's get back to our project directory and get our report data.
     The [how-tos](../how_to/how_to_download_data.md) can show you different
     ways to do it.
 
-4. See that a new folder was added to the `results/my_first_run:
+4. See that a new folder was added to the `results/my_first_run`:
 
     === "Windows"
         ```doscon
