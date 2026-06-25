@@ -14,7 +14,7 @@ authors = [
 keywords = ["modeling", "IDM"]
 dependencies = [
     "idmtools_calibra~=3.0",
-    "emodpy-hiv~=3.1",
+    "emodpy-hiv~=3.3",
     "openpyxl==3.0.9",
     "scipy~=1.17",
     "seaborn~=0.13",
